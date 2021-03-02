@@ -99,11 +99,8 @@
 		C704137625EDF8FB000FFC87 /* DinoMovieDB */ = {
 			isa = PBXGroup;
 			children = (
-				C704137725EDF8FB000FFC87 /* AppDelegate.swift */,
-				C704137925EDF8FB000FFC87 /* SceneDelegate.swift */,
-				C704137B25EDF8FB000FFC87 /* ContentView.swift */,
-				C704137D25EDF8FC000FFC87 /* Assets.xcassets */,
-				C704138225EDF8FC000FFC87 /* LaunchScreen.storyboard */,
+				C70413AD25EDFB3D000FFC87 /* SupportingFiles */,
+				C70413B125EDFB9F000FFC87 /* Sources */,
 				C704138525EDF8FC000FFC87 /* Info.plist */,
 				C704137F25EDF8FC000FFC87 /* Preview Content */,
 			);
@@ -134,6 +131,25 @@
 				C704139B25EDF8FD000FFC87 /* Info.plist */,
 			);
 			path = DinoMovieDBUITests;
+			sourceTree = "<group>";
+		};
+		C70413AD25EDFB3D000FFC87 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C704137725EDF8FB000FFC87 /* AppDelegate.swift */,
+				C704137925EDF8FB000FFC87 /* SceneDelegate.swift */,
+				C704137D25EDF8FC000FFC87 /* Assets.xcassets */,
+				C704138225EDF8FC000FFC87 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		C70413B125EDFB9F000FFC87 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C704137B25EDF8FB000FFC87 /* ContentView.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,6 +457,7 @@
 				DEVELOPMENT_TEAM = 8VH2B3DK6W;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DinoMovieDB/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,6 +479,7 @@
 				DEVELOPMENT_TEAM = 8VH2B3DK6W;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DinoMovieDB/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
