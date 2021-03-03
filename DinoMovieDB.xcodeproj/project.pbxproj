@@ -15,6 +15,7 @@
 		C704138425EDF8FC000FFC87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C704138225EDF8FC000FFC87 /* LaunchScreen.storyboard */; };
 		C704138F25EDF8FC000FFC87 /* DinoMovieDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704138E25EDF8FC000FFC87 /* DinoMovieDBTests.swift */; };
 		C704139A25EDF8FD000FFC87 /* DinoMovieDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704139925EDF8FD000FFC87 /* DinoMovieDBUITests.swift */; };
+		C70413B325EDFC3C000FFC87 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		C704139525EDF8FD000FFC87 /* DinoMovieDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DinoMovieDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C704139925EDF8FD000FFC87 /* DinoMovieDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinoMovieDBUITests.swift; sourceTree = "<group>"; };
 		C704139B25EDF8FD000FFC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				C704137725EDF8FB000FFC87 /* AppDelegate.swift */,
 				C704137925EDF8FB000FFC87 /* SceneDelegate.swift */,
 				C704137D25EDF8FC000FFC87 /* Assets.xcassets */,
+				C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */,
 				C704138225EDF8FC000FFC87 /* LaunchScreen.storyboard */,
 			);
 			path = SupportingFiles;
@@ -257,6 +260,7 @@
 			files = (
 				C704138425EDF8FC000FFC87 /* LaunchScreen.storyboard in Resources */,
 				C704138125EDF8FC000FFC87 /* Preview Assets.xcassets in Resources */,
+				C70413B325EDFC3C000FFC87 /* ColorAssets.xcassets in Resources */,
 				C704137E25EDF8FC000FFC87 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
