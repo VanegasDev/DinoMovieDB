@@ -1,0 +1,12 @@
+/* 
+  LocalizableStrings.strings
+  DinoMovieDB
+
+  Created by Mario Vanegas on 3/3/21.
+  
+*/
+
+/* Login */
+"login_username_placeholder" = "Usuario";
+"login_password_placeholder" = "Contraseña";
+"login_button" = "Login";
