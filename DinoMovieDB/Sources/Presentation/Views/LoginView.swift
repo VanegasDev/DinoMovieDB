@@ -11,6 +11,12 @@ struct LoginView: View {
     @State private var username = ""
     @State private var password = ""
     
+    private let viewModel: LoginViewModel
+    
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         VStack(spacing: 70) {
             Image.fullColoredLogo
@@ -21,7 +27,7 @@ struct LoginView: View {
     private var inputViews: some View {
         VStack(spacing: 32) {
             textFields
-            Button(action: {}) {
+            Button(action: viewModel.loginButtonTap.send) {
                 Text("Login")
                     .tmdbButtonStyleLabel()
             }
@@ -41,6 +47,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(viewModel: LoginViewModel())
     }
 }

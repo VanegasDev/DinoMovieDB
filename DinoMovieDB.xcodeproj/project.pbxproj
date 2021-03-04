@@ -26,7 +26,12 @@
 		C77C8BCC25F0AB0800961122 /* RequestToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BCB25F0AB0800961122 /* RequestToken.swift */; };
 		C77C8BD425F0AC0300961122 /* AuthenticationTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BD325F0AC0300961122 /* AuthenticationTarget.swift */; };
 		C77C8BDC25F0AC1400961122 /* MoyaTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BDB25F0AC1400961122 /* MoyaTargetType.swift */; };
-		C77C8BE225F0ACBE00961122 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BE125F0ACBE00961122 /* Configuration.swift */; };
+		C77C8BE225F0ACBE00961122 /* TMDBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BE125F0ACBE00961122 /* TMDBConfiguration.swift */; };
+		C77C8BEF25F0AEFF00961122 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BEE25F0AEFF00961122 /* AuthenticationService.swift */; };
+		C77C8BFD25F0B25600961122 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BFC25F0B25600961122 /* LoginViewController.swift */; };
+		C77C8C0525F0B27400961122 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8C0425F0B27400961122 /* UIViewController+Extensions.swift */; };
+		C77C8C0E25F0B33C00961122 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = C77C8C0D25F0B33C00961122 /* TinyConstraints */; };
+		C77C8C1A25F0B6E200961122 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8C1925F0B6E200961122 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +77,11 @@
 		C77C8BCB25F0AB0800961122 /* RequestToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToken.swift; sourceTree = "<group>"; };
 		C77C8BD325F0AC0300961122 /* AuthenticationTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTarget.swift; sourceTree = "<group>"; };
 		C77C8BDB25F0AC1400961122 /* MoyaTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaTargetType.swift; sourceTree = "<group>"; };
-		C77C8BE125F0ACBE00961122 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		C77C8BE125F0ACBE00961122 /* TMDBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBConfiguration.swift; sourceTree = "<group>"; };
+		C77C8BEE25F0AEFF00961122 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		C77C8BFC25F0B25600961122 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C77C8C0425F0B27400961122 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		C77C8C1925F0B6E200961122 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C77C8BB525F0A2C000961122 /* Moya in Frameworks */,
+				C77C8C0E25F0B33C00961122 /* TinyConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,10 +184,12 @@
 		C70413B125EDFB9F000FFC87 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				C77C8BC925F0AADE00961122 /* Models */,
-				C77C8BB925F0A31600961122 /* Managers */,
 				C77C8B1D25F08B7C00961122 /* Extensions */,
-				C77C8B6B25F0935300961122 /* Modules */,
+				C77C8BC925F0AADE00961122 /* Models */,
+				C77C8BE925F0AED000961122 /* Services */,
+				C77C8BB925F0A31600961122 /* Managers */,
+				C77C8BFA25F0B24500961122 /* Modules */,
+				C77C8B6B25F0935300961122 /* Presentation */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -187,17 +199,19 @@
 			children = (
 				C77C8B1E25F08B9400961122 /* Color+Extensions.swift */,
 				C77C8B9B25F099C700961122 /* Image+Extensions.swift */,
+				C77C8C0425F0B27400961122 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		C77C8B6B25F0935300961122 /* Modules */ = {
+		C77C8B6B25F0935300961122 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C77C8C1825F0B6B900961122 /* ViewModels */,
 				C77C8B6D25F0936600961122 /* CustomViews */,
 				C77C8B6C25F0936200961122 /* Views */,
 			);
-			path = Modules;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		C77C8B6C25F0936200961122 /* Views */ = {
@@ -287,9 +301,41 @@
 		C77C8BE025F0ACAF00961122 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				C77C8BE125F0ACBE00961122 /* Configuration.swift */,
+				C77C8BE125F0ACBE00961122 /* TMDBConfiguration.swift */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		C77C8BE925F0AED000961122 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C77C8BEE25F0AEFF00961122 /* AuthenticationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C77C8BFA25F0B24500961122 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C77C8BFB25F0B24C00961122 /* Login */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C77C8BFB25F0B24C00961122 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C77C8BFC25F0B25600961122 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C77C8C1825F0B6B900961122 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C77C8C1925F0B6E200961122 /* LoginViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +356,7 @@
 			name = DinoMovieDB;
 			packageProductDependencies = (
 				C77C8BB425F0A2C000961122 /* Moya */,
+				C77C8C0D25F0B33C00961122 /* TinyConstraints */,
 			);
 			productName = DinoMovieDB;
 			productReference = C704137425EDF8FB000FFC87 /* DinoMovieDB.app */;
@@ -385,6 +432,7 @@
 			mainGroup = C704136B25EDF8FB000FFC87;
 			packageReferences = (
 				C77C8BB325F0A2C000961122 /* XCRemoteSwiftPackageReference "Moya" */,
+				C77C8C0C25F0B33C00961122 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
 			);
 			productRefGroup = C704137525EDF8FB000FFC87 /* Products */;
 			projectDirPath = "";
@@ -433,13 +481,17 @@
 				C77C8B8125F0967600961122 /* TMDBPlaceholderModifier.swift in Sources */,
 				C77C8B9C25F099C700961122 /* Image+Extensions.swift in Sources */,
 				C77C8B8F25F0983D00961122 /* TMDBButtonStyle.swift in Sources */,
+				C77C8BFD25F0B25600961122 /* LoginViewController.swift in Sources */,
 				C77C8BCC25F0AB0800961122 /* RequestToken.swift in Sources */,
 				C77C8B9725F0999100961122 /* LoginView.swift in Sources */,
 				C77C8BD425F0AC0300961122 /* AuthenticationTarget.swift in Sources */,
 				C704137825EDF8FB000FFC87 /* AppDelegate.swift in Sources */,
-				C77C8BE225F0ACBE00961122 /* Configuration.swift in Sources */,
+				C77C8BEF25F0AEFF00961122 /* AuthenticationService.swift in Sources */,
+				C77C8BE225F0ACBE00961122 /* TMDBConfiguration.swift in Sources */,
+				C77C8C1A25F0B6E200961122 /* LoginViewModel.swift in Sources */,
 				C77C8B7B25F093E800961122 /* TMDBTextField.swift in Sources */,
 				C704137A25EDF8FB000FFC87 /* SceneDelegate.swift in Sources */,
+				C77C8C0525F0B27400961122 /* UIViewController+Extensions.swift in Sources */,
 				C77C8BC225F0A3BF00961122 /* MoyaRequester.swift in Sources */,
 				C77C8BDC25F0AC1400961122 /* MoyaTargetType.swift in Sources */,
 				C77C8B1F25F08B9400961122 /* Color+Extensions.swift in Sources */,
@@ -786,6 +838,14 @@
 				minimumVersion = 14.0.1;
 			};
 		};
+		C77C8C0C25F0B33C00961122 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/roberthein/TinyConstraints.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -793,6 +853,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C77C8BB325F0A2C000961122 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		C77C8C0D25F0B33C00961122 /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C77C8C0C25F0B33C00961122 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

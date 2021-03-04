@@ -12,7 +12,7 @@ protocol MoyaTargetType: TargetType {}
 
 extension MoyaTargetType {
     var baseURL: URL {
-        guard let url = URL(string: Configuration.baseUrl) else {
+        guard let url = URL(string: TMDBConfiguration.baseUrl) else {
             fatalError("Base URL Couldn't be Configured")
         }
         

@@ -29,7 +29,7 @@ extension AuthenticationTarget: MoyaTargetType {
     var task: Task {
         switch self {
         case .requestToken:
-            return .requestParameters(parameters: Configuration.apiKey, encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: TMDBConfiguration.apiKey, encoding: URLEncoding.queryString)
         }
     }
 }
