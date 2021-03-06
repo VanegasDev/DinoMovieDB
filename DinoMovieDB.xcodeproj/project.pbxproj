@@ -18,6 +18,7 @@
 		C718184E25F345D00039FCDF /* TMDBLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718184D25F345D00039FCDF /* TMDBLogin.swift */; };
 		C718185425F3477D0039FCDF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185325F3477D0039FCDF /* ActivityIndicator.swift */; };
 		C718185C25F348840039FCDF /* TMDBActivityIndicatorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */; };
+		C718186525F352C20039FCDF /* TMDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718186425F352C20039FCDF /* TMDBError.swift */; };
 		C77C8B1F25F08B9400961122 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8B1E25F08B9400961122 /* Color+Extensions.swift */; };
 		C77C8B7B25F093E800961122 /* TMDBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8B7A25F093E800961122 /* TMDBTextField.swift */; };
 		C77C8B8125F0967600961122 /* TMDBPlaceholderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8B8025F0967600961122 /* TMDBPlaceholderModifier.swift */; };
@@ -72,6 +73,7 @@
 		C718184D25F345D00039FCDF /* TMDBLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBLogin.swift; sourceTree = "<group>"; };
 		C718185325F3477D0039FCDF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBActivityIndicatorModifier.swift; sourceTree = "<group>"; };
+		C718186425F352C20039FCDF /* TMDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBError.swift; sourceTree = "<group>"; };
 		C77C8B1E25F08B9400961122 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		C77C8B5B25F0915500961122 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		C77C8B7A25F093E800961122 /* TMDBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBTextField.swift; sourceTree = "<group>"; };
@@ -208,6 +210,14 @@
 			path = Representables;
 			sourceTree = "<group>";
 		};
+		C718186325F352B40039FCDF /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				C718186425F352C20039FCDF /* TMDBError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		C77C8B1D25F08B7C00961122 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +311,7 @@
 		C77C8BC925F0AADE00961122 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C718186325F352B40039FCDF /* Errors */,
 				C77C8BCA25F0AAE600961122 /* APIModels */,
 			);
 			path = Models;
@@ -506,6 +517,7 @@
 				C704137825EDF8FB000FFC87 /* AppDelegate.swift in Sources */,
 				C718184E25F345D00039FCDF /* TMDBLogin.swift in Sources */,
 				C77C8BEF25F0AEFF00961122 /* AuthenticationService.swift in Sources */,
+				C718186525F352C20039FCDF /* TMDBError.swift in Sources */,
 				C77C8BE225F0ACBE00961122 /* TMDBConfiguration.swift in Sources */,
 				C77C8C1A25F0B6E200961122 /* LoginViewModel.swift in Sources */,
 				C77C8B7B25F093E800961122 /* TMDBTextField.swift in Sources */,

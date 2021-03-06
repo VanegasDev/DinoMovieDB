@@ -42,18 +42,46 @@ class LoginViewController: UIViewController {
     }
     
     private func login() {
+        let username = viewModel.username
+        let password = viewModel.password
+        
         authenticationService.askForRequestToken()
-            .sink(receiveCompletion: { response in
+            .flatMap { [weak self] requestToken -> AnyPublisher<SessionToken, Error> in
+                guard let self = self else {
+                    return Fail(error: TMDBError.selfNotFound).eraseToAnyPublisher()
+                }
+                
+                let parameters = LoginParameters(username: username, password: password, requestToken: requestToken.token)
+                return self.authenticationService.login(with: parameters)
+            }
+            .sink(receiveCompletion: { [weak self] response in
                 switch response {
+                case .failure(let error):
+                    self?.viewModel.isLoading = false
+                    self?.loginFailed(error)
                 case .finished:
                     break
-                case .failure(let error):
-                    print("ERROR: \(error.localizedDescription)")
                 }
-            }) { [weak self] token in
-                print("TOKEN: \(token)")
-                self?.viewModel.receivedToken()
+            }) { [weak self] session in
+                self?.viewModel.isLoading = false
+                self?.successfulLogin(session: session)
             }
             .store(in: &cancellables)
+    }
+    
+    private func loginFailed(_ error: Error) {
+        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Ok", style: .default)
+        
+        alertController.addAction(action1)
+        present(alertController, animated: true)
+    }
+    
+    private func successfulLogin(session: SessionToken) {
+        let alertController = UIAlertController(title: "Successful Login", message: "Welcome \(viewModel.username)", preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Ok", style: .default)
+        
+        alertController.addAction(action1)
+        present(alertController, animated: true)
     }
 }

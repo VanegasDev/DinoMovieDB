@@ -31,10 +31,4 @@ class LoginViewModel: ObservableObject {
             .sink(receiveValue: loginActionPublisher.send)
             .store(in: &cancellables)
     }
-    
-    // MARK: Input
-    func receivedToken() {
-        isLoading = false
-        print("FINISH")
-    }
 }

@@ -11,6 +11,7 @@ import Moya
 
 protocol AuthenticationServiceType: class {
     func askForRequestToken() -> AnyPublisher<RequestToken, Error>
+    func login(with parameters: LoginParameters) -> AnyPublisher<SessionToken, Error>
 }
 
 class AuthenticationService: AuthenticationServiceType {
@@ -22,6 +23,12 @@ class AuthenticationService: AuthenticationServiceType {
     
     func askForRequestToken() -> AnyPublisher<RequestToken, Error> {
         apiRequester.request(target: AuthenticationTarget.requestToken)
+            .map { $0.response }
+            .eraseToAnyPublisher()
+    }
+    
+    func login(with parameters: LoginParameters) -> AnyPublisher<SessionToken, Error> {
+        apiRequester.request(target: AuthenticationTarget.login(parameters: parameters))
             .map { $0.response }
             .eraseToAnyPublisher()
     }
