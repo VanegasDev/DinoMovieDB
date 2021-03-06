@@ -22,6 +22,12 @@ class LoginViewController: UIViewController {
         fatalError("init?(coder: NSCoder) hasn't been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
