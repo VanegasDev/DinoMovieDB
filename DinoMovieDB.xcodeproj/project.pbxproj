@@ -15,6 +15,9 @@
 		C704138F25EDF8FC000FFC87 /* DinoMovieDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704138E25EDF8FC000FFC87 /* DinoMovieDBTests.swift */; };
 		C704139A25EDF8FD000FFC87 /* DinoMovieDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704139925EDF8FD000FFC87 /* DinoMovieDBUITests.swift */; };
 		C70413B325EDFC3C000FFC87 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */; };
+		C718184E25F345D00039FCDF /* TMDBLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718184D25F345D00039FCDF /* TMDBLogin.swift */; };
+		C718185425F3477D0039FCDF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185325F3477D0039FCDF /* ActivityIndicator.swift */; };
+		C718185C25F348840039FCDF /* TMDBActivityIndicatorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */; };
 		C77C8B1F25F08B9400961122 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8B1E25F08B9400961122 /* Color+Extensions.swift */; };
 		C77C8B7B25F093E800961122 /* TMDBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8B7A25F093E800961122 /* TMDBTextField.swift */; };
 		C77C8B8125F0967600961122 /* TMDBPlaceholderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8B8025F0967600961122 /* TMDBPlaceholderModifier.swift */; };
@@ -66,6 +69,9 @@
 		C704139925EDF8FD000FFC87 /* DinoMovieDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinoMovieDBUITests.swift; sourceTree = "<group>"; };
 		C704139B25EDF8FD000FFC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
+		C718184D25F345D00039FCDF /* TMDBLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBLogin.swift; sourceTree = "<group>"; };
+		C718185325F3477D0039FCDF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBActivityIndicatorModifier.swift; sourceTree = "<group>"; };
 		C77C8B1E25F08B9400961122 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		C77C8B5B25F0915500961122 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		C77C8B7A25F093E800961122 /* TMDBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBTextField.swift; sourceTree = "<group>"; };
@@ -194,6 +200,14 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		C718185225F3474D0039FCDF /* Representables */ = {
+			isa = PBXGroup;
+			children = (
+				C718185325F3477D0039FCDF /* ActivityIndicator.swift */,
+			);
+			path = Representables;
+			sourceTree = "<group>";
+		};
 		C77C8B1D25F08B7C00961122 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +249,7 @@
 		C77C8B6E25F0936B00961122 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				C718185225F3474D0039FCDF /* Representables */,
 				C77C8B7A25F093E800961122 /* TMDBTextField.swift */,
 			);
 			path = SwiftUIViews;
@@ -244,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				C77C8B8025F0967600961122 /* TMDBPlaceholderModifier.swift */,
+				C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -294,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				C77C8BCB25F0AB0800961122 /* RequestToken.swift */,
+				C718184D25F345D00039FCDF /* TMDBLogin.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -480,12 +497,14 @@
 			files = (
 				C77C8B8125F0967600961122 /* TMDBPlaceholderModifier.swift in Sources */,
 				C77C8B9C25F099C700961122 /* Image+Extensions.swift in Sources */,
+				C718185425F3477D0039FCDF /* ActivityIndicator.swift in Sources */,
 				C77C8B8F25F0983D00961122 /* TMDBButtonStyle.swift in Sources */,
 				C77C8BFD25F0B25600961122 /* LoginViewController.swift in Sources */,
 				C77C8BCC25F0AB0800961122 /* RequestToken.swift in Sources */,
 				C77C8B9725F0999100961122 /* LoginView.swift in Sources */,
 				C77C8BD425F0AC0300961122 /* AuthenticationTarget.swift in Sources */,
 				C704137825EDF8FB000FFC87 /* AppDelegate.swift in Sources */,
+				C718184E25F345D00039FCDF /* TMDBLogin.swift in Sources */,
 				C77C8BEF25F0AEFF00961122 /* AuthenticationService.swift in Sources */,
 				C77C8BE225F0ACBE00961122 /* TMDBConfiguration.swift in Sources */,
 				C77C8C1A25F0B6E200961122 /* LoginViewModel.swift in Sources */,
@@ -494,6 +513,7 @@
 				C77C8C0525F0B27400961122 /* UIViewController+Extensions.swift in Sources */,
 				C77C8BC225F0A3BF00961122 /* MoyaRequester.swift in Sources */,
 				C77C8BDC25F0AC1400961122 /* MoyaTargetType.swift in Sources */,
+				C718185C25F348840039FCDF /* TMDBActivityIndicatorModifier.swift in Sources */,
 				C77C8B1F25F08B9400961122 /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

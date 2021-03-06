@@ -50,8 +50,9 @@ class LoginViewController: UIViewController {
                 case .failure(let error):
                     print("ERROR: \(error.localizedDescription)")
                 }
-            }) { token in
+            }) { [weak self] token in
                 print("TOKEN: \(token)")
+                self?.viewModel.receivedToken()
             }
             .store(in: &cancellables)
     }

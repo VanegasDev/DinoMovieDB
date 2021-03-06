@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var username = ""
-    @State private var password = ""
-    
-    private let viewModel: LoginViewModel
+    @ObservedObject private var viewModel: LoginViewModel
     
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -22,6 +19,7 @@ struct LoginView: View {
             Image.fullColoredLogo
             inputViews
         }
+        .tmdbActivityIndicator(isAnimating: viewModel.isLoading)
     }
     
     private var inputViews: some View {
@@ -39,8 +37,8 @@ struct LoginView: View {
     
     private var textFields: some View {
         VStack(spacing: 16) {
-            TMDBTextField($username, placeholder: "Username")
-            TMDBTextField($password, placeholder: "Password", isSecureTextField: true)
+            TMDBTextField($viewModel.username, placeholder: "Username")
+            TMDBTextField($viewModel.password, placeholder: "Password", isSecureTextField: true)
         }
     }
 }

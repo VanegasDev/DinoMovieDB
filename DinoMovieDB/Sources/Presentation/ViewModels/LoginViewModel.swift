@@ -11,6 +11,7 @@ import Combine
 class LoginViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
+    @Published var isLoading: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -26,7 +27,14 @@ class LoginViewModel: ObservableObject {
         let loginButtonTapPublisher = loginButtonTap.receive(on: DispatchQueue.main)
         
         loginButtonTapPublisher
+            .handleEvents(receiveOutput: { [weak self] _ in self?.isLoading = true })
             .sink(receiveValue: loginActionPublisher.send)
             .store(in: &cancellables)
+    }
+    
+    // MARK: Input
+    func receivedToken() {
+        isLoading = false
+        print("FINISH")
     }
 }
