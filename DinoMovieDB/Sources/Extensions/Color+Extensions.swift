@@ -12,6 +12,8 @@ extension Color {
     static let primaryColor: Color = Color("primary-color")
     static let tmdbBackgroundControls: Color = Color("tmdb-background-controls")
     static let tmdbPlaceholder: Color = Color("tmdb-placeholder")
+    static let secondaryColor: Color = Color("secondary-color")
+    static let primarySolid: Color = Color("primary-solid")
 }
 
 extension UIColor {
@@ -19,4 +21,6 @@ extension UIColor {
     static let primaryColor: UIColor = UIColor(named: "primary-color") ?? UIColor()
     static let tmdbBackgroundControls: UIColor = UIColor(named: "tmdb-background-controls") ?? UIColor()
     static let tmdbPlaceholder: UIColor = UIColor(named: "tmdb-placeholder") ?? UIColor()
+    static let secondaryColor: UIColor = UIColor(named: "secondary-color") ?? UIColor()
+    static let primarySolid: UIColor = UIColor(named: "primary-solid") ?? UIColor()
 }
