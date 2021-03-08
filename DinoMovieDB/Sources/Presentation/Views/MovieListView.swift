@@ -27,6 +27,7 @@ struct MovieListView: View {
             }
             .padding(.horizontal)
         }
+        .padding(.vertical)
     }
 
 }
