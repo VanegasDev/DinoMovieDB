@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ItemDetailViewModel: ObservableObject {
+class ItemDetailViewModel: ObservableObject, Identifiable {
     @Published var title: String = "-"
     @Published var releaseDate: String = "-"
     @Published var rate: String = "0"

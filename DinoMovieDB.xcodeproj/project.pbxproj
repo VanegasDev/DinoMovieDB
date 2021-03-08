@@ -24,6 +24,7 @@
 		C775ABC425F35ECB002D39D8 /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775ABC325F35ECB002D39D8 /* ItemDetail.swift */; };
 		C775ABC925F35F91002D39D8 /* ItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775ABC825F35F91002D39D8 /* ItemDetailViewModel.swift */; };
 		C775ABCF25F36546002D39D8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C775ABCE25F36546002D39D8 /* Kingfisher */; };
+		C778E86725F5ACDD00C97CB4 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C778E86625F5ACDD00C97CB4 /* MovieListView.swift */; };
 		C77C8B1F25F08B9400961122 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8B1E25F08B9400961122 /* Color+Extensions.swift */; };
 		C77C8B7B25F093E800961122 /* TMDBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8B7A25F093E800961122 /* TMDBTextField.swift */; };
 		C77C8B8125F0967600961122 /* TMDBPlaceholderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8B8025F0967600961122 /* TMDBPlaceholderModifier.swift */; };
@@ -83,6 +84,7 @@
 		C775ABBE25F35DCB002D39D8 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		C775ABC325F35ECB002D39D8 /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
 		C775ABC825F35F91002D39D8 /* ItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewModel.swift; sourceTree = "<group>"; };
+		C778E86625F5ACDD00C97CB4 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
 		C77C8B1E25F08B9400961122 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		C77C8B5B25F0915500961122 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		C77C8B7A25F093E800961122 /* TMDBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBTextField.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				C77C8B9625F0999100961122 /* LoginView.swift */,
+				C778E86625F5ACDD00C97CB4 /* MovieListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				C77C8BC225F0A3BF00961122 /* MoyaRequester.swift in Sources */,
 				C77C8BDC25F0AC1400961122 /* MoyaTargetType.swift in Sources */,
 				C775ABBF25F35DCB002D39D8 /* MoviesViewController.swift in Sources */,
+				C778E86725F5ACDD00C97CB4 /* MovieListView.swift in Sources */,
 				C718185C25F348840039FCDF /* TMDBActivityIndicatorModifier.swift in Sources */,
 				C77C8B1F25F08B9400961122 /* Color+Extensions.swift in Sources */,
 			);
