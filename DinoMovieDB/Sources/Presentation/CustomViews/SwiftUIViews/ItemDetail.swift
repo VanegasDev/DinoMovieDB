@@ -32,6 +32,7 @@ struct ItemDetail: View {
             Text("\(viewModel.rate)")
                 .frame(width: 36, height: 36)
                 .font(.system(size: 13))
+                .foregroundColor(Color.primarySolid)
                 .background(Color.secondaryColor)
                 .clipShape(Circle())
         }
