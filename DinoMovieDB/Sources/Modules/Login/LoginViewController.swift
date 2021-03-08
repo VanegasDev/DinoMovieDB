@@ -78,10 +78,6 @@ class LoginViewController: UIViewController {
     }
     
     private func successfulLogin(session: SessionToken) {
-        let alertController = UIAlertController(title: "Successful Login", message: "Welcome \(viewModel.username)", preferredStyle: .alert)
-        let action1 = UIAlertAction(title: "Ok", style: .default)
-        
-        alertController.addAction(action1)
-        present(alertController, animated: true)
+        NotificationCenter.default.post(name: .loginNotification, object: nil)
     }
 }
