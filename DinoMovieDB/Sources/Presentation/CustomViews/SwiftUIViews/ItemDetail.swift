@@ -32,12 +32,12 @@ struct ItemDetail: View {
             Text("\(viewModel.rate)")
                 .frame(width: 36, height: 36)
                 .font(.system(size: 13))
-                .foregroundColor(Color.primarySolid)
-                .background(Color.secondaryColor)
+                .foregroundColor(Color(R.color.primarySolid.name))
+                .background(Color(R.color.secondaryColor.name))
                 .clipShape(Circle())
         }
         .padding()
-        .background(Color.primarySolid)
+        .background(Color(R.color.primarySolid.name))
     }
     
     var information: some View {

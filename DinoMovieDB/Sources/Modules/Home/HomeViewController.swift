@@ -45,7 +45,7 @@ class HomeViewController: UITabBarController {
     // MARK: Setup
     private func setupViews() {
         let moviesViewController = UINavigationController(rootViewController: HomeTabs.movies.viewController)
-        tabBar.tintColor = .primaryColor
+        tabBar.tintColor = R.color.primaryColor()
         
         setViewControllers([moviesViewController], animated: true)
     }

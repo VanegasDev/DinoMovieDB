@@ -14,7 +14,7 @@ struct ActivityIndicator: UIViewRepresentable {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .large
-        activityIndicator.color = .primaryColor
+        activityIndicator.color = R.color.primaryColor()
         
         return activityIndicator
     }

@@ -16,7 +16,7 @@ struct LoginView: View {
     
     var body: some View {
         VStack(spacing: 70) {
-            Image.fullColoredLogo
+            Image(R.image.fullLogoColored.name)
             inputViews
         }
         .tmdbActivityIndicator(isAnimating: viewModel.isLoading)

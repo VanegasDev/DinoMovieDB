@@ -24,12 +24,12 @@ struct TMDBTextField: View {
             .padding(.horizontal)
             .tmdbPlaceholder(placeholder, isShowingPlaceholder: text.isEmpty)
             .frame(height: 48)
-            .foregroundColor(Color.primaryColor)
-            .background(Color.tmdbBackgroundControls)
+            .foregroundColor(Color(R.color.primaryColor.name))
+            .background(Color(R.color.tmdbBackgroundControls.name))
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.primaryColor, style: StrokeStyle(lineWidth: 2))
+                    .stroke(Color(R.color.primaryColor.name), style: StrokeStyle(lineWidth: 2))
             )
     }
     
