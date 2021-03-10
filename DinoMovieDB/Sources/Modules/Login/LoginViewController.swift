@@ -31,8 +31,14 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addHosting(LoginView(viewModel: viewModel))
+        setupViews()
         setupBindings()
+    }
+    
+    // MARK: Setup
+    private func setupViews() {
+        view.backgroundColor = R.color.backgroundColor()
+        addHosting(LoginView(viewModel: viewModel))
     }
     
     private func setupBindings() {

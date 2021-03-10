@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieListView: View {
-    private let viewModel: MovieListViewModel
+    @ObservedObject private var viewModel: MovieListViewModel
     private let columns = [
         GridItem(.flexible(minimum: 16)),
         GridItem(.flexible(minimum: 16)),
@@ -23,11 +23,13 @@ struct MovieListView: View {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(viewModel.moviesViewModel) { viewModel in
                     ItemDetail(viewModel: viewModel)
+                        .frame(height: 250)
                 }
             }
-            .padding(.horizontal)
+            .padding()
+            .background(Color(R.color.backgroundColor.name))
         }
-        .padding(.vertical)
+        .onAppear(perform: viewModel.fetchUpcomingMoviesTrigger.send)
     }
 
 }

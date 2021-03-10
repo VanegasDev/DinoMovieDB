@@ -18,11 +18,20 @@ struct ItemDetail: View {
     var body: some View {
         VStack(spacing: 0) {
             KFImage(viewModel.imageUrl)
+                .placeholder {
+                    Image(systemName: "film")
+                        .resizable()
+                        .padding(EdgeInsets(top: 25, leading: 15, bottom: 25, trailing: 15))
+                        .foregroundColor(Color(R.color.secondaryColor.name))
+                        .aspectRatio(163/180, contentMode: .fit)
+                }
                 .resizable()
                 .aspectRatio(163/180, contentMode: .fit)
             footer
         }
+        .background(Color(R.color.primarySolid.name))
         .clipShape(RoundedRectangle(cornerRadius: 15))
+        .shadow(color: Color(R.color.tmdbShadow.name), radius: 10, x: 0, y: 5)
     }
     
     var footer: some View {
@@ -37,7 +46,6 @@ struct ItemDetail: View {
                 .clipShape(Circle())
         }
         .padding()
-        .background(Color(R.color.primarySolid.name))
     }
     
     var information: some View {
@@ -54,7 +62,7 @@ struct ItemDetail: View {
 
 struct ItemDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ItemDetail(viewModel: ItemDetailViewModel())
+        ItemDetail(viewModel: ItemDetailViewModel(title: "-", releaseDate: "-", rate: "0", imageUrl: nil))
             .previewLayout(.fixed(width: 163, height: 250))
     }
 }

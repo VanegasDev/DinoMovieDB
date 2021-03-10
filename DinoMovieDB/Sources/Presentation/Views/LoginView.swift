@@ -20,6 +20,7 @@ struct LoginView: View {
             inputViews
         }
         .tmdbActivityIndicator(isAnimating: viewModel.isLoading)
+        .background(Color(R.color.backgroundColor.name))
     }
     
     private var inputViews: some View {
