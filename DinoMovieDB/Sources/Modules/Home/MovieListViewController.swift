@@ -34,7 +34,7 @@ class MovieListViewController: UIViewController {
     
     // MARK: Setup
     private func setupViews() {
-        title = "Movies"
+        title = R.string.localization.movie_list_title()
         
         // TODO: Setup Bindings when working on actions
         addHosting(MovieListView(viewModel: viewModel))

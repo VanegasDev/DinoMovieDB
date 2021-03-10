@@ -18,7 +18,7 @@ enum HomeTabs: Int {
         switch self {
         case .movies:
             viewController = MovieListViewController()
-            viewController.tabBarItem = UITabBarItem(title: "Movies", image: UIImage(systemName: "film"), tag: 0)
+            viewController.tabBarItem = UITabBarItem(title: R.string.localization.movie_list_title(), image: UIImage(systemName: "film"), tag: 0)
         default:
             return UIViewController()
         }
