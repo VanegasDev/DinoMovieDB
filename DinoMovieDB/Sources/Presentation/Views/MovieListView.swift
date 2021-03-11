@@ -39,7 +39,6 @@ struct MovieListView: View {
         }
         .onAppear(perform: viewModel.fetchUpcomingMoviesTrigger.send)
     }
-
 }
 
 struct MovieListView_Previews: PreviewProvider {

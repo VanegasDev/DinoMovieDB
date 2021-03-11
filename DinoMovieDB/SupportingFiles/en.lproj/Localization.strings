@@ -17,3 +17,6 @@
 
 /* Movie List */
 "movie_list_title" = "Movies";
+
+/* TVShows List */
+"tv_shows_list_title" = "Tv Shows";
