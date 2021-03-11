@@ -51,12 +51,14 @@ class LoginViewController: UIViewController {
         let username = viewModel.username
         let password = viewModel.password
         
+        // Pedir Request Token
         authenticationService.askForRequestToken()
             .flatMap { [weak self] requestToken -> AnyPublisher<SessionToken, Error> in
                 guard let self = self else {
                     return Fail(error: TMDBError.selfNotFound).eraseToAnyPublisher()
                 }
                 
+                // Crear Sesion
                 let parameters = LoginParameters(username: username, password: password, requestToken: requestToken.token)
                 return self.authenticationService.login(with: parameters)
             }
