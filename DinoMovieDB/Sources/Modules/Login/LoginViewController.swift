@@ -63,8 +63,10 @@ class LoginViewController: UIViewController {
             .sink(receiveCompletion: { [weak self] response in
                 switch response {
                 case .failure(let error):
+                    let alert = UIAlertController.errorAlert(description: error.localizedDescription)
+                    
                     self?.viewModel.isLoading = false
-                    self?.loginFailed(error)
+                    self?.present(alert, animated: true)
                 case .finished:
                     break
                 }
@@ -73,14 +75,6 @@ class LoginViewController: UIViewController {
                 self?.successfulLogin(session: session)
             }
             .store(in: &cancellables)
-    }
-    
-    private func loginFailed(_ error: Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let action1 = UIAlertAction(title: "Ok", style: .default)
-        
-        alertController.addAction(action1)
-        present(alertController, animated: true)
     }
     
     private func successfulLogin(session: SessionToken) {

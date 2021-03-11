@@ -58,7 +58,9 @@ class MovieListViewController: UIViewController {
             .sink(receiveCompletion: { [weak self] response in
                 switch response {
                 case .failure(let error):
-                    self?.showErrorAlert(error)
+                    // Presentar Alerta de Error
+                    let alert = UIAlertController.errorAlert(description: error.localizedDescription)
+                    self?.present(alert, animated: true)
                 case .finished:
                     break
                 }
@@ -81,13 +83,5 @@ class MovieListViewController: UIViewController {
         let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(movie.imagePath ?? "")")
         
         return ItemDetailViewModel(title: title, releaseDate: release, rate: rate, imageUrl: imageUrl)
-    }
-    
-    private func showErrorAlert(_ error: Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let action1 = UIAlertAction(title: "Ok", style: .default)
-        
-        alertController.addAction(action1)
-        present(alertController, animated: true)
     }
 }
