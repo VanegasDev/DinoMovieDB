@@ -16,6 +16,7 @@
 		C704139A25EDF8FD000FFC87 /* DinoMovieDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704139925EDF8FD000FFC87 /* DinoMovieDBUITests.swift */; };
 		C70413B325EDFC3C000FFC87 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */; };
 		C717A13525F9CD30006915D5 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717A13425F9CD30006915D5 /* UIAlertController+Extensions.swift */; };
+		C717A13A25F9D26B006915D5 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717A13925F9D26B006915D5 /* Publisher+Extension.swift */; };
 		C718184E25F345D00039FCDF /* TMDBLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718184D25F345D00039FCDF /* TMDBLogin.swift */; };
 		C718185425F3477D0039FCDF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185325F3477D0039FCDF /* ActivityIndicator.swift */; };
 		C718185C25F348840039FCDF /* TMDBActivityIndicatorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */; };
@@ -88,6 +89,7 @@
 		C704139B25EDF8FD000FFC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		C717A13425F9CD30006915D5 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
+		C717A13925F9D26B006915D5 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
 		C718184D25F345D00039FCDF /* TMDBLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBLogin.swift; sourceTree = "<group>"; };
 		C718185325F3477D0039FCDF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBActivityIndicatorModifier.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				C7A4D8B825F5BB0800284AD8 /* UIWindow+Extensions.swift */,
 				C7A4D8C025F5BCAE00284AD8 /* NotificationCenter+Extensions.swift */,
 				C717A13425F9CD30006915D5 /* UIAlertController+Extensions.swift */,
+				C717A13925F9D26B006915D5 /* Publisher+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				C78DA7D425F881A2009DCE37 /* R.generated.swift in Sources */,
 				C7A4D8AB25F5B86A00284AD8 /* TMDBMainCoordinator.swift in Sources */,
 				C778E86725F5ACDD00C97CB4 /* MovieListView.swift in Sources */,
+				C717A13A25F9D26B006915D5 /* Publisher+Extension.swift in Sources */,
 				C718185C25F348840039FCDF /* TMDBActivityIndicatorModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

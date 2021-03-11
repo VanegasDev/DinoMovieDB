@@ -60,17 +60,14 @@ class LoginViewController: UIViewController {
                 let parameters = LoginParameters(username: username, password: password, requestToken: requestToken.token)
                 return self.authenticationService.login(with: parameters)
             }
-            .sink(receiveCompletion: { [weak self] response in
-                switch response {
-                case .failure(let error):
-                    let alert = UIAlertController.errorAlert(description: error.localizedDescription)
-                    
-                    self?.viewModel.isLoading = false
-                    self?.present(alert, animated: true)
-                case .finished:
-                    break
-                }
+            .sink(error: { [weak self] error in
+                // Manejo de Error
+                let alert = UIAlertController.errorAlert(description: error.localizedDescription)
+                
+                self?.viewModel.isLoading = false
+                self?.present(alert, animated: true)
             }) { [weak self] session in
+                // Recibir Sesion
                 self?.viewModel.isLoading = false
                 self?.successfulLogin(session: session)
             }

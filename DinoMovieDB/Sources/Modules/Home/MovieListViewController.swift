@@ -55,16 +55,12 @@ class MovieListViewController: UIViewController {
     private func fetchMovies() {
         // Descargar proximas peliculas
         moviesService.fetchUpcomingMovies()
-            .sink(receiveCompletion: { [weak self] response in
-                switch response {
-                case .failure(let error):
-                    // Presentar Alerta de Error
-                    let alert = UIAlertController.errorAlert(description: error.localizedDescription)
-                    self?.present(alert, animated: true)
-                case .finished:
-                    break
-                }
+            .sink(error: { [weak self] error in
+                // Presentar Alerta de Error
+                let alert = UIAlertController.errorAlert(description: error.localizedDescription)
+                self?.present(alert, animated: true)
             }) { [weak self] receivedMovies in
+                // Actualizar pelicular
                 self?.updateReceivedMovies(receivedMovies.results)
             }
             .store(in: &cancellables)
