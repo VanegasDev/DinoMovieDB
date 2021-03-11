@@ -21,14 +21,11 @@ struct TVShowsListView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(viewModel.showsViewModel) { movie in
-                    ItemDetail(viewModel: movie)
+                ForEach(viewModel.showsViewModel) { show in
+                    ItemDetail(viewModel: show)
                         .frame(height: 250)
                         .onAppear {
-                            let movieIndex = viewModel.showsViewModel.firstIndex { $0.id == movie.id } ?? 0
-                            let distance = viewModel.showsViewModel.distance(from: movieIndex, to: viewModel.showsViewModel.count)
-                            
-                            if distance < 4 {
+                            if viewModel.showsViewModel.shouldPaginate(on: show) {
                                 viewModel.fetchPopularShowsTrigger.send()
                             }
                         }

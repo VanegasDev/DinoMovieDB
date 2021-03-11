@@ -25,10 +25,7 @@ struct MovieListView: View {
                     ItemDetail(viewModel: movie)
                         .frame(height: 250)
                         .onAppear {
-                            let movieIndex = viewModel.moviesViewModel.firstIndex { $0.id == movie.id } ?? 0
-                            let distance = viewModel.moviesViewModel.distance(from: movieIndex, to: viewModel.moviesViewModel.count)
-                            
-                            if distance < 4 {
+                            if viewModel.moviesViewModel.shouldPaginate(on: movie) {
                                 viewModel.fetchUpcomingMoviesTrigger.send()
                             }
                         }
