@@ -9,8 +9,10 @@ import Combine
 
 extension Publisher {
     // Operador para manejo de respuesta
-    func sink(error: ((Error) -> Void)? = nil, success: (() -> Void)? = nil, onReceived: @escaping (Output) -> Void) -> AnyCancellable {
+    func sink(response: (() -> Void)? = nil, error: ((Error) -> Void)? = nil, success: (() -> Void)? = nil, onReceived: @escaping (Output) -> Void) -> AnyCancellable {
         self.sink(receiveCompletion: { result in
+            response?()
+            
             switch result {
             case .failure(let errorResponse):
                 error?(errorResponse)

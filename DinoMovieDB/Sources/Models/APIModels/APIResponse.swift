@@ -10,7 +10,7 @@ import Foundation
 // Objeto para recibir listas del API
 struct APIResponse<T: Decodable>: Decodable {
     let page: Int
-    let results: [T]
+    let results: T
     let totalPages: Int
     let totalResults: Int
     
