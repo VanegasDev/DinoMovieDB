@@ -15,7 +15,7 @@ struct TMDBPlaceholderModifier: ViewModifier {
         ZStack(alignment: .leading) {
             if isShowingPlaceholder {
                 Text(placeholder)
-                    .foregroundColor(.tmdbPlaceholder)
+                    .foregroundColor(Color(R.color.tmdbPlaceholder.name))
                     .padding(.horizontal)
             }
             

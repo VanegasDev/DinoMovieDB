@@ -31,8 +31,14 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addHosting(LoginView(viewModel: viewModel))
+        setupViews()
         setupBindings()
+    }
+    
+    // MARK: Setup
+    private func setupViews() {
+        view.backgroundColor = R.color.backgroundColor()
+        addHosting(LoginView(viewModel: viewModel))
     }
     
     private func setupBindings() {
@@ -78,10 +84,6 @@ class LoginViewController: UIViewController {
     }
     
     private func successfulLogin(session: SessionToken) {
-        let alertController = UIAlertController(title: "Successful Login", message: "Welcome \(viewModel.username)", preferredStyle: .alert)
-        let action1 = UIAlertAction(title: "Ok", style: .default)
-        
-        alertController.addAction(action1)
-        present(alertController, animated: true)
+        NotificationCenter.default.post(name: .loginNotification, object: nil)
     }
 }

@@ -1,0 +1,15 @@
+/* 
+  Localization.strings
+  DinoMovieDB
+
+  Created by Mario Vanegas on 3/9/21.
+  
+*/
+
+/* Login */
+"login_username_placeholder" = "Username";
+"login_password_placeholder" = "Password";
+"login_button_title" = "Login";
+
+/* Movie List */
+"movie_list_title" = "Movies";

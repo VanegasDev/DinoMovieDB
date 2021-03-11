@@ -9,8 +9,10 @@ import SwiftUI
 import TinyConstraints
 
 extension UIViewController {
-    func addHosting<T: SwiftUI.View>(_ view: T) {
+    func addHosting<T: SwiftUI.View>(_ view: T, backgroundColor: UIColor? = R.color.backgroundColor()) {
         let hostingController = UIHostingController(rootView: view)
+        hostingController.view.backgroundColor = backgroundColor
+        
         add(child: hostingController)
     }
     

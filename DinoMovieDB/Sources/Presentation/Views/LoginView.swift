@@ -16,17 +16,18 @@ struct LoginView: View {
     
     var body: some View {
         VStack(spacing: 70) {
-            Image.fullColoredLogo
+            Image(R.image.fullLogoColored.name)
             inputViews
         }
         .tmdbActivityIndicator(isAnimating: viewModel.isLoading)
+        .background(Color(R.color.backgroundColor.name))
     }
     
     private var inputViews: some View {
         VStack(spacing: 32) {
             textFields
             Button(action: viewModel.loginButtonTap.send) {
-                Text("Login")
+                Text(R.string.localization.login_button_title())
                     .tmdbButtonStyleLabel()
             }
             .buttonStyle(TMDBButtonStyle())
@@ -37,8 +38,8 @@ struct LoginView: View {
     
     private var textFields: some View {
         VStack(spacing: 16) {
-            TMDBTextField($viewModel.username, placeholder: "Username")
-            TMDBTextField($viewModel.password, placeholder: "Password", isSecureTextField: true)
+            TMDBTextField($viewModel.username, placeholder: R.string.localization.login_username_placeholder())
+            TMDBTextField($viewModel.password, placeholder: R.string.localization.login_password_placeholder(), isSecureTextField: true)
         }
     }
 }

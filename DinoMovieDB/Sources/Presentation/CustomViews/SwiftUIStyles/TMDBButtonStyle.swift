@@ -10,8 +10,8 @@ import SwiftUI
 struct TMDBButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .background(Color.primaryColor)
-            .foregroundColor(.backgroundColor)
+            .background(Color(R.color.primaryColor.name))
+            .foregroundColor(Color(R.color.backgroundColor.name))
             .opacity(configuration.isPressed ? 0.7 : 1)
     }
 }
@@ -20,6 +20,6 @@ extension View {
     func tmdbButtonStyleLabel() -> some View {
         self.frame(maxWidth: .infinity)
             .frame(height: 48)
-            .background(Color.primaryColor)
+            .background(Color(R.color.primaryColor.name))
     }
 }
