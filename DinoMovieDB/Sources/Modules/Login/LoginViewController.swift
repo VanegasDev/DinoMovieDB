@@ -51,36 +51,29 @@ class LoginViewController: UIViewController {
         let username = viewModel.username
         let password = viewModel.password
         
+        // Pedir Request Token
         authenticationService.askForRequestToken()
             .flatMap { [weak self] requestToken -> AnyPublisher<SessionToken, Error> in
                 guard let self = self else {
                     return Fail(error: TMDBError.selfNotFound).eraseToAnyPublisher()
                 }
                 
+                // Crear Sesion
                 let parameters = LoginParameters(username: username, password: password, requestToken: requestToken.token)
                 return self.authenticationService.login(with: parameters)
             }
-            .sink(receiveCompletion: { [weak self] response in
-                switch response {
-                case .failure(let error):
-                    self?.viewModel.isLoading = false
-                    self?.loginFailed(error)
-                case .finished:
-                    break
-                }
+            .sink(error: { [weak self] error in
+                // Manejo de Error
+                let alert = UIAlertController.errorAlert(description: error.localizedDescription)
+                
+                self?.viewModel.isLoading = false
+                self?.present(alert, animated: true)
             }) { [weak self] session in
+                // Recibir Sesion
                 self?.viewModel.isLoading = false
                 self?.successfulLogin(session: session)
             }
             .store(in: &cancellables)
-    }
-    
-    private func loginFailed(_ error: Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let action1 = UIAlertAction(title: "Ok", style: .default)
-        
-        alertController.addAction(action1)
-        present(alertController, animated: true)
     }
     
     private func successfulLogin(session: SessionToken) {

@@ -55,14 +55,12 @@ class MovieListViewController: UIViewController {
     private func fetchMovies() {
         // Descargar proximas peliculas
         moviesService.fetchUpcomingMovies()
-            .sink(receiveCompletion: { [weak self] response in
-                switch response {
-                case .failure(let error):
-                    self?.showErrorAlert(error)
-                case .finished:
-                    break
-                }
+            .sink(error: { [weak self] error in
+                // Presentar Alerta de Error
+                let alert = UIAlertController.errorAlert(description: error.localizedDescription)
+                self?.present(alert, animated: true)
             }) { [weak self] receivedMovies in
+                // Actualizar pelicular
                 self?.updateReceivedMovies(receivedMovies.results)
             }
             .store(in: &cancellables)
@@ -81,13 +79,5 @@ class MovieListViewController: UIViewController {
         let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(movie.imagePath ?? "")")
         
         return ItemDetailViewModel(title: title, releaseDate: release, rate: rate, imageUrl: imageUrl)
-    }
-    
-    private func showErrorAlert(_ error: Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let action1 = UIAlertAction(title: "Ok", style: .default)
-        
-        alertController.addAction(action1)
-        present(alertController, animated: true)
     }
 }

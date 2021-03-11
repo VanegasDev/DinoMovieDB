@@ -21,7 +21,6 @@ class TMDBWindow: UIWindow {
         case .logout:
             startOnLogoutState()
         default:
-            print("Not Handled")
             break
         }
     }

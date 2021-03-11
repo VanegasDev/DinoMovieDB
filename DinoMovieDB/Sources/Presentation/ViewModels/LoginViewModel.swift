@@ -9,10 +9,12 @@ import SwiftUI
 import Combine
 
 class LoginViewModel: ObservableObject {
+    // Published properties
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var isLoading: Bool = false
     
+    // Propiedades
     private var cancellables = Set<AnyCancellable>()
     
     let loginButtonTap = PassthroughSubject<Void, Never>()
