@@ -17,6 +17,7 @@
 		C70413B325EDFC3C000FFC87 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */; };
 		C717A13525F9CD30006915D5 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717A13425F9CD30006915D5 /* UIAlertController+Extensions.swift */; };
 		C717A13A25F9D26B006915D5 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717A13925F9D26B006915D5 /* Publisher+Extension.swift */; };
+		C717A14925F9D976006915D5 /* PaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717A14825F9D976006915D5 /* PaginationManager.swift */; };
 		C718184E25F345D00039FCDF /* TMDBLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718184D25F345D00039FCDF /* TMDBLogin.swift */; };
 		C718185425F3477D0039FCDF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185325F3477D0039FCDF /* ActivityIndicator.swift */; };
 		C718185C25F348840039FCDF /* TMDBActivityIndicatorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */; };
@@ -90,6 +91,7 @@
 		C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		C717A13425F9CD30006915D5 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		C717A13925F9D26B006915D5 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
+		C717A14825F9D976006915D5 /* PaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManager.swift; sourceTree = "<group>"; };
 		C718184D25F345D00039FCDF /* TMDBLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBLogin.swift; sourceTree = "<group>"; };
 		C718185325F3477D0039FCDF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBActivityIndicatorModifier.swift; sourceTree = "<group>"; };
@@ -242,6 +244,14 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		C717A14725F9D968006915D5 /* PaginationManager */ = {
+			isa = PBXGroup;
+			children = (
+				C717A14825F9D976006915D5 /* PaginationManager.swift */,
+			);
+			path = PaginationManager;
+			sourceTree = "<group>";
+		};
 		C718185225F3474D0039FCDF /* Representables */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +349,7 @@
 		C77C8BB925F0A31600961122 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				C717A14725F9D968006915D5 /* PaginationManager */,
 				C77C8BBA25F0A31B00961122 /* NetworkManager */,
 			);
 			path = Managers;
@@ -627,6 +638,7 @@
 				C77C8BCC25F0AB0800961122 /* RequestToken.swift in Sources */,
 				C78DA81225F88CF5009DCE37 /* APIResponse.swift in Sources */,
 				C77C8B9725F0999100961122 /* LoginView.swift in Sources */,
+				C717A14925F9D976006915D5 /* PaginationManager.swift in Sources */,
 				C775ABBA25F35CB2002D39D8 /* HomeViewController.swift in Sources */,
 				C77C8BD425F0AC0300961122 /* AuthenticationTarget.swift in Sources */,
 				C7A4D8C125F5BCAE00284AD8 /* NotificationCenter+Extensions.swift in Sources */,

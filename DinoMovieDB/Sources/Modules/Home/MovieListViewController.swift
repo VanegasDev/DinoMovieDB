@@ -11,6 +11,7 @@ import Combine
 class MovieListViewController: UIViewController {
     // Propiedaddes
     private let moviesService: MoviesServiceType = MoviesService()
+    private let pagination: PaginationManagerType = PaginationManager()
     private let viewModel = MovieListViewModel()
     
     private var cancellables = Set<AnyCancellable>()
@@ -53,15 +54,21 @@ class MovieListViewController: UIViewController {
     
     // Funcionalidad
     private func fetchMovies() {
+        // Verificar si se puede paginar
+        guard let nextPage = pagination.nextPage, pagination.state == .readyForPagination else { return }
+        
         // Descargar proximas peliculas
-        moviesService.fetchUpcomingMovies()
-            .sink(error: { [weak self] error in
+        pagination.paginate(request: moviesService.fetchUpcomingMovies(page: nextPage).eraseToAnyPublisher)
+            .sink { [weak self] in
+                // Le notifica que se puede paginar
+                self?.pagination.state = .readyForPagination
+            } error: { [weak self] error in
                 // Presentar Alerta de Error
                 let alert = UIAlertController.errorAlert(description: error.localizedDescription)
                 self?.present(alert, animated: true)
-            }) { [weak self] receivedMovies in
+            } onReceived: { [weak self] receivedMovies in
                 // Actualizar pelicular
-                self?.updateReceivedMovies(receivedMovies.results)
+                self?.updateReceivedMovies(receivedMovies)
             }
             .store(in: &cancellables)
     }
@@ -69,7 +76,7 @@ class MovieListViewController: UIViewController {
     // Funciones para hacer mas legible el codigo
     private func updateReceivedMovies(_ movies: [MoviePreview] = []) {
         let movies = movies.compactMap(convertToDetailViewModel)
-        viewModel.moviesViewModel = movies
+        viewModel.moviesViewModel += movies
     }
     
     private func convertToDetailViewModel(_ movie: MoviePreview) -> ItemDetailViewModel {

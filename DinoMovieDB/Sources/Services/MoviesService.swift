@@ -11,12 +11,12 @@ import Moya
 
 // Protocolo Para Manejar Request de Peliculas
 protocol MoviesServiceType {
-    func fetchUpcomingMovies(page: Int) -> AnyPublisher<APIResponse<MoviePreview>, Error>
+    func fetchUpcomingMovies(page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error>
 }
 
 // Extension para definir un default behavior en los objetos que implementen este protocolo
 extension MoviesServiceType {
-    func fetchUpcomingMovies(page: Int = 1) -> AnyPublisher<APIResponse<MoviePreview>, Error> {
+    func fetchUpcomingMovies(page: Int = 1) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
         fetchUpcomingMovies(page: page)
     }
 }
@@ -31,7 +31,7 @@ struct MoviesService: MoviesServiceType {
     }
     
     // Metodo para descargar las proximas peliculas
-    func fetchUpcomingMovies(page: Int) -> AnyPublisher<APIResponse<MoviePreview>, Error> {
+    func fetchUpcomingMovies(page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
         apiRequester.request(target: MoviesTarget.latest(page: page))
             .map { $0.response }
             .eraseToAnyPublisher()

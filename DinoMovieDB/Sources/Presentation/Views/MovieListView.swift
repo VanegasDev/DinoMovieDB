@@ -21,9 +21,17 @@ struct MovieListView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(viewModel.moviesViewModel) { viewModel in
-                    ItemDetail(viewModel: viewModel)
+                ForEach(viewModel.moviesViewModel) { movie in
+                    ItemDetail(viewModel: movie)
                         .frame(height: 250)
+                        .onAppear {
+                            let movieIndex = viewModel.moviesViewModel.firstIndex { $0.id == movie.id } ?? 0
+                            let distance = viewModel.moviesViewModel.distance(from: movieIndex, to: viewModel.moviesViewModel.count)
+                            
+                            if distance < 4 {
+                                viewModel.fetchUpcomingMoviesTrigger.send()
+                            }
+                        }
                 }
             }
             .padding()
