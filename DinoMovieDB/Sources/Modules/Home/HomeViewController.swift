@@ -19,6 +19,9 @@ enum HomeTabs: Int {
         case .movies:
             viewController = MovieListViewController()
             viewController.tabBarItem = UITabBarItem(title: R.string.localization.movie_list_title(), image: UIImage(systemName: "film"), tag: 0)
+        case .tvShows:
+            viewController = TVShowsListViewController()
+            viewController.tabBarItem = UITabBarItem(title: R.string.localization.tv_shows_list_title(), image: UIImage(systemName: "tv"), tag: 1)
         default:
             return UIViewController()
         }
@@ -45,8 +48,9 @@ class HomeViewController: UITabBarController {
     // MARK: Setup
     private func setupViews() {
         let moviesViewController = UINavigationController(rootViewController: HomeTabs.movies.viewController)
+        let tvShowsViewController = UINavigationController(rootViewController: HomeTabs.tvShows.viewController)
         tabBar.tintColor = R.color.primaryColor()
         
-        setViewControllers([moviesViewController], animated: true)
+        setViewControllers([moviesViewController, tvShowsViewController], animated: true)
     }
 }
