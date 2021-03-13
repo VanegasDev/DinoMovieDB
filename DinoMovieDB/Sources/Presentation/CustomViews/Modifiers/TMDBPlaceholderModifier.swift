@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Custom Placeholder - This is in order to customize the textfield placeholder
 struct TMDBPlaceholderModifier: ViewModifier {
     let placeholder: String
     let isShowingPlaceholder: Bool

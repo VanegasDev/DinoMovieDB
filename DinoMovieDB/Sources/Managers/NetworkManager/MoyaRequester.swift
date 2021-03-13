@@ -17,7 +17,7 @@ protocol MoyaRequesterType {
     func request(target: TargetType) -> AnyPublisher<NetworkResponse, MoyaError>
 }
 
-// MARK: Decoded Resopnse
+// MARK: Decoded Response
 extension MoyaRequesterType {
     func request<T: Decodable>(target: TargetType, with decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<DecodedResponse<T>, Error> {
         request(target: target)

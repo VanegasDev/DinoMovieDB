@@ -8,7 +8,7 @@
 import Combine
 
 extension Publisher {
-    // Operador para manejo de respuesta
+    // Custom Sink Operator
     func sink(response: (() -> Void)? = nil, error: ((Error) -> Void)? = nil, success: (() -> Void)? = nil, onReceived: @escaping (Output) -> Void) -> AnyCancellable {
         self.sink(receiveCompletion: { result in
             response?()

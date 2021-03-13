@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 class MovieListViewController: UIViewController {
-    // Propiedades
+    // MARK: Properties
     private let moviesService: MoviesServiceType = MoviesService()
     private let pagination: PaginationManagerType = PaginationManager()
     private let viewModel = MovieListViewModel()
@@ -41,39 +41,35 @@ class MovieListViewController: UIViewController {
     // MARK: Setup
     private func setupViews() {
         title = R.string.localization.movie_list_title()
-        
-        // TODO: Setup Bindings when working on actions
         addHosting(MovieListView(viewModel: viewModel))
     }
     
     private func setupBindings() {
         let fetchMoviesPublisher = viewModel.fetchUpcomingMoviesPublisher.receive(on: DispatchQueue.main)
-        
         fetchMoviesPublisher.sink(receiveValue: fetchMovies).store(in: &cancellables)
     }
     
-    // Funcionalidad
+    // MARK: Functionality
     private func fetchMovies() {
-        // Verificar si se puede paginar
+        // Verifies pagination availability
         guard let nextPage = pagination.nextPage, pagination.state == .readyForPagination else { return }
         
-        // Descargar proximas peliculas
+        // Fetches upcoming movies
         pagination.paginate(request: moviesService.fetchUpcomingMovies(page: nextPage).eraseToAnyPublisher)
             .sink { [weak self] in
-                // Le notifica que se puede paginar
+                // Notifies that is ready for fetching next page
                 self?.pagination.state = .readyForPagination
             } error: { [weak self] error in
-                // Presentar Alerta de Error
+                // Presents error alert
                 let alert = UIAlertController.errorAlert(description: error.localizedDescription)
                 self?.present(alert, animated: true)
             } onReceived: { [weak self] receivedMovies in
-                // Actualizar peliculas
+                // Update movies
                 self?.updateReceivedMovies(receivedMovies)
             }
             .store(in: &cancellables)
     }
     
-    // Funciones para hacer mas legible el codigo
     private func updateReceivedMovies(_ movies: [MoviePreview] = []) {
         let movies = movies.compactMap(convertToDetailViewModel)
         viewModel.moviesViewModel += movies
