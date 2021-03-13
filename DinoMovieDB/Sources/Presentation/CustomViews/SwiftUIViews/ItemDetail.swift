@@ -27,6 +27,7 @@ struct ItemDetail: View {
                 }
                 .resizable()
                 .aspectRatio(163/180, contentMode: .fit)
+                .fixedSize(horizontal: false, vertical: true)
             footer
         }
         .background(Color(R.color.primarySolid.name))

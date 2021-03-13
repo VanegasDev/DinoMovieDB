@@ -17,7 +17,8 @@ class ItemDetailViewModel: ObservableObject, Identifiable {
     
     init(title: String, releaseDate: String, rate: String, imageUrl: URL?) {
         self.title = title
-        self.releaseDate = releaseDate
+        // Uses our custom formatter
+        self.releaseDate = DateFormatter.tmdbDatePreviewFormat(from: releaseDate)
         self.rate = rate
         self.imageUrl = imageUrl
     }
