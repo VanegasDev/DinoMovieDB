@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 class TVShowsListViewController: UIViewController {
-    // Propiedades
+    // MARK: Properties
     private let tvShowsService: TVShowsServiceType = TVShowsService()
     private let pagination: PaginationManagerType = PaginationManager()
     private let viewModel = TVShowsListViewModel()
@@ -41,39 +41,35 @@ class TVShowsListViewController: UIViewController {
     // MARK: Setup
     private func setupViews() {
         title = R.string.localization.tv_shows_list_title()
-        
-        // TODO: Setup Bindings when working on actions
         addHosting(TVShowsListView(viewModel: viewModel))
     }
     
     private func setupBindings() {
         let fetchMoviesPublisher = viewModel.fetchPopularShowsPublisher.receive(on: DispatchQueue.main)
-        
         fetchMoviesPublisher.sink(receiveValue: fetchShows).store(in: &cancellables)
     }
     
-    // Funcionalidad
+    // MARK: Functionality
     private func fetchShows() {
-        // Verificar si se puede paginar
+        // Verifies pagination availability
         guard let nextPage = pagination.nextPage, pagination.state == .readyForPagination else { return }
         
-        // Descargar tv shows populares
+        // Fetches popular tv shows
         pagination.paginate(request: tvShowsService.fetchPopularShows(page: nextPage).eraseToAnyPublisher)
             .sink { [weak self] in
-                // Le notifica que se puede paginar
+                // Notifies that is ready for fetching the next page
                 self?.pagination.state = .readyForPagination
             } error: { [weak self] error in
-                // Presentar Alerta de Error
+                // Presents Error Alert
                 let alert = UIAlertController.errorAlert(description: error.localizedDescription)
                 self?.present(alert, animated: true)
             } onReceived: { [weak self] receivedMovies in
-                // Actualizar tvshows
+                // Updates tv shows
                 self?.updateReceivedTVShows(receivedMovies)
             }
             .store(in: &cancellables)
     }
     
-    // Funciones para hacer mas legible el codigo
     private func updateReceivedTVShows(_ shows: [TVShowPreview] = []) {
         let shows = shows.compactMap(convertToDetailViewModel)
         viewModel.showsViewModel += shows

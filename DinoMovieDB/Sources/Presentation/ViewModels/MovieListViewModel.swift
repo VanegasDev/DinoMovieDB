@@ -9,10 +9,10 @@ import SwiftUI
 import Combine
 
 class MovieListViewModel: ObservableObject {
-    // State properties
+    // MARK: Published properties
     @Published var moviesViewModel: [ItemDetailViewModel] = []
     
-    // Propiedades
+    // MARK: Properties
     private var cancellables = Set<AnyCancellable>()
     
     let fetchUpcomingMoviesTrigger = PassthroughSubject<Void, Never>()
@@ -24,7 +24,7 @@ class MovieListViewModel: ObservableObject {
     
     // MARK: Setup
     func setupBindings() {
-        // Setear Publishers
+        // Sets Publishers
         let fetchUpcomingMoviesTriggerPublisher = fetchUpcomingMoviesTrigger.receive(on: DispatchQueue.main)
         
         fetchUpcomingMoviesTriggerPublisher

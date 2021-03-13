@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIAlertController {
-    // Error alerta
+    // Error alert
     static func errorAlert(title: String = R.string.localization.alert_error_title(), description: String, completion: ((UIAlertAction) -> Void)?  = nil) -> UIAlertController {
         let controller = UIAlertController(title: title, message: description, preferredStyle: .alert)
         let action1 = UIAlertAction(title: R.string.localization.alert_ok_button(), style: .cancel, handler: completion)
@@ -18,7 +18,7 @@ extension UIAlertController {
         return controller
     }
     
-    // Custom Yes No Alerta
+    // Custom Yes No Alert
     static func customAlert(title: String,
                             description: String,
                             yesTitle: String,

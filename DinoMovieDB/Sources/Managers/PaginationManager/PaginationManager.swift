@@ -13,7 +13,7 @@ enum PaginationState {
     case readyForPagination
 }
 
-// Protocol para paginacion
+// Pagination Protocol
 protocol PaginationManagerType: class {
     var state: PaginationState { get set }
     var nextPage: Int? { get }
@@ -23,26 +23,26 @@ protocol PaginationManagerType: class {
 
 // PaginationManager
 class PaginationManager: PaginationManagerType {
-    // Propiedades
+    // Properties
     private var totalPages: Int = 1
     private var currentPage: Int = 0
     
-    // Te da el state de la paginacion
+    // Pagination State
     var state: PaginationState = .readyForPagination
     
-    // Te da el numero de la siguiente pagina
+    // Returns the next page and if there is no next page it will returns nil
     var nextPage: Int? {
         currentPage < totalPages ? currentPage + 1 : nil
     }
     
     func paginate<T>(request: () -> AnyPublisher<APIResponse<T>, Error>) -> AnyPublisher<T, Error> where T : Decodable {
-        // Se notifica que esta paginando
+        // Notifies that is paginating
         state = .isPaginating
         
-        // Hace el request
+        // Make request
         return request()
             .map { [weak self] response in
-                // Obtenemos el total de paginas y actualizamos la pagina actual
+                // Gets the pagination information
                 self?.totalPages = response.totalPages
                 self?.currentPage = response.page
                 

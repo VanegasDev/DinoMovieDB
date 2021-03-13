@@ -9,19 +9,19 @@ import Foundation
 import Combine
 import Moya
 
-// Protocolo Para Manejar Request de TVShows
+//  TVShows Requests service protocol
 protocol TVShowsServiceType {
     func fetchPopularShows(page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error>
 }
 
-// Extension para definir un default behavior en los objetos que implementen este protocolo
+// Defines default behavior to fetchPopularShows
 extension TVShowsServiceType {
     func fetchPopularShows(page: Int = 1) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
         fetchPopularShows(page: page)
     }
 }
 
-// Mi Servicio Para Hacer de TVShows
+// TVShows service class implementing the TVShows protocol
 struct TVShowsService: TVShowsServiceType {
     // API Requester
     private let apiRequester: MoyaRequesterType
@@ -30,7 +30,7 @@ struct TVShowsService: TVShowsServiceType {
         self.apiRequester = apiRequester
     }
     
-    // Metodo para descargar las proximas tv shows
+    // Fetches popular tv shows
     func fetchPopularShows(page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
         apiRequester.request(target: TVShowsTarget.popular(page: page))
             .map { $0.response }

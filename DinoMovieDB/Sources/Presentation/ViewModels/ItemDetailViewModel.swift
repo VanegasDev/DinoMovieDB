@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 class ItemDetailViewModel: ObservableObject, Identifiable {
+    // MARK: Published
     @Published var title: String
     @Published var releaseDate: String
     @Published var rate: String

@@ -9,10 +9,10 @@ import SwiftUI
 import Combine
 
 class TVShowsListViewModel: ObservableObject {
-    // State properties
+    // MARK: Published properties
     @Published var showsViewModel: [ItemDetailViewModel] = []
     
-    // Propiedades
+    // MARK: Properties
     private var cancellables = Set<AnyCancellable>()
     
     let fetchPopularShowsTrigger = PassthroughSubject<Void, Never>()
@@ -24,7 +24,7 @@ class TVShowsListViewModel: ObservableObject {
     
     // MARK: Setup
     func setupBindings() {
-        // Setear Publishers
+        // Sets Publishers
         let fetchPopularShowsTriggerPublisher = fetchPopularShowsTrigger.receive(on: DispatchQueue.main)
         
         fetchPopularShowsTriggerPublisher

@@ -9,19 +9,19 @@ import Foundation
 import Combine
 import Moya
 
-// Protocolo Para Manejar Request de Peliculas
+// Movies request service protocol
 protocol MoviesServiceType {
     func fetchUpcomingMovies(page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error>
 }
 
-// Extension para definir un default behavior en los objetos que implementen este protocolo
+// Defines a default behavior for fetchUpcomingMovies function
 extension MoviesServiceType {
     func fetchUpcomingMovies(page: Int = 1) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
         fetchUpcomingMovies(page: page)
     }
 }
 
-// Mi Servicio Para Hacer de Peliculas
+// Movies Services class implementing the Movies Service Protocol
 struct MoviesService: MoviesServiceType {
     // API Requester
     private let apiRequester: MoyaRequesterType
@@ -30,7 +30,7 @@ struct MoviesService: MoviesServiceType {
         self.apiRequester = apiRequester
     }
     
-    // Metodo para descargar las proximas peliculas
+    // Fetches upcoming movies
     func fetchUpcomingMovies(page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
         apiRequester.request(target: MoviesTarget.latest(page: page))
             .map { $0.response }

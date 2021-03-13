@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Button style for using in TMDB
 struct TMDBButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
