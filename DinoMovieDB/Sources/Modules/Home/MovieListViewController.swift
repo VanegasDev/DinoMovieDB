@@ -110,4 +110,12 @@ extension MovieListViewController: UISearchBarDelegate {
         pagination.resetPagination()
         fetchMovies()
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchState = .readyForSearch
+        viewModel.moviesViewModel = []
+
+        pagination.resetPagination()
+        fetchMovies()
+    }
 }
