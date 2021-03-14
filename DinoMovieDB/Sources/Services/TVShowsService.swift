@@ -36,4 +36,11 @@ struct TVShowsService: TVShowsServiceType {
             .map { $0.response }
             .eraseToAnyPublisher()
     }
+    
+    // Searches TVShows
+    func search(show: String, on page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
+        apiRequester.request(target: TVShowsTarget.search(show: show, page: page))
+            .map { $0.response }
+            .eraseToAnyPublisher()
+    }
 }

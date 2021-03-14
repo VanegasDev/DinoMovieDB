@@ -8,6 +8,11 @@
 import SwiftUI
 import Combine
 
+enum SearchState {
+    case searching
+    case readyForSearch
+}
+
 class MovieListViewController: UIViewController {
     // MARK: Properties
     private let moviesService: MoviesServiceType = MoviesService()
@@ -15,6 +20,7 @@ class MovieListViewController: UIViewController {
     private let viewModel = MovieListViewModel()
     
     private var cancellables = Set<AnyCancellable>()
+    private var searchState: SearchState = .readyForSearch
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -58,7 +64,7 @@ class MovieListViewController: UIViewController {
         guard let nextPage = pagination.nextPage, pagination.state == .readyForPagination else { return }
         
         // Fetches upcoming movies
-        pagination.paginate(request: moviesService.fetchUpcomingMovies(page: nextPage).eraseToAnyPublisher)
+        pagination.paginate { requestMovies(on: nextPage) }
             .sink { [weak self] in
                 // Notifies that is ready for fetching next page
                 self?.pagination.state = .readyForPagination
@@ -73,6 +79,14 @@ class MovieListViewController: UIViewController {
             .store(in: &cancellables)
     }
     
+    private func requestMovies(on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
+        if searchState == .readyForSearch {
+            return moviesService.fetchUpcomingMovies(page: page).eraseToAnyPublisher()
+        }
+        
+        return moviesService.search(movie: navigationItem.searchController?.searchBar.text ?? "", on: page)
+    }
+    
     private func updateReceivedMovies(_ movies: [MoviePreview] = []) {
         let movies = movies.compactMap(convertToDetailViewModel)
         viewModel.moviesViewModel += movies
@@ -81,15 +95,19 @@ class MovieListViewController: UIViewController {
     private func convertToDetailViewModel(_ movie: MoviePreview) -> ItemDetailViewModel {
         let title = movie.title
         let release = movie.releaseDate
-        let rate = "\(movie.voteAverage)"
+        let rate = "\(movie.voteAverage ?? 0)"
         let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(movie.imagePath ?? "")")
         
-        return ItemDetailViewModel(title: title, releaseDate: release, rate: rate, imageUrl: imageUrl)
+        return ItemDetailViewModel(title: title ?? "Empty", releaseDate: release ?? "Empty", rate: rate, imageUrl: imageUrl)
     }
 }
 
 extension MovieListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("SEARCH: \(searchText)")
+        searchState = searchText.isEmpty ? .readyForSearch : .searching
+        viewModel.moviesViewModel = []
+        
+        pagination.resetPagination()
+        fetchMovies()
     }
 }

@@ -19,6 +19,7 @@ protocol PaginationManagerType: class {
     var nextPage: Int? { get }
     
     func paginate<T: Decodable>(request: () -> AnyPublisher<APIResponse<T>, Error>) -> AnyPublisher<T, Error>
+    func resetPagination()
 }
 
 // PaginationManager
@@ -49,5 +50,10 @@ class PaginationManager: PaginationManagerType {
                 return response.results
             }
             .eraseToAnyPublisher()
+    }
+    
+    func resetPagination() {
+        totalPages = 1
+        currentPage = 0
     }
 }
