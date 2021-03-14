@@ -24,3 +24,14 @@ extension UIViewController {
         viewController.didMove(toParent: self)
     }
 }
+
+extension UIViewController {
+    func setupSearchController(placeholder: String = R.string.localization.search_controller_placeholder()) {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = placeholder
+        
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+}

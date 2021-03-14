@@ -28,6 +28,7 @@ class TVShowsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupSearchController()
         setupViews()
         setupBindings()
     }
@@ -41,6 +42,8 @@ class TVShowsListViewController: UIViewController {
     // MARK: Setup
     private func setupViews() {
         title = R.string.localization.tv_shows_list_title()
+        navigationItem.searchController?.searchBar.delegate = self
+        
         addHosting(TVShowsListView(viewModel: viewModel))
     }
     
@@ -82,5 +85,11 @@ class TVShowsListViewController: UIViewController {
         let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(movie.imagePath ?? "")")
         
         return ItemDetailViewModel(title: title, releaseDate: release, rate: rate, imageUrl: imageUrl)
+    }
+}
+
+extension TVShowsListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("SEARCH: \(searchText)")
     }
 }

@@ -28,6 +28,7 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupSearchController()
         setupViews()
         setupBindings()
     }
@@ -41,6 +42,8 @@ class MovieListViewController: UIViewController {
     // MARK: Setup
     private func setupViews() {
         title = R.string.localization.movie_list_title()
+        navigationItem.searchController?.searchBar.delegate = self
+        
         addHosting(MovieListView(viewModel: viewModel))
     }
     
@@ -82,5 +85,11 @@ class MovieListViewController: UIViewController {
         let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(movie.imagePath ?? "")")
         
         return ItemDetailViewModel(title: title, releaseDate: release, rate: rate, imageUrl: imageUrl)
+    }
+}
+
+extension MovieListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("SEARCH: \(searchText)")
     }
 }
