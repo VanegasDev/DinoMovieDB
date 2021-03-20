@@ -22,6 +22,8 @@
 		C718185425F3477D0039FCDF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185325F3477D0039FCDF /* ActivityIndicator.swift */; };
 		C718185C25F348840039FCDF /* TMDBActivityIndicatorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */; };
 		C718186525F352C20039FCDF /* TMDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718186425F352C20039FCDF /* TMDBError.swift */; };
+		C726CAC82605BE7600AC8E76 /* AnyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726CAC72605BE7600AC8E76 /* AnyStorage.swift */; };
+		C726CACD2605BF9000AC8E76 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726CACC2605BF9000AC8E76 /* Storable.swift */; };
 		C74FBB5725FD82D8004D9D68 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FBB5625FD82D8004D9D68 /* Date+Extensions.swift */; };
 		C775ABBA25F35CB2002D39D8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775ABB925F35CB2002D39D8 /* HomeViewController.swift */; };
 		C775ABBF25F35DCB002D39D8 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775ABBE25F35DCB002D39D8 /* MovieListViewController.swift */; };
@@ -104,6 +106,8 @@
 		C718185325F3477D0039FCDF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBActivityIndicatorModifier.swift; sourceTree = "<group>"; };
 		C718186425F352C20039FCDF /* TMDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBError.swift; sourceTree = "<group>"; };
+		C726CAC72605BE7600AC8E76 /* AnyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStorage.swift; sourceTree = "<group>"; };
+		C726CACC2605BF9000AC8E76 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		C74FBB5625FD82D8004D9D68 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		C775ABB925F35CB2002D39D8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C775ABBE25F35DCB002D39D8 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +288,15 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
+		C726CAC62605BE6600AC8E76 /* Storable */ = {
+			isa = PBXGroup;
+			children = (
+				C726CAC72605BE7600AC8E76 /* AnyStorage.swift */,
+				C726CACC2605BF9000AC8E76 /* Storable.swift */,
+			);
+			path = Storable;
+			sourceTree = "<group>";
+		};
 		C775ABB825F35CA0002D39D8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +382,7 @@
 		C77C8BB925F0A31600961122 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				C726CAC62605BE6600AC8E76 /* Storable */,
 				C717A14725F9D968006915D5 /* PaginationManager */,
 				C77C8BBA25F0A31B00961122 /* NetworkManager */,
 			);
@@ -671,6 +685,7 @@
 				C77C8BD425F0AC0300961122 /* AuthenticationTarget.swift in Sources */,
 				C7A7E39C25F9EAC00066A7D9 /* TVShowsListViewModel.swift in Sources */,
 				C7A4D8C125F5BCAE00284AD8 /* NotificationCenter+Extensions.swift in Sources */,
+				C726CACD2605BF9000AC8E76 /* Storable.swift in Sources */,
 				C704137825EDF8FB000FFC87 /* AppDelegate.swift in Sources */,
 				C7A7E39725F9EA290066A7D9 /* TVShowsService.swift in Sources */,
 				C718184E25F345D00039FCDF /* TMDBLogin.swift in Sources */,
@@ -679,6 +694,7 @@
 				C78DA81725F88DEA009DCE37 /* MoviesService.swift in Sources */,
 				C775ABC425F35ECB002D39D8 /* ItemDetail.swift in Sources */,
 				C77C8BE225F0ACBE00961122 /* TMDBConfiguration.swift in Sources */,
+				C726CAC82605BE7600AC8E76 /* AnyStorage.swift in Sources */,
 				C78DA80A25F88C1C009DCE37 /* MoviePreview.swift in Sources */,
 				C7A7E3AB25F9EE6E0066A7D9 /* Collection+Extensions.swift in Sources */,
 				C77C8C1A25F0B6E200961122 /* LoginViewModel.swift in Sources */,
