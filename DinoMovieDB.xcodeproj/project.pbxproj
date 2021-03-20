@@ -15,10 +15,11 @@
 		C704138F25EDF8FC000FFC87 /* DinoMovieDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704138E25EDF8FC000FFC87 /* DinoMovieDBTests.swift */; };
 		C704139A25EDF8FD000FFC87 /* DinoMovieDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704139925EDF8FD000FFC87 /* DinoMovieDBUITests.swift */; };
 		C70413B325EDFC3C000FFC87 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */; };
+		C713A5ED2605C15A0030E961 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C713A5EC2605C15A0030E961 /* KeychainSwift */; };
 		C717A13525F9CD30006915D5 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717A13425F9CD30006915D5 /* UIAlertController+Extensions.swift */; };
 		C717A13A25F9D26B006915D5 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717A13925F9D26B006915D5 /* Publisher+Extension.swift */; };
 		C717A14925F9D976006915D5 /* PaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717A14825F9D976006915D5 /* PaginationManager.swift */; };
-		C718184E25F345D00039FCDF /* TMDBLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718184D25F345D00039FCDF /* TMDBLogin.swift */; };
+		C718184E25F345D00039FCDF /* TMDBTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718184D25F345D00039FCDF /* TMDBTokens.swift */; };
 		C718185425F3477D0039FCDF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185325F3477D0039FCDF /* ActivityIndicator.swift */; };
 		C718185C25F348840039FCDF /* TMDBActivityIndicatorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */; };
 		C718186525F352C20039FCDF /* TMDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718186425F352C20039FCDF /* TMDBError.swift */; };
@@ -37,7 +38,6 @@
 		C77C8B9725F0999100961122 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8B9625F0999100961122 /* LoginView.swift */; };
 		C77C8BB525F0A2C000961122 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C77C8BB425F0A2C000961122 /* Moya */; };
 		C77C8BC225F0A3BF00961122 /* MoyaRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BC125F0A3BF00961122 /* MoyaRequester.swift */; };
-		C77C8BCC25F0AB0800961122 /* RequestToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BCB25F0AB0800961122 /* RequestToken.swift */; };
 		C77C8BD425F0AC0300961122 /* AuthenticationTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BD325F0AC0300961122 /* AuthenticationTarget.swift */; };
 		C77C8BDC25F0AC1400961122 /* MoyaTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BDB25F0AC1400961122 /* MoyaTargetType.swift */; };
 		C77C8BE225F0ACBE00961122 /* TMDBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C8BE125F0ACBE00961122 /* TMDBConfiguration.swift */; };
@@ -102,7 +102,7 @@
 		C717A13425F9CD30006915D5 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		C717A13925F9D26B006915D5 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
 		C717A14825F9D976006915D5 /* PaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManager.swift; sourceTree = "<group>"; };
-		C718184D25F345D00039FCDF /* TMDBLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBLogin.swift; sourceTree = "<group>"; };
+		C718184D25F345D00039FCDF /* TMDBTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBTokens.swift; sourceTree = "<group>"; };
 		C718185325F3477D0039FCDF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBActivityIndicatorModifier.swift; sourceTree = "<group>"; };
 		C718186425F352C20039FCDF /* TMDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBError.swift; sourceTree = "<group>"; };
@@ -119,7 +119,6 @@
 		C77C8B8E25F0983D00961122 /* TMDBButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBButtonStyle.swift; sourceTree = "<group>"; };
 		C77C8B9625F0999100961122 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C77C8BC125F0A3BF00961122 /* MoyaRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaRequester.swift; sourceTree = "<group>"; };
-		C77C8BCB25F0AB0800961122 /* RequestToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToken.swift; sourceTree = "<group>"; };
 		C77C8BD325F0AC0300961122 /* AuthenticationTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTarget.swift; sourceTree = "<group>"; };
 		C77C8BDB25F0AC1400961122 /* MoyaTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaTargetType.swift; sourceTree = "<group>"; };
 		C77C8BE125F0ACBE00961122 /* TMDBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBConfiguration.swift; sourceTree = "<group>"; };
@@ -156,6 +155,7 @@
 			files = (
 				C775ABCF25F36546002D39D8 /* Kingfisher in Frameworks */,
 				C78DA7B325F87F0C009DCE37 /* Rswift in Frameworks */,
+				C713A5ED2605C15A0030E961 /* KeychainSwift in Frameworks */,
 				C77C8BB525F0A2C000961122 /* Moya in Frameworks */,
 				C77C8C0E25F0B33C00961122 /* TinyConstraints in Frameworks */,
 			);
@@ -422,8 +422,7 @@
 		C77C8BCA25F0AAE600961122 /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
-				C77C8BCB25F0AB0800961122 /* RequestToken.swift */,
-				C718184D25F345D00039FCDF /* TMDBLogin.swift */,
+				C718184D25F345D00039FCDF /* TMDBTokens.swift */,
 				C78DA81125F88CF5009DCE37 /* APIResponse.swift */,
 			);
 			path = APIModels;
@@ -522,6 +521,7 @@
 				C77C8C0D25F0B33C00961122 /* TinyConstraints */,
 				C775ABCE25F36546002D39D8 /* Kingfisher */,
 				C78DA7B225F87F0C009DCE37 /* Rswift */,
+				C713A5EC2605C15A0030E961 /* KeychainSwift */,
 			);
 			productName = DinoMovieDB;
 			productReference = C704137425EDF8FB000FFC87 /* DinoMovieDB.app */;
@@ -600,6 +600,7 @@
 				C77C8C0C25F0B33C00961122 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
 				C775ABCD25F36546002D39D8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C78DA7B125F87F0C009DCE37 /* XCRemoteSwiftPackageReference "R.swift" */,
+				C713A5EB2605C15A0030E961 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = C704137525EDF8FB000FFC87 /* Products */;
 			projectDirPath = "";
@@ -675,7 +676,6 @@
 				C77C8B8F25F0983D00961122 /* TMDBButtonStyle.swift in Sources */,
 				C7A7E39225F9E9C20066A7D9 /* TVShowsTarget.swift in Sources */,
 				C77C8BFD25F0B25600961122 /* LoginViewController.swift in Sources */,
-				C77C8BCC25F0AB0800961122 /* RequestToken.swift in Sources */,
 				C78DA81225F88CF5009DCE37 /* APIResponse.swift in Sources */,
 				C77C8B9725F0999100961122 /* LoginView.swift in Sources */,
 				C7A7E38D25F9E8CE0066A7D9 /* TVShowPreview.swift in Sources */,
@@ -688,7 +688,7 @@
 				C726CACD2605BF9000AC8E76 /* Storable.swift in Sources */,
 				C704137825EDF8FB000FFC87 /* AppDelegate.swift in Sources */,
 				C7A7E39725F9EA290066A7D9 /* TVShowsService.swift in Sources */,
-				C718184E25F345D00039FCDF /* TMDBLogin.swift in Sources */,
+				C718184E25F345D00039FCDF /* TMDBTokens.swift in Sources */,
 				C77C8BEF25F0AEFF00961122 /* AuthenticationService.swift in Sources */,
 				C718186525F352C20039FCDF /* TMDBError.swift in Sources */,
 				C78DA81725F88DEA009DCE37 /* MoviesService.swift in Sources */,
@@ -1060,6 +1060,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C713A5EB2605C15A0030E961 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 19.0.0;
+			};
+		};
 		C775ABCD25F36546002D39D8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1095,6 +1103,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C713A5EC2605C15A0030E961 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C713A5EB2605C15A0030E961 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
 		C775ABCE25F36546002D39D8 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C775ABCD25F36546002D39D8 /* XCRemoteSwiftPackageReference "Kingfisher" */;

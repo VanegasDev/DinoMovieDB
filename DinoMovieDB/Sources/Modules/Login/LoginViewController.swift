@@ -53,14 +53,22 @@ class LoginViewController: UIViewController {
         
         // Ask for Request Token
         authenticationService.askForRequestToken()
+            .flatMap { [weak self] requestToken -> AnyPublisher<RequestToken, Error> in
+                guard let self = self else {
+                    return Fail(error: TMDBError.selfNotFound).eraseToAnyPublisher()
+                }
+                
+                // Validates request token using username & password
+                let parameters = LoginParameters(username: username, password: password, requestToken: requestToken.requestToken)
+                return self.authenticationService.login(with: parameters)
+            }
             .flatMap { [weak self] requestToken -> AnyPublisher<SessionToken, Error> in
                 guard let self = self else {
                     return Fail(error: TMDBError.selfNotFound).eraseToAnyPublisher()
                 }
                 
-                // Creates Session
-                let parameters = LoginParameters(username: username, password: password, requestToken: requestToken.token)
-                return self.authenticationService.login(with: parameters)
+                // Creates Session id
+                return self.authenticationService.createSession(using: requestToken.requestToken)
             }
             .sink(error: { [weak self] error in
                 // Shows Error Alert
@@ -77,6 +85,7 @@ class LoginViewController: UIViewController {
     }
     
     private func successfulLogin(session: SessionToken) {
+        try? session.save(on: .keychainSwift)
         NotificationCenter.default.post(name: .loginNotification, object: nil)
     }
 }
