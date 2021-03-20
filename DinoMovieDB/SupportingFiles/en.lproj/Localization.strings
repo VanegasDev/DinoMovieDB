@@ -23,3 +23,6 @@
 
 /* TVShows List */
 "tv_shows_list_title" = "Tv Shows";
+
+/* Profile */
+"profile_title" = "Profile";
