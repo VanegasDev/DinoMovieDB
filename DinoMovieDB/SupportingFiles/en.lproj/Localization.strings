@@ -10,6 +10,9 @@
 "alert_error_title" = "Error";
 "alert_ok_button" = "Ok";
 
+/* SearchController */
+"search_controller_placeholder" = "Search";
+
 /* Login */
 "login_username_placeholder" = "Username";
 "login_password_placeholder" = "Password";

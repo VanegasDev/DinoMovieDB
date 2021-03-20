@@ -38,7 +38,7 @@ struct LoginView: View {
     
     private var textFields: some View {
         VStack(spacing: 16) {
-            TMDBTextField($viewModel.username, placeholder: R.string.localization.login_username_placeholder())
+            TMDBTextField($viewModel.username, placeholder: R.string.localization.login_username_placeholder(), isAutocorrectionDisabled: true, autocapitalizationStyle: .none)
             TMDBTextField($viewModel.password, placeholder: R.string.localization.login_password_placeholder(), isSecureTextField: true)
         }
     }

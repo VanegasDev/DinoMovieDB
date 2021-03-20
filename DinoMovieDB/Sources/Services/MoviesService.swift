@@ -12,6 +12,7 @@ import Moya
 // Movies request service protocol
 protocol MoviesServiceType {
     func fetchUpcomingMovies(page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error>
+    func search(movie: String, on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error>
 }
 
 // Defines a default behavior for fetchUpcomingMovies function
@@ -33,6 +34,13 @@ struct MoviesService: MoviesServiceType {
     // Fetches upcoming movies
     func fetchUpcomingMovies(page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
         apiRequester.request(target: MoviesTarget.latest(page: page))
+            .map { $0.response }
+            .eraseToAnyPublisher()
+    }
+    
+    // Searches movies
+    func search(movie: String, on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
+        apiRequester.request(target: MoviesTarget.search(movie: movie, page: page))
             .map { $0.response }
             .eraseToAnyPublisher()
     }

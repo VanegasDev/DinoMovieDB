@@ -9,6 +9,7 @@ import Moya
 
 enum TVShowsTarget {
     case popular(page: Int)
+    case search(show: String, page: Int)
 }
 
 extension TVShowsTarget: MoyaTargetType {
@@ -16,12 +17,14 @@ extension TVShowsTarget: MoyaTargetType {
         switch self {
         case .popular:
             return "/tv/popular"
+        case .search:
+            return "/search/tv"
         }
     }
     
     var method: Method {
         switch self {
-        case .popular:
+        case .popular, .search:
             return .get
         }
     }
@@ -32,6 +35,14 @@ extension TVShowsTarget: MoyaTargetType {
             var params = TMDBConfiguration.apiKey
             params["language"] = TMDBConfiguration.languageCode
             params["page"] = page
+            
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+            
+        case .search(let show, let page):
+            var params = TMDBConfiguration.apiKey
+            params["language"] = TMDBConfiguration.languageCode
+            params["page"] = page
+            params["query"] = show
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         }

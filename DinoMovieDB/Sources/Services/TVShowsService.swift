@@ -12,6 +12,7 @@ import Moya
 //  TVShows Requests service protocol
 protocol TVShowsServiceType {
     func fetchPopularShows(page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error>
+    func search(show: String, on page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error>
 }
 
 // Defines default behavior to fetchPopularShows
@@ -33,6 +34,13 @@ struct TVShowsService: TVShowsServiceType {
     // Fetches popular tv shows
     func fetchPopularShows(page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
         apiRequester.request(target: TVShowsTarget.popular(page: page))
+            .map { $0.response }
+            .eraseToAnyPublisher()
+    }
+    
+    // Searches TVShows
+    func search(show: String, on page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
+        apiRequester.request(target: TVShowsTarget.search(show: show, page: page))
             .map { $0.response }
             .eraseToAnyPublisher()
     }
