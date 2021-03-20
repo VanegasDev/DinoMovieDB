@@ -15,6 +15,7 @@ class TVShowsListViewController: UIViewController {
     private let viewModel = TVShowsListViewModel()
     
     private var cancellables = Set<AnyCancellable>()
+    private var searchState: SearchState = .readyForSearch
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -58,7 +59,7 @@ class TVShowsListViewController: UIViewController {
         guard let nextPage = pagination.nextPage, pagination.state == .readyForPagination else { return }
         
         // Fetches popular tv shows
-        pagination.paginate(request: tvShowsService.fetchPopularShows(page: nextPage).eraseToAnyPublisher)
+        pagination.paginate(request: { requestTVShows(on: nextPage) })
             .sink { [weak self] in
                 // Notifies that is ready for fetching the next page
                 self?.pagination.state = .readyForPagination
@@ -73,6 +74,14 @@ class TVShowsListViewController: UIViewController {
             .store(in: &cancellables)
     }
     
+    private func requestTVShows(on page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
+        if searchState == .readyForSearch {
+            return tvShowsService.fetchPopularShows(page: page)
+        }
+        
+        return tvShowsService.search(show: navigationItem.searchController?.searchBar.text ?? "", on: page)
+    }
+    
     private func updateReceivedTVShows(_ shows: [TVShowPreview] = []) {
         let shows = shows.compactMap(convertToDetailViewModel)
         viewModel.showsViewModel += shows
@@ -81,15 +90,27 @@ class TVShowsListViewController: UIViewController {
     private func convertToDetailViewModel(_ movie: TVShowPreview) -> ItemDetailViewModel {
         let title = movie.name
         let release = movie.releaseDate
-        let rate = "\(movie.voteAverage)"
+        let rate = "\(movie.voteAverage ?? 0)"
         let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(movie.imagePath ?? "")")
         
-        return ItemDetailViewModel(title: title, releaseDate: release, rate: rate, imageUrl: imageUrl)
+        return ItemDetailViewModel(title: title ?? "Empty", releaseDate: release ?? "Empty", rate: rate, imageUrl: imageUrl)
     }
 }
 
 extension TVShowsListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("SEARCH: \(searchText)")
+        searchState = searchText.isEmpty ? .readyForSearch : .searching
+        viewModel.showsViewModel = []
+        
+        pagination.resetPagination()
+        fetchShows()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchState = .readyForSearch
+        viewModel.showsViewModel = []
+        
+        pagination.resetPagination()
+        fetchShows()
     }
 }

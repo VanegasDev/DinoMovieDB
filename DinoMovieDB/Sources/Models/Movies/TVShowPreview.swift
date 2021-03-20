@@ -9,10 +9,10 @@ import Foundation
 
 struct TVShowPreview: Codable {
     let id: Int
-    let name: String
-    let releaseDate: String
+    let name: String?
+    let releaseDate: String?
     let imagePath: String?
-    let voteAverage: Double
+    let voteAverage: Double?
     
     enum CodingKeys: String, CodingKey {
         case id

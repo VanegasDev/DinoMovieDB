@@ -12,6 +12,7 @@ import Moya
 //  TVShows Requests service protocol
 protocol TVShowsServiceType {
     func fetchPopularShows(page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error>
+    func search(show: String, on page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error>
 }
 
 // Defines default behavior to fetchPopularShows

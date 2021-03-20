@@ -81,7 +81,7 @@ class MovieListViewController: UIViewController {
     
     private func requestMovies(on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
         if searchState == .readyForSearch {
-            return moviesService.fetchUpcomingMovies(page: page).eraseToAnyPublisher()
+            return moviesService.fetchUpcomingMovies(page: page)
         }
         
         return moviesService.search(movie: navigationItem.searchController?.searchBar.text ?? "", on: page)
