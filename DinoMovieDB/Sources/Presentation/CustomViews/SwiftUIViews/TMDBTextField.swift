@@ -12,15 +12,25 @@ struct TMDBTextField: View {
     
     private var placeholder: String
     private var isSecureTextField: Bool
+    private var isAutocorrectionDisabled: Bool
+    private var autocapitalizationStyle: UITextAutocapitalizationType
     
-    init(_ text: Binding<String>, placeholder: String, isSecureTextField: Bool = false) {
+    init(_ text: Binding<String>,
+         placeholder: String,
+         isSecureTextField: Bool = false,
+         isAutocorrectionDisabled: Bool = false,
+         autocapitalizationStyle: UITextAutocapitalizationType = .sentences) {
         self._text = text
         self.placeholder = placeholder
         self.isSecureTextField = isSecureTextField
+        self.isAutocorrectionDisabled = isAutocorrectionDisabled
+        self.autocapitalizationStyle = autocapitalizationStyle
     }
     
     var body: some View {
         textfield
+            .disableAutocorrection(isAutocorrectionDisabled)
+            .autocapitalization(autocapitalizationStyle)
             .padding(.horizontal)
             .tmdbPlaceholder(placeholder, isShowingPlaceholder: text.isEmpty)
             .frame(height: 48)
