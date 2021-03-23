@@ -36,6 +36,12 @@ struct AccountService: AccountServiceType {
     }
     
     func logout() {
+        // Close session on API
+        let sessionToken = SessionToken.get(from: .keychainSwift)
+        let _ = apiRequester.request(target: AccountTarget.logout(session: sessionToken))
+            .sink(onReceived: { _ in })
+        
+        // Close session locally
         SessionToken.remove(from: .keychainSwift)
         NotificationCenter.default.post(name: .logoutNotification, object: nil)
     }

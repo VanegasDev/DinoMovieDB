@@ -9,6 +9,7 @@ import Moya
 
 enum AccountTarget {
     case information(session: SessionToken?)
+    case logout(session: SessionToken?)
 }
 
 extension AccountTarget: MoyaTargetType {
@@ -16,6 +17,8 @@ extension AccountTarget: MoyaTargetType {
         switch self {
         case .information:
             return "/account"
+        case .logout:
+            return "/authentication/session"
         }
     }
     
@@ -23,6 +26,8 @@ extension AccountTarget: MoyaTargetType {
         switch self {
         case .information:
             return .get
+        case .logout:
+            return .delete
         }
     }
     
@@ -35,6 +40,11 @@ extension AccountTarget: MoyaTargetType {
             ]
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+        case .logout(let session):
+            let urlParams: [String: Any] = ["api_key": TMDBConfiguration.apiKey]
+            let bodyParams: [String: Any] = ["session_id": session?.sessionId ?? ""]
+            
+            return .requestCompositeParameters(bodyParameters: bodyParams, bodyEncoding: JSONEncoding.default, urlParameters: urlParams)
         }
     }
 }
