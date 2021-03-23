@@ -1,5 +1,5 @@
 //
-//  TMDBLogin.swift
+//  TMDBTokens.swift
 //  DinoMovieDB
 //
 //  Created by Mario Vanegas on 3/5/21.
@@ -19,7 +19,7 @@ struct LoginParameters: Encodable {
     }
 }
 
-struct SessionToken: Decodable {
+struct RequestToken: Decodable {
     let success: Bool
     let expiresAt: String
     let requestToken: String
@@ -28,5 +28,15 @@ struct SessionToken: Decodable {
         case success
         case expiresAt = "expires_at"
         case requestToken = "request_token"
+    }
+}
+
+struct SessionToken: Storable {
+    let success: Bool
+    let sessionId: String
+    
+    enum CodingKeys: String, CodingKey {
+        case success
+        case sessionId = "session_id"
     }
 }

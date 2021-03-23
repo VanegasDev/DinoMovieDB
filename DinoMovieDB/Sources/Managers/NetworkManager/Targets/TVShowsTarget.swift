@@ -32,17 +32,21 @@ extension TVShowsTarget: MoyaTargetType {
     var task: Task {
         switch self {
         case .popular(let page):
-            var params = TMDBConfiguration.apiKey
-            params["language"] = TMDBConfiguration.languageCode
-            params["page"] = page
+            let params: [String: Any] = [
+                "api_key": TMDBConfiguration.apiKey,
+                "language": TMDBConfiguration.languageCode ?? "en",
+                "page": page
+            ]
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
             
         case .search(let show, let page):
-            var params = TMDBConfiguration.apiKey
-            params["language"] = TMDBConfiguration.languageCode
-            params["page"] = page
-            params["query"] = show
+            let params: [String: Any] = [
+                "api_key": TMDBConfiguration.apiKey,
+                "language": TMDBConfiguration.languageCode ?? "en",
+                "page": page,
+                "query": show
+            ]
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         }
