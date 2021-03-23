@@ -31,6 +31,7 @@
 		C73C81552609A0B800DB8887 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C81542609A0B800DB8887 /* Avatar.swift */; };
 		C73C815D2609A1F000DB8887 /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C815C2609A1F000DB8887 /* MyAccount.swift */; };
 		C73C81622609A25100DB8887 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C81612609A25100DB8887 /* AccountService.swift */; };
+		C73C81672609A59500DB8887 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C81662609A59500DB8887 /* ProfileViewModel.swift */; };
 		C74FBB5725FD82D8004D9D68 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FBB5625FD82D8004D9D68 /* Date+Extensions.swift */; };
 		C775ABBA25F35CB2002D39D8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775ABB925F35CB2002D39D8 /* HomeViewController.swift */; };
 		C775ABBF25F35DCB002D39D8 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775ABBE25F35DCB002D39D8 /* MovieListViewController.swift */; };
@@ -120,6 +121,7 @@
 		C73C81542609A0B800DB8887 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		C73C815C2609A1F000DB8887 /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
 		C73C81612609A25100DB8887 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		C73C81662609A59500DB8887 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C74FBB5625FD82D8004D9D68 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		C775ABB925F35CB2002D39D8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C775ABBE25F35DCB002D39D8 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 				C775ABC825F35F91002D39D8 /* ItemDetailViewModel.swift */,
 				C7A4D8A425F5B44000284AD8 /* MovieListViewModel.swift */,
 				C7A7E39B25F9EAC00066A7D9 /* TVShowsListViewModel.swift */,
+				C73C81662609A59500DB8887 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				C7A7E38D25F9E8CE0066A7D9 /* TVShowPreview.swift in Sources */,
 				C717A14925F9D976006915D5 /* PaginationManager.swift in Sources */,
 				C7A7E3A625F9EB630066A7D9 /* TVShowsListViewController.swift in Sources */,
+				C73C81672609A59500DB8887 /* ProfileViewModel.swift in Sources */,
 				C775ABBA25F35CB2002D39D8 /* HomeViewController.swift in Sources */,
 				C77C8BD425F0AC0300961122 /* AuthenticationTarget.swift in Sources */,
 				C7A7E39C25F9EAC00066A7D9 /* TVShowsListViewModel.swift in Sources */,
