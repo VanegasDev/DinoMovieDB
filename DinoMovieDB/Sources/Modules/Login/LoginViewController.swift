@@ -72,7 +72,7 @@ class LoginViewController: UIViewController {
             }
             .sink(error: { [weak self] error in
                 // Shows Error Alert
-                let alert = UIAlertController.errorAlert(description: error.localizedDescription)
+                let alert = UIAlertController.errorAlert(description: error.localizedDescription, completion: { _ in self?.loginFailedHandler() })
                 
                 self?.viewModel.isLoading = false
                 self?.present(alert, animated: true)
@@ -87,5 +87,10 @@ class LoginViewController: UIViewController {
     private func successfulLogin(session: SessionToken) {
         try? session.save(on: .keychainSwift)
         NotificationCenter.default.post(name: .loginNotification, object: nil)
+    }
+    
+    // Function to send the user to the login view when login fails
+    private func loginFailedHandler() {
+        NotificationCenter.default.post(name: .logoutNotification, object: nil)
     }
 }

@@ -43,6 +43,7 @@ class TMDBMainCoordinator: MainCoordinatorType {
     }
     
     func startOnCurrentState() {
-        NotificationCenter.default.post(name: .logoutNotification, object: nil)
+        let currentState: Notification.Name = SessionToken.get(from: .keychainSwift) == nil ? .logoutNotification : .loginNotification
+        NotificationCenter.default.post(name: currentState, object: nil)
     }
 }
