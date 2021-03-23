@@ -26,3 +26,9 @@
 
 /* Profile */
 "profile_title" = "Profile";
+
+/* Detail Item Options */
+"detail_item_add_to_watchlist" = "Add to My Watchlist";
+"detail_item_remove_from_watchlist" = "Remove From My Watchlist";
+"detail_item_add_to_favorites" = "Add to My Favorites";
+"detail_item_remove_from_favorites" = "Remove From My Favorites";
