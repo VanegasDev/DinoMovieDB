@@ -37,18 +37,22 @@ extension AuthenticationTarget: MoyaTargetType {
     var task: Task {
         switch self {
         case .requestToken:
-            return .requestParameters(parameters: TMDBConfiguration.apiKey, encoding: URLEncoding.queryString)
+            let params: [String: Any] = ["api_key": TMDBConfiguration.apiKey]
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         case .login(let parameters):
-            let params: [String: Any] = [
+            let urlParams: [String: Any] = ["api_key": TMDBConfiguration.apiKey]
+            let bodyParams: [String: Any] = [
                 "username": parameters.username,
                 "password": parameters.password,
                 "request_token": parameters.requestToken
             ]
-            return .requestCompositeParameters(bodyParameters: params, bodyEncoding: JSONEncoding.default, urlParameters: TMDBConfiguration.apiKey)
-        case .createSession(let requestToken):
-            let params: [String: Any] = ["request_token": requestToken]
             
-            return .requestCompositeParameters(bodyParameters: params, bodyEncoding: JSONEncoding.default, urlParameters: TMDBConfiguration.apiKey)
+            return .requestCompositeParameters(bodyParameters: bodyParams, bodyEncoding: JSONEncoding.default, urlParameters: urlParams)
+        case .createSession(let requestToken):
+            let urlParams: [String: Any] = ["api_key": TMDBConfiguration.apiKey]
+            let bodyParams: [String: Any] = ["request_token": requestToken]
+            
+            return .requestCompositeParameters(bodyParameters: bodyParams, bodyEncoding: JSONEncoding.default, urlParameters: urlParams)
         }
     }
 }

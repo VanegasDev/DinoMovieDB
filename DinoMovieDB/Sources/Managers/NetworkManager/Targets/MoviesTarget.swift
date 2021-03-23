@@ -32,16 +32,20 @@ extension MoviesTarget: MoyaTargetType {
     var task: Task {
         switch self {
         case .latest(let page):
-            var params = TMDBConfiguration.apiKey
-            params["language"] = TMDBConfiguration.languageCode
-            params["page"] = page
+            let params: [String: Any] = [
+                "api_key": TMDBConfiguration.apiKey,
+                "language": TMDBConfiguration.languageCode ?? "en",
+                "page": page
+            ]
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         case .search(let movie, let page):
-            var params = TMDBConfiguration.apiKey
-            params["language"] = TMDBConfiguration.languageCode
-            params["page"] = page
-            params["query"] = movie
+            let params: [String: Any] = [
+                "api_key": TMDBConfiguration.apiKey,
+                "language": TMDBConfiguration.languageCode ?? "en",
+                "page": page,
+                "query": movie
+            ]
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         }
