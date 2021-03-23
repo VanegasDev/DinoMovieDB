@@ -8,7 +8,7 @@
 import Moya
 
 enum AccountTarget {
-    case information(session: SessionToken)
+    case information(session: SessionToken?)
 }
 
 extension AccountTarget: MoyaTargetType {
@@ -31,7 +31,7 @@ extension AccountTarget: MoyaTargetType {
         case .information(let sessionToken):
             let params: [String: Any] = [
                 "api_key": TMDBConfiguration.apiKey,
-                "session_id": sessionToken.sessionId
+                "session_id": sessionToken?.sessionId ?? ""
             ]
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)

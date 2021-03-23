@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+struct Avatar: Codable {
+    let tmdbAvatarInformation: TMDBAvatarInformation
+    
+    enum CodingKeys: String, CodingKey {
+        case tmdbAvatarInformation = "tmdb"
+    }
+}
+
+struct TMDBAvatarInformation: Codable {
+    let path: String
+    
+    enum CodingKeys: String, CodingKey {
+        case path = "avatar_path"
+    }
+}

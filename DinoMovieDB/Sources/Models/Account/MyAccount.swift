@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct MyAccount: Codable {
+    let id: Int
+    let name: String
+    let username: String
+    let avatar: Avatar?
+}

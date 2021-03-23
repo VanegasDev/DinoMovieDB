@@ -30,6 +30,7 @@
 		C73C814C26099C2900DB8887 /* AccountTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C814B26099C2900DB8887 /* AccountTarget.swift */; };
 		C73C81552609A0B800DB8887 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C81542609A0B800DB8887 /* Avatar.swift */; };
 		C73C815D2609A1F000DB8887 /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C815C2609A1F000DB8887 /* MyAccount.swift */; };
+		C73C81622609A25100DB8887 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C81612609A25100DB8887 /* AccountService.swift */; };
 		C74FBB5725FD82D8004D9D68 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FBB5625FD82D8004D9D68 /* Date+Extensions.swift */; };
 		C775ABBA25F35CB2002D39D8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775ABB925F35CB2002D39D8 /* HomeViewController.swift */; };
 		C775ABBF25F35DCB002D39D8 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775ABBE25F35DCB002D39D8 /* MovieListViewController.swift */; };
@@ -118,6 +119,7 @@
 		C73C814B26099C2900DB8887 /* AccountTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTarget.swift; sourceTree = "<group>"; };
 		C73C81542609A0B800DB8887 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		C73C815C2609A1F000DB8887 /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
+		C73C81612609A25100DB8887 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		C74FBB5625FD82D8004D9D68 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		C775ABB925F35CB2002D39D8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C775ABBE25F35DCB002D39D8 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				C77C8BEE25F0AEFF00961122 /* AuthenticationService.swift */,
 				C78DA81625F88DEA009DCE37 /* MoviesService.swift */,
 				C7A7E39625F9EA290066A7D9 /* TVShowsService.swift */,
+				C73C81612609A25100DB8887 /* AccountService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				C77C8BE225F0ACBE00961122 /* TMDBConfiguration.swift in Sources */,
 				C726CAC82605BE7600AC8E76 /* AnyStorage.swift in Sources */,
 				C78DA80A25F88C1C009DCE37 /* MoviePreview.swift in Sources */,
+				C73C81622609A25100DB8887 /* AccountService.swift in Sources */,
 				C7A7E3AB25F9EE6E0066A7D9 /* Collection+Extensions.swift in Sources */,
 				C77C8C1A25F0B6E200961122 /* LoginViewModel.swift in Sources */,
 				C775ABC925F35F91002D39D8 /* ItemDetailViewModel.swift in Sources */,
