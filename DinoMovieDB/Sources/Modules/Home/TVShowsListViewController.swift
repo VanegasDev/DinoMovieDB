@@ -87,13 +87,13 @@ class TVShowsListViewController: UIViewController {
         viewModel.showsViewModel += shows
     }
     
-    private func convertToDetailViewModel(_ movie: TVShowPreview) -> ItemDetailViewModel {
-        let title = movie.name
-        let release = movie.releaseDate
-        let rate = "\(movie.voteAverage ?? 0)"
-        let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(movie.imagePath ?? "")")
+    private func convertToDetailViewModel(_ show: TVShowPreview) -> ItemDetailViewModel {
+        let title = show.name
+        let release = show.releaseDate
+        let rate = "\(show.voteAverage ?? 0)"
+        let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(show.imagePath ?? "")")
         
-        return ItemDetailViewModel(title: title ?? "Empty", releaseDate: release ?? "Empty", rate: rate, imageUrl: imageUrl)
+        return ItemDetailViewModel(itemType: .tvShows, itemId: show.id, title: title ?? "Empty", releaseDate: release ?? "Empty", rate: rate, imageUrl: imageUrl)
     }
 }
 

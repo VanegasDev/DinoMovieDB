@@ -54,9 +54,12 @@ struct ItemDetail: View {
         .clipShape(RoundedRectangle(cornerRadius: 15))
         .shadow(color: Color(R.color.tmdbShadow.name), radius: 10, x: 0, y: 5)
         .contextMenu {
-            ItemDetailOption(type: .addToMyFavorites, action: {})
-            ItemDetailOption(type: .addToMyWatchlist, action: {})
+            ItemDetailOption(type: viewModel.isMarkedAsFavorite ? .removeFromMyFavorites : .addToMyFavorites, action: viewModel.markAsFavorite)
+                .disabled(!viewModel.isFavoriteButtonEnabled)
+            ItemDetailOption(type: viewModel.isOnWatchlist ? .removeFromMyWatchlist : .addToMyWatchlist, action: viewModel.addToWatchlist)
+                .disabled(!viewModel.isWatchlistButtonEnabled)
         }
+        .onAppear(perform: viewModel.fetchItemState)
     }
     
     var footer: some View {
@@ -101,9 +104,9 @@ struct ItemDetailOption: View {
     }
 }
 
-struct ItemDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemDetail(viewModel: ItemDetailViewModel(title: "-", releaseDate: "-", rate: "0", imageUrl: nil))
-            .previewLayout(.fixed(width: 163, height: 250))
-    }
-}
+//struct ItemDetail_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ItemDetail(viewModel: ItemDetailViewModel(title: "-", releaseDate: "-", rate: "0", imageUrl: nil))
+//            .previewLayout(.fixed(width: 163, height: 250))
+//    }
+//}
