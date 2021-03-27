@@ -27,14 +27,16 @@ struct ItemsService: ItemsServiceType {
     
     func markAsFavorite(itemParams: FavoritesState) -> AnyPublisher<NetworkResponse, Error> {
         let sessionToken = SessionToken.get(from: .keychainSwift)
+        let accountInformation = MyAccount.get(from: .keychainSwift)
         
-        return apiRequester.request(target: AccountTarget.markAsFavorite(accountId: 9523333, params: itemParams, session: sessionToken))
+        return apiRequester.request(target: AccountTarget.markAsFavorite(accountId: accountInformation?.id ?? 0, params: itemParams, session: sessionToken))
     }
     
     func addToWatchList(itemParams: WatchlistsState) -> AnyPublisher<NetworkResponse, Error> {
         let sessionToken = SessionToken.get(from: .keychainSwift)
+        let accountInformation = MyAccount.get(from: .keychainSwift)
         
-        return apiRequester.request(target: AccountTarget.addToWatchlist(accountId: 9523333, params: itemParams, session: sessionToken))
+        return apiRequester.request(target: AccountTarget.addToWatchlist(accountId: accountInformation?.id ?? 0, params: itemParams, session: sessionToken))
     }
     
     func fetchMoviesState(movieId: Int) -> AnyPublisher<ItemState, Error> {
