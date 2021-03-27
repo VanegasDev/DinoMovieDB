@@ -14,7 +14,7 @@ typealias DecodedResponse<T: Decodable> = (response: T, httpResponse: HTTPURLRes
 
 // MARK: Requester Protocol
 protocol MoyaRequesterType {
-    func request(target: TargetType) -> AnyPublisher<NetworkResponse, MoyaError>
+    func request(target: TargetType) -> AnyPublisher<NetworkResponse, Error>
 }
 
 // MARK: Decoded Response
@@ -37,7 +37,7 @@ struct MoyaRequester: MoyaRequesterType {
         self.provider = provider
     }
     
-    func request(target: TargetType) -> AnyPublisher<NetworkResponse, MoyaError> {
+    func request(target: TargetType) -> AnyPublisher<NetworkResponse, Error> {
         Future { promise in
             provider.request(MultiTarget(target)) { networkResponse in
                 switch networkResponse {

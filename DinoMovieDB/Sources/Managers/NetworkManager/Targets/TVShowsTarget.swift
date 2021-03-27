@@ -10,6 +10,7 @@ import Moya
 enum TVShowsTarget {
     case popular(page: Int)
     case search(show: String, page: Int)
+    case fetchShowState(showId: Int, session: SessionToken?)
 }
 
 extension TVShowsTarget: MoyaTargetType {
@@ -19,12 +20,14 @@ extension TVShowsTarget: MoyaTargetType {
             return "/tv/popular"
         case .search:
             return "/search/tv"
+        case .fetchShowState(let showId, _):
+            return "/tv/\(showId)/account_states"
         }
     }
     
     var method: Method {
         switch self {
-        case .popular, .search:
+        case .popular, .search, .fetchShowState:
             return .get
         }
     }
@@ -46,6 +49,13 @@ extension TVShowsTarget: MoyaTargetType {
                 "language": TMDBConfiguration.languageCode ?? "en",
                 "page": page,
                 "query": show
+            ]
+            
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+        case .fetchShowState(_, let session):
+            let params: [String: Any] = [
+                "api_key": TMDBConfiguration.apiKey,
+                "session_id": session?.sessionId ?? ""
             ]
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)

@@ -8,6 +8,26 @@
 import SwiftUI
 import Kingfisher
 
+enum ItemDetailOptionType {
+    case addToMyFavorites
+    case removeFromMyFavorites
+    case addToMyWatchlist
+    case removeFromMyWatchlist
+    
+    var information: (title: String, iconName: String) {
+        switch self {
+        case .addToMyFavorites:
+            return (R.string.localization.detail_item_add_to_favorites(), "heart")
+        case .addToMyWatchlist:
+            return (R.string.localization.detail_item_add_to_watchlist(), "eye")
+        case .removeFromMyFavorites:
+            return (R.string.localization.detail_item_remove_from_favorites(), "heart.slash")
+        case .removeFromMyWatchlist:
+            return (R.string.localization.detail_item_remove_from_watchlist(), "eye.slash")
+        }
+    }
+}
+
 struct ItemDetail: View {
     @ObservedObject private var viewModel: ItemDetailViewModel
     
@@ -33,6 +53,13 @@ struct ItemDetail: View {
         .background(Color(R.color.primarySolid.name))
         .clipShape(RoundedRectangle(cornerRadius: 15))
         .shadow(color: Color(R.color.tmdbShadow.name), radius: 10, x: 0, y: 5)
+        .contextMenu {
+            ItemDetailOption(type: viewModel.isMarkedAsFavorite ? .removeFromMyFavorites : .addToMyFavorites, action: viewModel.markAsFavorite)
+                .disabled(!viewModel.isFavoriteButtonEnabled)
+            ItemDetailOption(type: viewModel.isOnWatchlist ? .removeFromMyWatchlist : .addToMyWatchlist, action: viewModel.addToWatchlist)
+                .disabled(!viewModel.isWatchlistButtonEnabled)
+        }
+        .onAppear(perform: viewModel.fetchItemState)
     }
     
     var footer: some View {
@@ -61,9 +88,18 @@ struct ItemDetail: View {
     }
 }
 
-struct ItemDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemDetail(viewModel: ItemDetailViewModel(title: "-", releaseDate: "-", rate: "0", imageUrl: nil))
-            .previewLayout(.fixed(width: 163, height: 250))
+struct ItemDetailOption: View {
+    let type: ItemDetailOptionType
+    let action: () -> Void
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            HStack(spacing: 0) {
+                Text(type.information.title)
+                Image(systemName: type.information.iconName)
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 enum HomeTabs: Int {
     case movies
@@ -32,6 +33,9 @@ enum HomeTabs: Int {
 }
 
 class HomeViewController: UITabBarController {
+    private let service: AccountServiceType = AccountService()
+    private var cancellables = Set<AnyCancellable>()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -40,10 +44,12 @@ class HomeViewController: UITabBarController {
         fatalError("init?(coder: NSCoder) hasn't been implemented")
     }
     
+    // MARK: ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
+        fetchUserInformation()
     }
     
     // MARK: Setup
@@ -54,5 +60,12 @@ class HomeViewController: UITabBarController {
         tabBar.tintColor = R.color.primaryColor()
         
         setViewControllers([moviesViewController, tvShowsViewController, profileViewController], animated: true)
+    }
+    
+    // MARK: Functionality
+    private func fetchUserInformation() {
+        service.fetchMyAccountInformation()
+            .sink { _ in }
+            .store(in: &cancellables)
     }
 }

@@ -98,7 +98,7 @@ class MovieListViewController: UIViewController {
         let rate = "\(movie.voteAverage ?? 0)"
         let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(movie.imagePath ?? "")")
         
-        return ItemDetailViewModel(title: title ?? "Empty", releaseDate: release ?? "Empty", rate: rate, imageUrl: imageUrl)
+        return ItemDetailViewModel(itemType: .movies, itemId: movie.id, title: title ?? "Empty", releaseDate: release ?? "Empty", rate: rate, imageUrl: imageUrl)
     }
 }
 

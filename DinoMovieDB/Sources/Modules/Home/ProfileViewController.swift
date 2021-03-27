@@ -42,7 +42,9 @@ class ProfileViewController: UIViewController {
         
         // Publisher Handler
         fetchInformationPublisher.sink { [weak self] in self?.fetchInformation() }.store(in: &cancellables)
-        logoutPublisher.sink { [weak self] in self?.accountService.logout() }.store(in: &cancellables)
+        logoutPublisher.sink { [weak self] in
+            self?.accountService.logout()
+        }.store(in: &cancellables)
     }
     
     // MARK: Service Request
