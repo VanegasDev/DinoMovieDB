@@ -16,9 +16,10 @@ protocol AccountServiceType {
 }
 
 // My Account Service Type implementation
-struct AccountService: AccountServiceType {
+class AccountService: AccountServiceType {
     // Moya Network Requester
     private let apiRequester: MoyaRequesterType
+    private var cancellables = Set<AnyCancellable>()
     
     init(apiRequester: MoyaRequesterType = MoyaRequester(with: MoyaProvider())) {
         self.apiRequester = apiRequester
@@ -30,19 +31,46 @@ struct AccountService: AccountServiceType {
         let sessionToken = SessionToken.get(from: .keychainSwift)
         
         // Make request
-        return apiRequester.request(target: AccountTarget.information(session: sessionToken))
-            .map { $0.response }
+        return fetchUserInformationFromCache()
+            .catch { [weak self] _ -> AnyPublisher<MyAccount, Error> in
+                guard let self = self else { return Fail(error: TMDBError.selfNotFound).eraseToAnyPublisher() }
+                return self.fetchUserInformationFromAPI(sessionToken: sessionToken).eraseToAnyPublisher()
+            }
             .eraseToAnyPublisher()
     }
     
     func logout() {
         // Close session on API
         let sessionToken = SessionToken.get(from: .keychainSwift)
-        let _ = apiRequester.request(target: AccountTarget.logout(session: sessionToken))
-            .sink(onReceived: { _ in })
-        
-        // Close session locally
-        SessionToken.remove(from: .keychainSwift)
-        NotificationCenter.default.post(name: .logoutNotification, object: nil)
+        apiRequester.request(target: AccountTarget.logout(session: sessionToken))
+            .sink {
+                // Close session locally
+                MyAccount.remove(from: .keychainSwift)
+                SessionToken.remove(from: .keychainSwift)
+                NotificationCenter.default.post(name: .logoutNotification, object: nil)
+            } onReceived: { _ in }
+            .store(in: &cancellables)
+    }
+    
+    private func fetchUserInformationFromAPI(sessionToken: SessionToken?) -> AnyPublisher<MyAccount, Error> {
+        apiRequester.request(target: AccountTarget.information(session: sessionToken))
+            .map { (apiResponse: DecodedResponse<MyAccount>) -> MyAccount in
+                let information = apiResponse.response
+                try? information.save(on: .keychainSwift)
+                
+                return information
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private func fetchUserInformationFromCache() -> AnyPublisher<MyAccount, Error> {
+        Future { seal in
+            guard let information = MyAccount.get(from: .keychainSwift) else {
+                seal(.failure(TMDBError.cachedValueNotFound))
+                return
+            }
+            
+            seal(.success(information))
+        }.eraseToAnyPublisher()
     }
 }
