@@ -35,6 +35,7 @@ class ItemDetailViewModel: ObservableObject, Identifiable {
         self.mediaType = itemType
         self.itemId = itemId
         self.title = title
+        
         // Uses our custom formatter
         self.releaseDate = DateFormatter.tmdbDatePreviewFormat(from: releaseDate)
         self.rate = rate

@@ -103,10 +103,3 @@ struct ItemDetailOption: View {
         }
     }
 }
-
-//struct ItemDetail_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ItemDetail(viewModel: ItemDetailViewModel(title: "-", releaseDate: "-", rate: "0", imageUrl: nil))
-//            .previewLayout(.fixed(width: 163, height: 250))
-//    }
-//}
