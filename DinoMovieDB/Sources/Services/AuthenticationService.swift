@@ -18,31 +18,25 @@ protocol AuthenticationServiceType: class {
 
 // Authentication Service Implementing my Auth Protocol
 class AuthenticationService: AuthenticationServiceType {
-    // API Requester
-    private let apiRequester: MoyaRequesterType
+    // MARK: API Requester
+    private let apiRequester: NetworkManagerType
     
-    init(apiRequester: MoyaRequesterType = MoyaRequester(with: MoyaProvider())) {
+    init(apiRequester: NetworkManagerType = NetworkManager()) {
         self.apiRequester = apiRequester
     }
     
     // Asks for request token
     func askForRequestToken() -> AnyPublisher<RequestToken, Error> {
-        apiRequester.request(target: AuthenticationTarget.requestToken)
-            .map { $0.response }
-            .eraseToAnyPublisher()
+        apiRequester.request(AuthenticationTarget.requestToken)
     }
     
     // Validates Request Token with Login
     func login(with parameters: LoginParameters) -> AnyPublisher<RequestToken, Error> {
-        apiRequester.request(target: AuthenticationTarget.login(parameters: parameters))
-            .map { $0.response }
-            .eraseToAnyPublisher()
+        apiRequester.request(AuthenticationTarget.login(parameters: parameters))
     }
     
     // Create Session
     func createSession(using requestToken: String) -> AnyPublisher<SessionToken, Error> {
-        apiRequester.request(target: AuthenticationTarget.createSession(requestToken: requestToken))
-            .map { $0.response }
-            .eraseToAnyPublisher()
+        apiRequester.request(AuthenticationTarget.createSession(requestToken: requestToken))
     }
 }

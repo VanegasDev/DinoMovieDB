@@ -24,24 +24,20 @@ extension MoviesServiceType {
 
 // Movies Services class implementing the Movies Service Protocol
 struct MoviesService: MoviesServiceType {
-    // API Requester
-    private let apiRequester: MoyaRequesterType
+    // MARK: API Requester
+    private let apiRequester: NetworkManagerType
     
-    init(apiRequester: MoyaRequesterType = MoyaRequester(with: MoyaProvider())) {
+    init(apiRequester: NetworkManagerType = NetworkManager()) {
         self.apiRequester = apiRequester
     }
     
     // Fetches upcoming movies
     func fetchUpcomingMovies(page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
-        apiRequester.request(target: MoviesTarget.latest(page: page))
-            .map { $0.response }
-            .eraseToAnyPublisher()
+        apiRequester.request(MoviesTarget.latest(page: page))
     }
     
     // Searches movies
     func search(movie: String, on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
-        apiRequester.request(target: MoviesTarget.search(movie: movie, page: page))
-            .map { $0.response }
-            .eraseToAnyPublisher()
+        apiRequester.request(MoviesTarget.search(movie: movie, page: page))
     }
 }

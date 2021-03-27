@@ -17,11 +17,11 @@ protocol AccountServiceType {
 
 // My Account Service Type implementation
 class AccountService: AccountServiceType {
-    // Moya Network Requester
-    private let apiRequester: MoyaRequesterType
+    // MARK: API Requester
+    private let apiRequester: NetworkManagerType
     private var cancellables = Set<AnyCancellable>()
     
-    init(apiRequester: MoyaRequesterType = MoyaRequester(with: MoyaProvider())) {
+    init(apiRequester: NetworkManagerType = NetworkManager()) {
         self.apiRequester = apiRequester
     }
     
@@ -42,7 +42,7 @@ class AccountService: AccountServiceType {
     func logout() {
         // Close session on API
         let sessionToken = SessionToken.get(from: .keychainSwift)
-        apiRequester.request(target: AccountTarget.logout(session: sessionToken))
+        apiRequester.request(AccountTarget.logout(session: sessionToken))
             .sink {
                 // Close session locally
                 MyAccount.remove(from: .keychainSwift)
@@ -53,7 +53,7 @@ class AccountService: AccountServiceType {
     }
     
     private func fetchUserInformationFromAPI(sessionToken: SessionToken?) -> AnyPublisher<MyAccount, Error> {
-        apiRequester.request(target: AccountTarget.information(session: sessionToken))
+        apiRequester.request(AccountTarget.information(session: sessionToken))
             .map { (apiResponse: DecodedResponse<MyAccount>) -> MyAccount in
                 let information = apiResponse.response
                 try? information.save(on: .keychainSwift)

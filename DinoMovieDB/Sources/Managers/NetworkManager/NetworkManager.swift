@@ -31,16 +31,16 @@ struct NetworkManager: NetworkManagerType {
 }
 
 // MARK: Extension for Decoded Response
-extension MoyaRequesterType {
-    func request<T: Decodable>(target: TMDBTargetType, with decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<T, Error> {
-        request(target: target)
+extension NetworkManagerType {
+    func request<T: Decodable>(_ target: TMDBTargetType, with decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<T, Error> {
+        request(target)
             .map(\.data)
             .decode(type: T.self, decoder: decoder)
             .eraseToAnyPublisher()
     }
     
-    func request<T: Decodable>(target: TMDBTargetType, with decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<DecodedResponse<T>, Error> {
-        request(target: target)
+    func request<T: Decodable>(_ target: TMDBTargetType, with decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<DecodedResponse<T>, Error> {
+        request(target)
             .tryMap { response in
                 let result = try decoder.decode(T.self, from: response.data)
                 return (response: result, httpResponse: response.httpResponse)
