@@ -24,24 +24,20 @@ extension TVShowsServiceType {
 
 // TVShows service class implementing the TVShows protocol
 struct TVShowsService: TVShowsServiceType {
-    // API Requester
-    private let apiRequester: MoyaRequesterType
+    // MARK: API Requester
+    private let apiRequester: NetworkManagerType
     
-    init(apiRequester: MoyaRequesterType = MoyaRequester(with: MoyaProvider())) {
+    init(apiRequester: NetworkManagerType = NetworkManager()) {
         self.apiRequester = apiRequester
     }
     
     // Fetches popular tv shows
     func fetchPopularShows(page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
-        apiRequester.request(target: TVShowsTarget.popular(page: page))
-            .map { $0.response }
-            .eraseToAnyPublisher()
+        apiRequester.request(TVShowsTarget.popular(page: page))
     }
     
     // Searches TVShows
     func search(show: String, on page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
-        apiRequester.request(target: TVShowsTarget.search(show: show, page: page))
-            .map { $0.response }
-            .eraseToAnyPublisher()
+        apiRequester.request(TVShowsTarget.search(show: show, page: page))
     }
 }

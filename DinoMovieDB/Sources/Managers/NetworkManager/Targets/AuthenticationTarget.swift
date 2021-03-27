@@ -14,8 +14,9 @@ enum AuthenticationTarget {
     case createSession(requestToken: String)
 }
 
-extension AuthenticationTarget: MoyaTargetType {
-    var path: String {
+// MARK: Moya Target Implemetation
+extension AuthenticationTarget: TMDBTargetType {
+    var requestEndpoint: String {
         switch self {
         case .requestToken:
             return "/authentication/token/new"
@@ -26,13 +27,20 @@ extension AuthenticationTarget: MoyaTargetType {
         }
     }
     
-    var method: Moya.Method {
+    var requestMethod: TMDBRequestMethodType {
         switch self {
         case .requestToken:
             return .get
         case .login, .createSession:
             return .post
         }
+    }
+}
+
+// MARK: Moya Target Implemetation
+extension AuthenticationTarget {
+    var path: String {
+        requestEndpoint
     }
     
     var task: Task {

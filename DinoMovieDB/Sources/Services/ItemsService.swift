@@ -19,9 +19,10 @@ protocol ItemsServiceType {
 
 // MARK: ItemServiceType Implementation
 struct ItemsService: ItemsServiceType {
-    private let apiRequester: MoyaRequesterType
+    // MARK: API Requester
+    private let apiRequester: NetworkManagerType
     
-    init(apiRequester: MoyaRequesterType = MoyaRequester(with: MoyaProvider())) {
+    init(apiRequester: NetworkManagerType = NetworkManager()) {
         self.apiRequester = apiRequester
     }
     
@@ -29,29 +30,25 @@ struct ItemsService: ItemsServiceType {
         let sessionToken = SessionToken.get(from: .keychainSwift)
         let accountInformation = MyAccount.get(from: .keychainSwift)
         
-        return apiRequester.request(target: AccountTarget.markAsFavorite(accountId: accountInformation?.id ?? 0, params: itemParams, session: sessionToken))
+        return apiRequester.request(AccountTarget.markAsFavorite(accountId: accountInformation?.id ?? 0, params: itemParams, session: sessionToken))
     }
     
     func addToWatchList(itemParams: WatchlistsState) -> AnyPublisher<NetworkResponse, Error> {
         let sessionToken = SessionToken.get(from: .keychainSwift)
         let accountInformation = MyAccount.get(from: .keychainSwift)
         
-        return apiRequester.request(target: AccountTarget.addToWatchlist(accountId: accountInformation?.id ?? 0, params: itemParams, session: sessionToken))
+        return apiRequester.request(AccountTarget.addToWatchlist(accountId: accountInformation?.id ?? 0, params: itemParams, session: sessionToken))
     }
     
     func fetchMoviesState(movieId: Int) -> AnyPublisher<ItemState, Error> {
         let sessionToken = SessionToken.get(from: .keychainSwift)
         
-        return apiRequester.request(target: MoviesTarget.fetchMovieState(movieId: movieId, session: sessionToken))
-            .map { $0.response }
-            .eraseToAnyPublisher()
+        return apiRequester.request(MoviesTarget.fetchMovieState(movieId: movieId, session: sessionToken))
     }
     
     func fetchTvShowsState(showId: Int) -> AnyPublisher<ItemState, Error> {
         let sessionToken = SessionToken.get(from: .keychainSwift)
         
-        return apiRequester.request(target: TVShowsTarget.fetchShowState(showId: showId, session: sessionToken))
-            .map { $0.response }
-            .eraseToAnyPublisher()
+        return apiRequester.request(TVShowsTarget.fetchShowState(showId: showId, session: sessionToken))
     }
 }

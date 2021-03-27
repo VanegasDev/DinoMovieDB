@@ -9,24 +9,9 @@ import Foundation
 import Combine
 import Moya
 
-typealias NetworkResponse = (data: Data, httpResponse: HTTPURLResponse?)
-typealias DecodedResponse<T: Decodable> = (response: T, httpResponse: HTTPURLResponse?)
-
 // MARK: Requester Protocol
 protocol MoyaRequesterType {
     func request(target: TargetType) -> AnyPublisher<NetworkResponse, Error>
-}
-
-// MARK: Decoded Response
-extension MoyaRequesterType {
-    func request<T: Decodable>(target: TargetType, with decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<DecodedResponse<T>, Error> {
-        request(target: target)
-            .tryMap { response in
-                let result = try decoder.decode(T.self, from: response.data)
-                return (response: result, httpResponse: response.httpResponse)
-            }
-            .eraseToAnyPublisher()
-    }
 }
 
 // MARK: Moya Requester
