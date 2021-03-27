@@ -5,6 +5,7 @@
 //  Created by Mario Vanegas on 3/3/21.
 //
 
+import Foundation
 import Moya
 
 enum AuthenticationTarget {
@@ -25,7 +26,7 @@ extension AuthenticationTarget: MoyaTargetType {
         }
     }
     
-    var method: Method {
+    var method: Moya.Method {
         switch self {
         case .requestToken:
             return .get
@@ -41,11 +42,7 @@ extension AuthenticationTarget: MoyaTargetType {
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         case .login(let parameters):
             let urlParams: [String: Any] = ["api_key": TMDBConfiguration.apiKey]
-            let bodyParams: [String: Any] = [
-                "username": parameters.username,
-                "password": parameters.password,
-                "request_token": parameters.requestToken
-            ]
+            let bodyParams = JSONEncoder().encodeAsDictionary(parameters) ?? [:]
             
             return .requestCompositeParameters(bodyParameters: bodyParams, bodyEncoding: JSONEncoding.default, urlParameters: urlParams)
         case .createSession(let requestToken):
