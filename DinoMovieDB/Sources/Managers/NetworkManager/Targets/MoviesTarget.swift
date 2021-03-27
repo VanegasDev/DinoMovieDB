@@ -13,8 +13,9 @@ enum MoviesTarget {
     case fetchMovieState(movieId: Int, session: SessionToken?)
 }
 
-extension MoviesTarget: MoyaTargetType {
-    var path: String  {
+// MARK: TMDBTargetType Implementation
+extension MoviesTarget: TMDBTargetType {
+    var requestEndpoint: String {
         switch self {
         case .latest:
             return "/movie/upcoming"
@@ -25,11 +26,18 @@ extension MoviesTarget: MoyaTargetType {
         }
     }
     
-    var method: Method {
+    var requestMethod: TMDBRequestMethodType {
         switch self {
         case .latest, .search, .fetchMovieState:
             return .get
         }
+    }
+}
+
+// MARK: Moya Implementation
+extension MoviesTarget {
+    var path: String {
+        requestEndpoint
     }
     
     var task: Task {

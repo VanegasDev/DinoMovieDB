@@ -15,8 +15,9 @@ enum AccountTarget {
     case addToWatchlist(accountId: Int, params: WatchlistsState, session: SessionToken?)
 }
 
-extension AccountTarget: MoyaTargetType {
-    var path: String {
+// MARK: TMDBTargetType Implementation
+extension AccountTarget: TMDBTargetType {
+    var requestEndpoint: String {
         switch self {
         case .information:
             return "/account"
@@ -29,7 +30,7 @@ extension AccountTarget: MoyaTargetType {
         }
     }
     
-    var method: Moya.Method {
+    var requestMethod: TMDBRequestMethodType {
         switch self {
         case .information:
             return .get
@@ -38,6 +39,13 @@ extension AccountTarget: MoyaTargetType {
         case .addToWatchlist, .markAsFavorite:
             return .post
         }
+    }
+}
+
+// MARK: Moya Implementation
+extension AccountTarget {
+    var path: String {
+        requestEndpoint
     }
     
     var task: Task {

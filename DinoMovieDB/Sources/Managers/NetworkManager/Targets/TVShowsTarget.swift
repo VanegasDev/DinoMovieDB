@@ -13,8 +13,9 @@ enum TVShowsTarget {
     case fetchShowState(showId: Int, session: SessionToken?)
 }
 
-extension TVShowsTarget: MoyaTargetType {
-    var path: String  {
+// MARK: TMDBTargetType Implementation
+extension TVShowsTarget: TMDBTargetType {
+    var requestEndpoint: String {
         switch self {
         case .popular:
             return "/tv/popular"
@@ -25,11 +26,18 @@ extension TVShowsTarget: MoyaTargetType {
         }
     }
     
-    var method: Method {
+    var requestMethod: TMDBRequestMethodType {
         switch self {
         case .popular, .search, .fetchShowState:
             return .get
         }
+    }
+}
+
+// MARK: Moya Implementation
+extension TVShowsTarget {
+    var path: String  {
+        requestEndpoint
     }
     
     var task: Task {
