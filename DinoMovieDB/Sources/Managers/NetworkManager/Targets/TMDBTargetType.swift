@@ -1,5 +1,5 @@
 //
-//  MoyaTargetType.swift
+//  TMDBTargetType.swift
 //  DinoMovieDB
 //
 //  Created by Mario Vanegas on 3/3/21.
