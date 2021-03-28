@@ -76,6 +76,9 @@
 		C7A9A227260C44680009438A /* AccountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9A226260C44680009438A /* AccountState.swift */; };
 		C7A9A22C260C48AD0009438A /* JSONEncoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9A22B260C48AD0009438A /* JSONEncoder+Extension.swift */; };
 		C7A9A231260C49CD0009438A /* ItemsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9A230260C49CD0009438A /* ItemsService.swift */; };
+		C7C1999E260FF218006FF567 /* TMDBBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C1999D260FF218006FF567 /* TMDBBannerView.swift */; };
+		C7C199AB260FF5A0006FF567 /* TMDBItemRateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199AA260FF5A0006FF567 /* TMDBItemRateModifier.swift */; };
+		C7C199B0260FFCFE006FF567 /* TMDBBannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199AF260FFCFE006FF567 /* TMDBBannerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +171,9 @@
 		C7A9A226260C44680009438A /* AccountState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountState.swift; sourceTree = "<group>"; };
 		C7A9A22B260C48AD0009438A /* JSONEncoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+Extension.swift"; sourceTree = "<group>"; };
 		C7A9A230260C49CD0009438A /* ItemsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsService.swift; sourceTree = "<group>"; };
+		C7C1999D260FF218006FF567 /* TMDBBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBBannerView.swift; sourceTree = "<group>"; };
+		C7C199AA260FF5A0006FF567 /* TMDBItemRateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBItemRateModifier.swift; sourceTree = "<group>"; };
+		C7C199AF260FFCFE006FF567 /* TMDBBannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBBannerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +407,7 @@
 				C718185225F3474D0039FCDF /* Representables */,
 				C77C8B7A25F093E800961122 /* TMDBTextField.swift */,
 				C775ABC325F35ECB002D39D8 /* ItemDetail.swift */,
+				C7C1999D260FF218006FF567 /* TMDBBannerView.swift */,
 			);
 			path = SwiftUIViews;
 			sourceTree = "<group>";
@@ -410,6 +417,7 @@
 			children = (
 				C77C8B8025F0967600961122 /* TMDBPlaceholderModifier.swift */,
 				C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */,
+				C7C199AA260FF5A0006FF567 /* TMDBItemRateModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -519,6 +527,7 @@
 				C7A4D8A425F5B44000284AD8 /* MovieListViewModel.swift */,
 				C7A7E39B25F9EAC00066A7D9 /* TVShowsListViewModel.swift */,
 				C73C81662609A59500DB8887 /* ProfileViewModel.swift */,
+				C7C199AF260FFCFE006FF567 /* TMDBBannerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -720,6 +729,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C76794D5260EFFE100B96E10 /* NetworkManager.swift in Sources */,
+				C7C199AB260FF5A0006FF567 /* TMDBItemRateModifier.swift in Sources */,
 				C77C8B8125F0967600961122 /* TMDBPlaceholderModifier.swift in Sources */,
 				C7A7E3A125F9EB0C0066A7D9 /* TVShowsListView.swift in Sources */,
 				C718185425F3477D0039FCDF /* ActivityIndicator.swift in Sources */,
@@ -747,6 +757,7 @@
 				C78DA81725F88DEA009DCE37 /* MoviesService.swift in Sources */,
 				C73C815D2609A1F000DB8887 /* MyAccount.swift in Sources */,
 				C775ABC425F35ECB002D39D8 /* ItemDetail.swift in Sources */,
+				C7C199B0260FFCFE006FF567 /* TMDBBannerViewModel.swift in Sources */,
 				C77C8BE225F0ACBE00961122 /* TMDBConfiguration.swift in Sources */,
 				C726CAC82605BE7600AC8E76 /* AnyStorage.swift in Sources */,
 				C78DA80A25F88C1C009DCE37 /* MoviePreview.swift in Sources */,
@@ -766,6 +777,7 @@
 				C7A4D8B925F5BB0800284AD8 /* UIWindow+Extensions.swift in Sources */,
 				C77C8C0525F0B27400961122 /* UIViewController+Extensions.swift in Sources */,
 				C77C8BC225F0A3BF00961122 /* MoyaRequester.swift in Sources */,
+				C7C1999E260FF218006FF567 /* TMDBBannerView.swift in Sources */,
 				C77C8BDC25F0AC1400961122 /* TMDBTargetType.swift in Sources */,
 				C74FBB5725FD82D8004D9D68 /* Date+Extensions.swift in Sources */,
 				C775ABBF25F35DCB002D39D8 /* MovieListViewController.swift in Sources */,

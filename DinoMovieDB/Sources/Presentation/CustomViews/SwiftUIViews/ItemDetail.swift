@@ -67,11 +67,7 @@ struct ItemDetail: View {
             information
             Spacer()
             Text("\(viewModel.rate)")
-                .frame(width: 36, height: 36)
-                .font(.system(size: 13))
-                .foregroundColor(Color(R.color.primarySolid.name))
-                .background(Color(R.color.secondaryColor.name))
-                .clipShape(Circle())
+                .tmdbItemRate(size: 36)
         }
         .padding()
     }
