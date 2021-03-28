@@ -79,6 +79,7 @@
 		C7C1999E260FF218006FF567 /* TMDBBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C1999D260FF218006FF567 /* TMDBBannerView.swift */; };
 		C7C199AB260FF5A0006FF567 /* TMDBItemRateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199AA260FF5A0006FF567 /* TMDBItemRateModifier.swift */; };
 		C7C199B0260FFCFE006FF567 /* TMDBBannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199AF260FFCFE006FF567 /* TMDBBannerViewModel.swift */; };
+		C7C199B526100247006FF567 /* TMDBCastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199B426100247006FF567 /* TMDBCastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,7 @@
 		C7C1999D260FF218006FF567 /* TMDBBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBBannerView.swift; sourceTree = "<group>"; };
 		C7C199AA260FF5A0006FF567 /* TMDBItemRateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBItemRateModifier.swift; sourceTree = "<group>"; };
 		C7C199AF260FFCFE006FF567 /* TMDBBannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBBannerViewModel.swift; sourceTree = "<group>"; };
+		C7C199B426100247006FF567 /* TMDBCastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBCastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +410,7 @@
 				C77C8B7A25F093E800961122 /* TMDBTextField.swift */,
 				C775ABC325F35ECB002D39D8 /* ItemDetail.swift */,
 				C7C1999D260FF218006FF567 /* TMDBBannerView.swift */,
+				C7C199B426100247006FF567 /* TMDBCastView.swift */,
 			);
 			path = SwiftUIViews;
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 				C713A5F72605C5F60030E961 /* ProfileViewController.swift in Sources */,
 				C77C8BFD25F0B25600961122 /* LoginViewController.swift in Sources */,
 				C78DA81225F88CF5009DCE37 /* APIResponse.swift in Sources */,
+				C7C199B526100247006FF567 /* TMDBCastView.swift in Sources */,
 				C77C8B9725F0999100961122 /* LoginView.swift in Sources */,
 				C7A7E38D25F9E8CE0066A7D9 /* TVShowPreview.swift in Sources */,
 				C717A14925F9D976006915D5 /* PaginationManager.swift in Sources */,
