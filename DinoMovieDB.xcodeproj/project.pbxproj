@@ -81,6 +81,7 @@
 		C7C199B0260FFCFE006FF567 /* TMDBBannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199AF260FFCFE006FF567 /* TMDBBannerViewModel.swift */; };
 		C7C199B526100247006FF567 /* TMDBCastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199B426100247006FF567 /* TMDBCastView.swift */; };
 		C7C199BA26100470006FF567 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199B926100470006FF567 /* MovieDetailView.swift */; };
+		C7C199C026100B23006FF567 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199BF26100B23006FF567 /* MovieDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +179,7 @@
 		C7C199AF260FFCFE006FF567 /* TMDBBannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBBannerViewModel.swift; sourceTree = "<group>"; };
 		C7C199B426100247006FF567 /* TMDBCastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBCastView.swift; sourceTree = "<group>"; };
 		C7C199B926100470006FF567 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
+		C7C199BF26100B23006FF567 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -511,6 +513,7 @@
 		C77C8BFA25F0B24500961122 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C7C199BE26100B13006FF567 /* Movies */,
 				C775ABB825F35CA0002D39D8 /* Home */,
 				C77C8BFB25F0B24C00961122 /* Login */,
 			);
@@ -561,6 +564,14 @@
 				C7A4D8B025F5B9EF00284AD8 /* TMDBWindow.swift */,
 			);
 			path = UIKitViews;
+			sourceTree = "<group>";
+		};
+		C7C199BE26100B13006FF567 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				C7C199BF26100B23006FF567 /* MovieDetailViewController.swift */,
+			);
+			path = Movies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -759,6 +770,7 @@
 				C726CACD2605BF9000AC8E76 /* Storable.swift in Sources */,
 				C704137825EDF8FB000FFC87 /* AppDelegate.swift in Sources */,
 				C7A7E39725F9EA290066A7D9 /* TVShowsService.swift in Sources */,
+				C7C199C026100B23006FF567 /* MovieDetailViewController.swift in Sources */,
 				C718184E25F345D00039FCDF /* TMDBTokens.swift in Sources */,
 				C77C8BEF25F0AEFF00961122 /* AuthenticationService.swift in Sources */,
 				C718186525F352C20039FCDF /* TMDBError.swift in Sources */,

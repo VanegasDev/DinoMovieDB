@@ -29,6 +29,7 @@ struct MovieListView: View {
                                 viewModel.fetchUpcomingMoviesTrigger.send()
                             }
                         }
+                        .onTapGesture(perform: viewModel.movieTap.send)
                 }
             }
             .padding()
