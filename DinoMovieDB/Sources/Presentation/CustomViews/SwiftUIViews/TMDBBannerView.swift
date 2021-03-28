@@ -19,10 +19,8 @@ struct TMDBBannerView: View {
         ZStack {
             KFImage(viewModel.url)
                 .resizable()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 15)
-                        .opacity(0.25)
-                )
+            Color(R.color.tmdbBlack.name)
+                .opacity(0.25)
             VStack(spacing: 0) {
                 itemRate
                 Spacer()
@@ -32,6 +30,7 @@ struct TMDBBannerView: View {
         }
         .aspectRatio(343/243, contentMode: .fit)
         .clipShape(RoundedRectangle(cornerRadius: 15))
+        .shadow(color: Color(R.color.tmdbShadow.name), radius: 10, x: 0, y: 5)
     }
     
     private var itemRate: some View {

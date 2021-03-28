@@ -80,6 +80,7 @@
 		C7C199AB260FF5A0006FF567 /* TMDBItemRateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199AA260FF5A0006FF567 /* TMDBItemRateModifier.swift */; };
 		C7C199B0260FFCFE006FF567 /* TMDBBannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199AF260FFCFE006FF567 /* TMDBBannerViewModel.swift */; };
 		C7C199B526100247006FF567 /* TMDBCastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199B426100247006FF567 /* TMDBCastView.swift */; };
+		C7C199BA26100470006FF567 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199B926100470006FF567 /* MovieDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +177,7 @@
 		C7C199AA260FF5A0006FF567 /* TMDBItemRateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBItemRateModifier.swift; sourceTree = "<group>"; };
 		C7C199AF260FFCFE006FF567 /* TMDBBannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBBannerViewModel.swift; sourceTree = "<group>"; };
 		C7C199B426100247006FF567 /* TMDBCastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBCastView.swift; sourceTree = "<group>"; };
+		C7C199B926100470006FF567 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +390,7 @@
 				C778E86625F5ACDD00C97CB4 /* MovieListView.swift */,
 				C7A7E3A025F9EB0C0066A7D9 /* TVShowsListView.swift */,
 				C713A5F12605C1E30030E961 /* ProfileView.swift */,
+				C7C199B926100470006FF567 /* MovieDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 			files = (
 				C76794D5260EFFE100B96E10 /* NetworkManager.swift in Sources */,
 				C7C199AB260FF5A0006FF567 /* TMDBItemRateModifier.swift in Sources */,
+				C7C199BA26100470006FF567 /* MovieDetailView.swift in Sources */,
 				C77C8B8125F0967600961122 /* TMDBPlaceholderModifier.swift in Sources */,
 				C7A7E3A125F9EB0C0066A7D9 /* TVShowsListView.swift in Sources */,
 				C718185425F3477D0039FCDF /* ActivityIndicator.swift in Sources */,
