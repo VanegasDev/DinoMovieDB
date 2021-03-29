@@ -33,6 +33,7 @@
 		C73C81622609A25100DB8887 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C81612609A25100DB8887 /* AccountService.swift */; };
 		C73C81672609A59500DB8887 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C81662609A59500DB8887 /* ProfileViewModel.swift */; };
 		C74FBB5725FD82D8004D9D68 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FBB5625FD82D8004D9D68 /* Date+Extensions.swift */; };
+		C75FA49826116746005C238E /* MovieCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FA49726116746005C238E /* MovieCredits.swift */; };
 		C76794D5260EFFE100B96E10 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76794D4260EFFE100B96E10 /* NetworkManager.swift */; };
 		C775ABBA25F35CB2002D39D8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775ABB925F35CB2002D39D8 /* HomeViewController.swift */; };
 		C775ABBF25F35DCB002D39D8 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775ABBE25F35DCB002D39D8 /* MovieListViewController.swift */; };
@@ -82,6 +83,9 @@
 		C7C199B526100247006FF567 /* TMDBCastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199B426100247006FF567 /* TMDBCastView.swift */; };
 		C7C199BA26100470006FF567 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199B926100470006FF567 /* MovieDetailView.swift */; };
 		C7C199C026100B23006FF567 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199BF26100B23006FF567 /* MovieDetailViewController.swift */; };
+		C7E9AD542611645F00DAF606 /* ItemDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E9AD532611645F00DAF606 /* ItemDetailService.swift */; };
+		C7E9AD5F2611653900DAF606 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E9AD5E2611653900DAF606 /* MovieDetail.swift */; };
+		C7E9AD66261165C100DAF606 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E9AD65261165C100DAF606 /* Genre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +137,7 @@
 		C73C81612609A25100DB8887 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		C73C81662609A59500DB8887 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C74FBB5625FD82D8004D9D68 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		C75FA49726116746005C238E /* MovieCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCredits.swift; sourceTree = "<group>"; };
 		C76794D4260EFFE100B96E10 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C775ABB925F35CB2002D39D8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C775ABBE25F35DCB002D39D8 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +185,9 @@
 		C7C199B426100247006FF567 /* TMDBCastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBCastView.swift; sourceTree = "<group>"; };
 		C7C199B926100470006FF567 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		C7C199BF26100B23006FF567 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		C7E9AD532611645F00DAF606 /* ItemDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailService.swift; sourceTree = "<group>"; };
+		C7E9AD5E2611653900DAF606 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		C7E9AD65261165C100DAF606 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +481,8 @@
 		C77C8BC925F0AADE00961122 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C7E9AD642611659F00DAF606 /* Genrers */,
+				C7E9AD632611658E00DAF606 /* TVShows */,
 				C73C81532609A0A100DB8887 /* Account */,
 				C78DA80825F88C0C009DCE37 /* Movies */,
 				C718186325F352B40039FCDF /* Errors */,
@@ -506,6 +516,7 @@
 				C7A7E39625F9EA290066A7D9 /* TVShowsService.swift */,
 				C73C81612609A25100DB8887 /* AccountService.swift */,
 				C7A9A230260C49CD0009438A /* ItemsService.swift */,
+				C7E9AD532611645F00DAF606 /* ItemDetailService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -545,7 +556,8 @@
 			isa = PBXGroup;
 			children = (
 				C78DA80925F88C1C009DCE37 /* MoviePreview.swift */,
-				C7A7E38C25F9E8CE0066A7D9 /* TVShowPreview.swift */,
+				C7E9AD5E2611653900DAF606 /* MovieDetail.swift */,
+				C75FA49726116746005C238E /* MovieCredits.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -572,6 +584,22 @@
 				C7C199BF26100B23006FF567 /* MovieDetailViewController.swift */,
 			);
 			path = Movies;
+			sourceTree = "<group>";
+		};
+		C7E9AD632611658E00DAF606 /* TVShows */ = {
+			isa = PBXGroup;
+			children = (
+				C7A7E38C25F9E8CE0066A7D9 /* TVShowPreview.swift */,
+			);
+			path = TVShows;
+			sourceTree = "<group>";
+		};
+		C7E9AD642611659F00DAF606 /* Genrers */ = {
+			isa = PBXGroup;
+			children = (
+				C7E9AD65261165C100DAF606 /* Genre.swift */,
+			);
+			path = Genrers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -748,6 +776,7 @@
 				C76794D5260EFFE100B96E10 /* NetworkManager.swift in Sources */,
 				C7C199AB260FF5A0006FF567 /* TMDBItemRateModifier.swift in Sources */,
 				C7C199BA26100470006FF567 /* MovieDetailView.swift in Sources */,
+				C7E9AD66261165C100DAF606 /* Genre.swift in Sources */,
 				C77C8B8125F0967600961122 /* TMDBPlaceholderModifier.swift in Sources */,
 				C7A7E3A125F9EB0C0066A7D9 /* TVShowsListView.swift in Sources */,
 				C718185425F3477D0039FCDF /* ActivityIndicator.swift in Sources */,
@@ -768,7 +797,9 @@
 				C7A7E39C25F9EAC00066A7D9 /* TVShowsListViewModel.swift in Sources */,
 				C7A4D8C125F5BCAE00284AD8 /* NotificationCenter+Extensions.swift in Sources */,
 				C726CACD2605BF9000AC8E76 /* Storable.swift in Sources */,
+				C7E9AD542611645F00DAF606 /* ItemDetailService.swift in Sources */,
 				C704137825EDF8FB000FFC87 /* AppDelegate.swift in Sources */,
+				C75FA49826116746005C238E /* MovieCredits.swift in Sources */,
 				C7A7E39725F9EA290066A7D9 /* TVShowsService.swift in Sources */,
 				C7C199C026100B23006FF567 /* MovieDetailViewController.swift in Sources */,
 				C718184E25F345D00039FCDF /* TMDBTokens.swift in Sources */,
@@ -791,6 +822,7 @@
 				C7A4D8B125F5B9EF00284AD8 /* TMDBWindow.swift in Sources */,
 				C77C8B7B25F093E800961122 /* TMDBTextField.swift in Sources */,
 				C704137A25EDF8FB000FFC87 /* SceneDelegate.swift in Sources */,
+				C7E9AD5F2611653900DAF606 /* MovieDetail.swift in Sources */,
 				C717A13525F9CD30006915D5 /* UIAlertController+Extensions.swift in Sources */,
 				C73C814C26099C2900DB8887 /* AccountTarget.swift in Sources */,
 				C73C81552609A0B800DB8887 /* Avatar.swift in Sources */,
