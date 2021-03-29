@@ -8,6 +8,13 @@
 import UIKit
 
 class MovieDetailViewController: UIViewController {
+    private lazy var rateItButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Rate it!", style: .plain, target: self, action: #selector(rateMovie))
+        button.tintColor = .systemBlue
+        
+        return button
+    }()
+    
     // MARK: ViewController Lifecyle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +28,14 @@ class MovieDetailViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
+    @objc private func rateMovie() {
+        
+    }
     
     private func setupViews() {
         title = "Movie Title"
+        
         addHosting(MovieDetailView())
+        navigationItem.rightBarButtonItem = rateItButton
     }
 }

@@ -44,7 +44,7 @@ struct TMDBBannerView: View {
                 )
             Spacer()
             Text("\(viewModel.voteCount)")
-                .tmdbItemRate(size: 50)
+                .tmdbItemRate(size: 50, fontSize: 18, fontWeight: .semibold)
         }
     }
     
