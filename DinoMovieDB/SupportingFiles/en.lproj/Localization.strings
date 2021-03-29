@@ -32,3 +32,10 @@
 "detail_item_remove_from_watchlist" = "Remove From My Watchlist";
 "detail_item_add_to_favorites" = "Add to My Favorites";
 "detail_item_remove_from_favorites" = "Remove From My Favorites";
+
+/* Movie Detail */
+"movie_detail_director_title" = "Director:";
+"movie_detail_duration_title" = "Duration:";
+"movie_detail_overview_title" = "Overview";
+"movie_detail_cast_title" = "Cast";
+"movie_detail_rate_button_title" = "Rate it!";

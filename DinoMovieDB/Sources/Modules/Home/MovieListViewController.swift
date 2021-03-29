@@ -83,7 +83,7 @@ class MovieListViewController: UIViewController {
     }
     
     private func openMovieDetails() {
-        navigationController?.pushViewController(MovieDetailViewController(), animated: true)
+        navigationController?.pushViewController(MovieDetailViewController(movie: "Godzilla"), animated: true)
     }
     
     private func requestMovies(on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {

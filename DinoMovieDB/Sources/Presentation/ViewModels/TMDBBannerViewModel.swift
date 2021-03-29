@@ -12,7 +12,7 @@ class TMDBBannerViewModel: ObservableObject {
     let title: String
     let releaseDate: String
     let generName: String
-    let voteCount: Double
+    let voteAverage: String
     let isOnWatchlist: Bool
     let isOnFavorites: Bool
     
@@ -23,7 +23,7 @@ class TMDBBannerViewModel: ObservableObject {
          title: String,
          releaseDate: String,
          genderName: String,
-         voteCount: Double,
+         voteAverage: String,
          isOnWatchlist: Bool,
          isOnFavorites: Bool,
          onWatchlist: @escaping (Bool) -> Void,
@@ -33,7 +33,7 @@ class TMDBBannerViewModel: ObservableObject {
         self.title = title
         self.releaseDate = releaseDate
         self.generName = genderName
-        self.voteCount = voteCount
+        self.voteAverage = voteAverage
         self.isOnWatchlist = isOnWatchlist
         self.isOnFavorites = isOnFavorites
         self.onWatchlist = onWatchlist
@@ -50,5 +50,5 @@ class TMDBBannerViewModel: ObservableObject {
 }
 
 extension TMDBBannerViewModel {
-    static let placeholder = TMDBBannerViewModel(url: nil, title: "-", releaseDate: "-", genderName: "-", voteCount: 0, isOnWatchlist: false, isOnFavorites: false, onWatchlist: { _ in }, onFavorites: { _ in })
+    static let placeholder = TMDBBannerViewModel(url: nil, title: "-", releaseDate: "-", genderName: "-", voteAverage: "0", isOnWatchlist: false, isOnFavorites: false, onWatchlist: { _ in }, onFavorites: { _ in })
 }

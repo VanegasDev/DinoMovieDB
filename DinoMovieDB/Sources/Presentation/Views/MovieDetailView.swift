@@ -38,7 +38,7 @@ struct MovieDetailView: View {
     private var movieDetails: some View {
         HStack {
             VStack(alignment: .leading, spacing: 0) {
-                Text("Director:")
+                Text(R.string.localization.movie_detail_director_title())
                     .font(.system(size: 17))
                     .fontWeight(.bold)
                 Text(viewModel.directorName)
@@ -46,7 +46,7 @@ struct MovieDetailView: View {
             }
             Spacer()
             VStack(alignment: .leading, spacing: 0) {
-                Text("Duration:")
+                Text(R.string.localization.movie_detail_duration_title())
                     .font(.system(size: 17))
                     .fontWeight(.bold)
                 Text(viewModel.duration)
@@ -57,7 +57,7 @@ struct MovieDetailView: View {
     
     private var overview: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Overview")
+            Text(R.string.localization.movie_detail_overview_title())
                 .font(.system(size: 22))
                 .fontWeight(.bold)
             Text(viewModel.overview)
@@ -67,7 +67,7 @@ struct MovieDetailView: View {
     
     private var casting: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Cast")
+            Text(R.string.localization.movie_detail_cast_title())
                 .font(.system(size: 22))
                 .fontWeight(.bold)
             castingList

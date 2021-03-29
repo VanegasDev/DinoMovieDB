@@ -43,7 +43,7 @@ struct TMDBBannerView: View {
                     RoundedRectangle(cornerRadius: 5).stroke(Color(R.color.secondaryColor.name))
                 )
             Spacer()
-            Text("\(viewModel.voteCount)")
+            Text(viewModel.voteAverage)
                 .tmdbItemRate(size: 50, fontSize: 18, fontWeight: .semibold)
         }
     }
@@ -77,7 +77,7 @@ struct TMDBBannerView_Previews: PreviewProvider {
                                             title: "Godzilaa",
                                             releaseDate: "June 23, 2021",
                                             genderName: "Terror",
-                                            voteCount: 15,
+                                            voteAverage: "15",
                                             isOnWatchlist: true,
                                             isOnFavorites: true,
                                             onWatchlist: { _ in },
