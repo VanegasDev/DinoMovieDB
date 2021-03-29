@@ -12,7 +12,7 @@ class TMDBBannerViewModel: ObservableObject {
     let title: String
     let releaseDate: String
     let generName: String
-    let voteCount: Int
+    let voteCount: Double
     let isOnWatchlist: Bool
     let isOnFavorites: Bool
     
@@ -23,7 +23,7 @@ class TMDBBannerViewModel: ObservableObject {
          title: String,
          releaseDate: String,
          genderName: String,
-         voteCount: Int,
+         voteCount: Double,
          isOnWatchlist: Bool,
          isOnFavorites: Bool,
          onWatchlist: @escaping (Bool) -> Void,
@@ -47,4 +47,8 @@ class TMDBBannerViewModel: ObservableObject {
     func onFavoritesTap() {
         onFavorites(isOnFavorites)
     }
+}
+
+extension TMDBBannerViewModel {
+    static let placeholder = TMDBBannerViewModel(url: nil, title: "-", releaseDate: "-", genderName: "-", voteCount: 0, isOnWatchlist: false, isOnFavorites: false, onWatchlist: { _ in }, onFavorites: { _ in })
 }

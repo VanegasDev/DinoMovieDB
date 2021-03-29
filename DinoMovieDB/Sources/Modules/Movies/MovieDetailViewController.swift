@@ -35,7 +35,7 @@ class MovieDetailViewController: UIViewController {
     private func setupViews() {
         title = "Movie Title"
         
-        addHosting(MovieDetailView())
+        addHosting(MovieDetailView(viewModel: MovieDetailViewModel()))
         navigationItem.rightBarButtonItem = rateItButton
     }
 }
