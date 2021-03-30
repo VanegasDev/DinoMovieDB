@@ -16,6 +16,7 @@
 		C704139A25EDF8FD000FFC87 /* DinoMovieDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704139925EDF8FD000FFC87 /* DinoMovieDBUITests.swift */; };
 		C70413B325EDFC3C000FFC87 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */; };
 		C70D34682612D9EE007B4C05 /* TMDBTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D34672612D9EE007B4C05 /* TMDBTimeFormatter.swift */; };
+		C70D34762612E931007B4C05 /* TMDBMediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D34752612E931007B4C05 /* TMDBMediaType.swift */; };
 		C713A5ED2605C15A0030E961 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C713A5EC2605C15A0030E961 /* KeychainSwift */; };
 		C713A5F22605C1E30030E961 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713A5F12605C1E30030E961 /* ProfileView.swift */; };
 		C713A5F72605C5F60030E961 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713A5F62605C5F60030E961 /* ProfileViewController.swift */; };
@@ -123,6 +124,7 @@
 		C704139B25EDF8FD000FFC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		C70D34672612D9EE007B4C05 /* TMDBTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBTimeFormatter.swift; sourceTree = "<group>"; };
+		C70D34752612E931007B4C05 /* TMDBMediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBMediaType.swift; sourceTree = "<group>"; };
 		C713A5F12605C1E30030E961 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C713A5F62605C5F60030E961 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C717A13425F9CD30006915D5 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 			children = (
 				C718184D25F345D00039FCDF /* TMDBTokens.swift */,
 				C78DA81125F88CF5009DCE37 /* APIResponse.swift */,
+				C70D34752612E931007B4C05 /* TMDBMediaType.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 				C73C81552609A0B800DB8887 /* Avatar.swift in Sources */,
 				C7A4D8B925F5BB0800284AD8 /* UIWindow+Extensions.swift in Sources */,
 				C77C8C0525F0B27400961122 /* UIViewController+Extensions.swift in Sources */,
+				C70D34762612E931007B4C05 /* TMDBMediaType.swift in Sources */,
 				C77C8BC225F0A3BF00961122 /* MoyaRequester.swift in Sources */,
 				C7C1999E260FF218006FF567 /* TMDBBannerView.swift in Sources */,
 				C77C8BDC25F0AC1400961122 /* TMDBTargetType.swift in Sources */,

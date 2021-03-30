@@ -103,10 +103,10 @@ class MovieDetailViewController: UIViewController {
                                                        releaseDate: movieDetail?.releaseDate ?? "",
                                                        genderName: movieDetail?.genres.first?.name ?? "Unknown",
                                                        voteAverage: "\(movieDetail?.voteAverage ?? 0)",
-                                                       isOnWatchlist: movieState?.isOnWatchlist ?? false,
-                                                       isOnFavorites: movieState?.isFavorite ?? false,
                                                        onWatchlist: addToWatchlist,
                                                        onFavorites: markAsFavorite)
+        movieBannerViewModel.isOnWatchlist = movieState?.isOnWatchlist ?? false
+        movieBannerViewModel.isOnFavorites = movieState?.isFavorite ?? false
         
         title = movieDetail?.title ?? "No Title"
         viewModel.bannerViewModel = movieBannerViewModel
@@ -117,10 +117,28 @@ class MovieDetailViewController: UIViewController {
     }
     
     private func addToWatchlist(_ isOnWatchlist: Bool) {
+        let parameters = WatchlistsState(mediaType: MediaType.movies.rawValue, itemId: movieId, isOnWatchList: !isOnWatchlist)
         
+        itemsStateService.addToWatchList(itemParams: parameters)
+            .handleEvents(receiveOutput: { [weak self] _ in self?.viewModel.bannerViewModel.isWatchlistButtonEnabled = false })
+            .sink { [weak self] in
+                self?.viewModel.bannerViewModel.isWatchlistButtonEnabled = true
+            } onReceived: { [weak self] _ in
+                self?.viewModel.bannerViewModel.isOnWatchlist.toggle()
+            }
+            .store(in: &cancellables)
     }
     
     private func markAsFavorite(_ isFavorite: Bool) {
+        let parameters = FavoritesState(mediaType: MediaType.movies.rawValue, itemId: movieId, isFavorite: !isFavorite)
         
+        itemsStateService.markAsFavorite(itemParams: parameters)
+            .handleEvents(receiveOutput: { [weak self] _ in self?.viewModel.bannerViewModel.isFavoriteButtonEnabled = false })
+            .sink { [weak self] in
+                self?.viewModel.bannerViewModel.isFavoriteButtonEnabled = true
+            } onReceived: { [weak self] _ in
+                self?.viewModel.bannerViewModel.isOnFavorites.toggle()
+            }
+            .store(in: &cancellables)
     }
 }
