@@ -12,4 +12,6 @@ enum TMDBConfiguration {
     static let apiKey = "564e54a030d631c7e0de441d30cda68c"
     static let languageCode = Locale.current.languageCode
     static let imageBasePath = "https://image.tmdb.org/t/p/w500"
+    static let creditsAppendParameter = "credits"
+    static let directorJobDescription = "Director"
 }

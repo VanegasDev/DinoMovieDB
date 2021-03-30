@@ -82,8 +82,8 @@ class MovieListViewController: UIViewController {
             .store(in: &cancellables)
     }
     
-    private func openMovieDetails() {
-        navigationController?.pushViewController(MovieDetailViewController(movie: "Godzilla"), animated: true)
+    private func openMovieDetails(using id: Int) {
+        navigationController?.pushViewController(MovieDetailViewController(with: id), animated: true)
     }
     
     private func requestMovies(on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {

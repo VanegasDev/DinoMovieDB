@@ -28,7 +28,6 @@ struct CrewPerson: Decodable {
 }
 
 struct Credits: Decodable {
-    let id: Int
     let cast: [CastPerson]
     let crew: [CrewPerson]
 }

@@ -27,7 +27,7 @@ class ItemDetailViewModel: ObservableObject, Identifiable {
     // MARK: Properties
     private let service: ItemsServiceType = ItemsService()
     private let mediaType: MediaType
-    private let itemId: Int
+    let itemId: Int
     
     private var cancellables = Set<AnyCancellable>()
     

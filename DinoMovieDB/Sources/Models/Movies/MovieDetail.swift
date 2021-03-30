@@ -17,4 +17,16 @@ struct MovieDetail: Decodable {
     let voteAverage: Double?
     let genres: [Genre]
     let credits: Credits?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case runtime
+        case title
+        case overview
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+        case voteAverage = "vote_average"
+        case genres
+        case credits
+    }
 }

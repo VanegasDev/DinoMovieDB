@@ -31,7 +31,7 @@ class TMDBBannerViewModel: ObservableObject {
         
         self.url = url
         self.title = title
-        self.releaseDate = releaseDate
+        self.releaseDate = DateFormatter.tmdbDatePreviewFormat(from: releaseDate)
         self.generName = genderName
         self.voteAverage = voteAverage
         self.isOnWatchlist = isOnWatchlist

@@ -17,11 +17,11 @@ class MovieListViewModel: ObservableObject {
     
     // MARK: Input
     let fetchUpcomingMoviesTrigger = PassthroughSubject<Void, Never>()
-    let movieTap = PassthroughSubject<Void, Never>()
+    let movieTap = PassthroughSubject<Int, Never>()
     
     // MARK: Ouput
     let fetchUpcomingMoviesPublisher = PassthroughSubject<Void, Never>()
-    let movieSelectedPublisher = PassthroughSubject<Void, Never>()
+    let movieSelectedPublisher = PassthroughSubject<Int, Never>()
     
     init() {
         setupBindings()

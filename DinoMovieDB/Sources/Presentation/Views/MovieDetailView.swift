@@ -13,7 +13,7 @@ struct MovieDetailView: View {
         GridItem(.flexible(minimum: 16)),
     ]
     
-    private var viewModel: MovieDetailViewModel
+    @ObservedObject private var viewModel: MovieDetailViewModel
     
     init(viewModel: MovieDetailViewModel) {
         self.viewModel = viewModel
@@ -33,6 +33,8 @@ struct MovieDetailView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
         .background(Color(R.color.backgroundColor.name))
+        .tmdbActivityIndicator(isAnimating: viewModel.isLoading)
+        .onAppear(perform: viewModel.fetchDetailsTrigger.send)
     }
     
     private var movieDetails: some View {
