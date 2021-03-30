@@ -79,7 +79,7 @@ struct MovieDetailView: View {
     
     private var castingList: some View {
         ScrollView(.horizontal) {
-            LazyHStack(spacing: 6) {
+            LazyHStack(alignment: .top, spacing: 6) {
                 ForEach(viewModel.cast) { actor in
                     TMDBCastView(url: URL(string: "\(TMDBConfiguration.imageBasePath)\(actor.profilePath ?? "")"), name: actor.name, description: actor.character)
                 }

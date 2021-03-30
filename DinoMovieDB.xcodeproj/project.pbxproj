@@ -15,6 +15,7 @@
 		C704138F25EDF8FC000FFC87 /* DinoMovieDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704138E25EDF8FC000FFC87 /* DinoMovieDBTests.swift */; };
 		C704139A25EDF8FD000FFC87 /* DinoMovieDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C704139925EDF8FD000FFC87 /* DinoMovieDBUITests.swift */; };
 		C70413B325EDFC3C000FFC87 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */; };
+		C70D34682612D9EE007B4C05 /* TMDBTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D34672612D9EE007B4C05 /* TMDBTimeFormatter.swift */; };
 		C713A5ED2605C15A0030E961 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C713A5EC2605C15A0030E961 /* KeychainSwift */; };
 		C713A5F22605C1E30030E961 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713A5F12605C1E30030E961 /* ProfileView.swift */; };
 		C713A5F72605C5F60030E961 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C713A5F62605C5F60030E961 /* ProfileViewController.swift */; };
@@ -121,6 +122,7 @@
 		C704139925EDF8FD000FFC87 /* DinoMovieDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinoMovieDBUITests.swift; sourceTree = "<group>"; };
 		C704139B25EDF8FD000FFC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C70413B225EDFC3C000FFC87 /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
+		C70D34672612D9EE007B4C05 /* TMDBTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBTimeFormatter.swift; sourceTree = "<group>"; };
 		C713A5F12605C1E30030E961 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C713A5F62605C5F60030E961 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C717A13425F9CD30006915D5 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
@@ -301,11 +303,20 @@
 				C77C8BC925F0AADE00961122 /* Models */,
 				C77C8BE925F0AED000961122 /* Services */,
 				C77C8BB925F0A31600961122 /* Managers */,
+				C70D34662612D9D8007B4C05 /* Formatter */,
 				C7A4D8A925F5B85800284AD8 /* Coordinators */,
 				C77C8BFA25F0B24500961122 /* Modules */,
 				C77C8B6B25F0935300961122 /* Presentation */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		C70D34662612D9D8007B4C05 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				C70D34672612D9EE007B4C05 /* TMDBTimeFormatter.swift */,
+			);
+			path = Formatter;
 			sourceTree = "<group>";
 		};
 		C717A14725F9D968006915D5 /* PaginationManager */ = {
@@ -799,6 +810,7 @@
 				C77C8BD425F0AC0300961122 /* AuthenticationTarget.swift in Sources */,
 				C7A7E39C25F9EAC00066A7D9 /* TVShowsListViewModel.swift in Sources */,
 				C7A4D8C125F5BCAE00284AD8 /* NotificationCenter+Extensions.swift in Sources */,
+				C70D34682612D9EE007B4C05 /* TMDBTimeFormatter.swift in Sources */,
 				C726CACD2605BF9000AC8E76 /* Storable.swift in Sources */,
 				C7E9AD542611645F00DAF606 /* ItemDetailService.swift in Sources */,
 				C704137825EDF8FB000FFC87 /* AppDelegate.swift in Sources */,

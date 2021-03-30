@@ -111,7 +111,7 @@ class MovieDetailViewController: UIViewController {
         title = movieDetail?.title ?? "No Title"
         viewModel.bannerViewModel = movieBannerViewModel
         viewModel.directorName = movieDetail?.credits?.crew.first { $0.job == TMDBConfiguration.directorJobDescription }?.name ?? "Unknown"
-        viewModel.duration = "\(movieDetail?.runtime ?? 0)"
+        viewModel.duration = TMDBTimeFormatter.default.formatMinutesToHourMinutes(from: movieDetail?.runtime ?? 0)
         viewModel.overview = movieDetail?.overview ?? "No Description"
         viewModel.cast = movieDetail?.credits?.cast ?? []
     }

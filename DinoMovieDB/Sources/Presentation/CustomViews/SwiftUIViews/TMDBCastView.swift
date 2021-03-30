@@ -16,9 +16,17 @@ struct TMDBCastView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             KFImage(url)
+                .placeholder {
+                    Image(systemName: "person")
+                        .resizable()
+                        .scaledToFit()
+                        .padding()
+                        .foregroundColor(.white)
+                }
                 .resizable()
                 .aspectRatio(125/175, contentMode: .fit)
                 .frame(height: 175)
+                .background(Color(R.color.primarySolid.name))
                 .clipShape(RoundedRectangle(cornerRadius: 15))
                 .shadow(color: Color(R.color.tmdbShadow.name), radius: 10, x: 0, y: 5)
             VStack(alignment: .leading, spacing: 0) {
@@ -30,6 +38,8 @@ struct TMDBCastView: View {
                     .foregroundColor(Color(R.color.secondaryColor.name))
             }
         }
+        .fixedSize(horizontal: false, vertical: false)
+        .frame(width: 125)
     }
 }
 
