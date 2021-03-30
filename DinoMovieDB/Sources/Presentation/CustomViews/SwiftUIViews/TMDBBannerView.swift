@@ -61,10 +61,12 @@ struct TMDBBannerView: View {
                     Image(systemName: viewModel.isOnWatchlist ? "eye.slash" : "eye")
                 }
                 .frame(height: 24)
+                .disabled(!viewModel.isWatchlistButtonEnabled)
                 Button(action: viewModel.onFavoritesTap) {
                     Image(systemName: viewModel.isOnFavorites ? "heart.slash" : "heart")
                 }
                 .frame(height: 24)
+                .disabled(!viewModel.isFavoriteButtonEnabled)
             }
         }
         .foregroundColor(.white)
@@ -78,8 +80,6 @@ struct TMDBBannerView_Previews: PreviewProvider {
                                             releaseDate: "June 23, 2021",
                                             genderName: "Terror",
                                             voteAverage: "15",
-                                            isOnWatchlist: true,
-                                            isOnFavorites: true,
                                             onWatchlist: { _ in },
                                             onFavorites: { _ in })
         return TMDBBannerView(viewModel: viewModel)

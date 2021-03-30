@@ -9,11 +9,6 @@ import Foundation
 import Combine
 
 class ItemDetailViewModel: ObservableObject, Identifiable {
-    enum MediaType: String {
-        case movies = "movie"
-        case tvShows = "tv"
-    }
-    
     // MARK: Published
     @Published var isMarkedAsFavorite: Bool = false
     @Published var isOnWatchlist: Bool = false
