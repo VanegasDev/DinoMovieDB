@@ -55,7 +55,10 @@ class MovieListViewController: UIViewController {
     
     private func setupBindings() {
         let fetchMoviesPublisher = viewModel.fetchUpcomingMoviesPublisher.receive(on: DispatchQueue.main)
+        let moviesTapPublisher = viewModel.movieSelectedPublisher.receive(on: DispatchQueue.main)
+        
         fetchMoviesPublisher.sink(receiveValue: fetchMovies).store(in: &cancellables)
+        moviesTapPublisher.sink(receiveValue: openMovieDetails).store(in: &cancellables)
     }
     
     // MARK: Functionality
@@ -77,6 +80,10 @@ class MovieListViewController: UIViewController {
                 self?.updateReceivedMovies(receivedMovies)
             }
             .store(in: &cancellables)
+    }
+    
+    private func openMovieDetails(using id: Int) {
+        navigationController?.pushViewController(MovieDetailViewController(with: id), animated: true)
     }
     
     private func requestMovies(on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {

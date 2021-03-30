@@ -11,6 +11,7 @@ enum MoviesTarget {
     case latest(page: Int)
     case search(movie: String, page: Int)
     case fetchMovieState(movieId: Int, session: SessionToken?)
+    case fetchMovieDetail(movieId: Int, appendToResponse: String?)
 }
 
 // MARK: TMDBTargetType Implementation
@@ -23,12 +24,14 @@ extension MoviesTarget: TMDBTargetType {
             return "/search/movie"
         case .fetchMovieState(let movieId, _):
             return "/movie/\(movieId)/account_states"
+        case .fetchMovieDetail(let movieId, _):
+            return "/movie/\(movieId)"
         }
     }
     
     var requestMethod: TMDBRequestMethodType {
         switch self {
-        case .latest, .search, .fetchMovieState:
+        case .latest, .search, .fetchMovieState, .fetchMovieDetail:
             return .get
         }
     }
@@ -63,6 +66,15 @@ extension MoviesTarget {
             let params: [String: Any] = [
                 "api_key": TMDBConfiguration.apiKey,
                 "session_id": session?.sessionId ?? ""
+            ]
+            
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+            
+        case .fetchMovieDetail(_, let appendToResponse):
+            let params: [String: Any] = [
+                "api_key": TMDBConfiguration.apiKey,
+                "language": TMDBConfiguration.languageCode ?? "en",
+                "append_to_response": appendToResponse ?? ""
             ]
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)

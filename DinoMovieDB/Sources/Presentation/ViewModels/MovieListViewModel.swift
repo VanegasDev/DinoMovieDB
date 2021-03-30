@@ -15,8 +15,13 @@ class MovieListViewModel: ObservableObject {
     // MARK: Properties
     private var cancellables = Set<AnyCancellable>()
     
+    // MARK: Input
     let fetchUpcomingMoviesTrigger = PassthroughSubject<Void, Never>()
+    let movieTap = PassthroughSubject<Int, Never>()
+    
+    // MARK: Ouput
     let fetchUpcomingMoviesPublisher = PassthroughSubject<Void, Never>()
+    let movieSelectedPublisher = PassthroughSubject<Int, Never>()
     
     init() {
         setupBindings()
@@ -26,9 +31,12 @@ class MovieListViewModel: ObservableObject {
     func setupBindings() {
         // Sets Publishers
         let fetchUpcomingMoviesTriggerPublisher = fetchUpcomingMoviesTrigger.receive(on: DispatchQueue.main)
+        let movieTapPublisher = movieTap.receive(on: DispatchQueue.main)
         
         fetchUpcomingMoviesTriggerPublisher
             .sink(receiveValue: fetchUpcomingMoviesPublisher.send)
+            .store(in: &cancellables)
+        movieTapPublisher.sink(receiveValue: movieSelectedPublisher.send)
             .store(in: &cancellables)
     }
 }
