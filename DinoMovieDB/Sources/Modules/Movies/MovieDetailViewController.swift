@@ -51,7 +51,8 @@ class MovieDetailViewController: UIViewController {
     
     // MARK: OBJC Actions
     @objc private func rateMovie() {
-        
+        let viewController = UINavigationController(rootViewController: MovieRateViewController())
+        present(viewController, animated: true)
     }
     
     // MARK: Setup
