@@ -36,10 +36,6 @@ extension TVShowsTarget: TMDBTargetType {
 
 // MARK: Moya Implementation
 extension TVShowsTarget {
-    var path: String  {
-        requestEndpoint
-    }
-    
     var task: Task {
         switch self {
         case .popular(let page):

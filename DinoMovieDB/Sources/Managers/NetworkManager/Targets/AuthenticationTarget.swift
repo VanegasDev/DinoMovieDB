@@ -39,10 +39,6 @@ extension AuthenticationTarget: TMDBTargetType {
 
 // MARK: Moya Target Implemetation
 extension AuthenticationTarget {
-    var path: String {
-        requestEndpoint
-    }
-    
     var task: Task {
         switch self {
         case .requestToken:

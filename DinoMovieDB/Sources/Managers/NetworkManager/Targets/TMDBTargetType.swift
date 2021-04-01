@@ -43,6 +43,10 @@ extension TMDBTargetType {
         requestHeaders
     }
     
+    var path: String {
+        requestEndpoint
+    }
+    
     var method: Moya.Method {
         switch requestMethod {
         case .delete: return .delete
