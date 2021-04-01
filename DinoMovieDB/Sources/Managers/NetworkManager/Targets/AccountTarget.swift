@@ -44,10 +44,6 @@ extension AccountTarget: TMDBTargetType {
 
 // MARK: Moya Implementation
 extension AccountTarget {
-    var path: String {
-        requestEndpoint
-    }
-    
     var task: Task {
         switch self {
         case .information(let sessionToken):

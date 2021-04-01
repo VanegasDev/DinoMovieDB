@@ -15,6 +15,8 @@ protocol ItemsServiceType {
     func addToWatchList(itemParams: WatchlistsState) -> AnyPublisher<NetworkResponse, Error>
     func fetchMoviesState(movieId: Int) -> AnyPublisher<ItemState, Error>
     func fetchTvShowsState(showId: Int) -> AnyPublisher<ItemState, Error>
+    func rate(movieId: Int, rating value: Int) -> AnyPublisher<NetworkResponse, Error>
+    func deleteRateOn(movieId: Int) -> AnyPublisher<NetworkResponse, Error>
 }
 
 // MARK: ItemServiceType Implementation
@@ -50,5 +52,18 @@ struct ItemsService: ItemsServiceType {
         let sessionToken = SessionToken.get(from: .keychainSwift)
         
         return apiRequester.request(TVShowsTarget.fetchShowState(showId: showId, session: sessionToken))
+    }
+    
+    func rate(movieId: Int, rating value: Int) -> AnyPublisher<NetworkResponse, Error> {
+        let sessionToken = SessionToken.get(from: .keychainSwift)
+        let rate = Rate(value: Double(value * 2))
+        
+        return apiRequester.request(MoviesTarget.rate(movieId: movieId, rate: rate, session: sessionToken))
+    }
+    
+    func deleteRateOn(movieId: Int) -> AnyPublisher<NetworkResponse, Error> {
+        let sessionToken = SessionToken.get(from: .keychainSwift)
+        
+        return apiRequester.request(MoviesTarget.deleteRate(movieId: movieId, session: sessionToken))
     }
 }

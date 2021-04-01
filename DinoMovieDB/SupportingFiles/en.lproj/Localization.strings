@@ -39,3 +39,11 @@
 "movie_detail_overview_title" = "Overview";
 "movie_detail_cast_title" = "Cast";
 "movie_detail_rate_button_title" = "Rate it!";
+
+/* Item Rate */
+"movie_rate_title" = "Rate Movie";
+"tv_show_rate_title" = "Rate TVShow";
+"item_rate_description" = "Give %@ a Rate!";
+
+/* Custom Views */
+"done_alert_title" = "Done!";

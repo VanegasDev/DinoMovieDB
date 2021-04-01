@@ -39,3 +39,11 @@
 "movie_detail_overview_title" = "Sinopsis";
 "movie_detail_cast_title" = "Cast";
 "movie_detail_rate_button_title" = "Calificar!";
+
+/* Item Rate */
+"movie_rate_title" = "Calificar Película";
+"tv_show_rate_title" = "Calificar TVShow";
+"item_rate_description" = "Califica %@!";
+
+/* Custom Views */
+"done_alert_title" = "Listo!";

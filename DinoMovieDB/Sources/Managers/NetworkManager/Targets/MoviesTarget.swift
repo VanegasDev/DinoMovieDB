@@ -5,6 +5,7 @@
 //  Created by Mario Vanegas on 3/9/21.
 //
 
+import Foundation
 import Moya
 
 enum MoviesTarget {
@@ -12,6 +13,8 @@ enum MoviesTarget {
     case search(movie: String, page: Int)
     case fetchMovieState(movieId: Int, session: SessionToken?)
     case fetchMovieDetail(movieId: Int, appendToResponse: String?)
+    case rate(movieId: Int, rate: Rate, session: SessionToken?)
+    case deleteRate(movieId: Int, session: SessionToken?)
 }
 
 // MARK: TMDBTargetType Implementation
@@ -26,6 +29,10 @@ extension MoviesTarget: TMDBTargetType {
             return "/movie/\(movieId)/account_states"
         case .fetchMovieDetail(let movieId, _):
             return "/movie/\(movieId)"
+        case .rate(let movieId, _, _):
+            return "/movie/\(movieId)/rating"
+        case .deleteRate(let movieId, _):
+            return "/movie/\(movieId)/rating"
         }
     }
     
@@ -33,16 +40,16 @@ extension MoviesTarget: TMDBTargetType {
         switch self {
         case .latest, .search, .fetchMovieState, .fetchMovieDetail:
             return .get
+        case .rate:
+            return .post
+        case .deleteRate:
+            return .delete
         }
     }
 }
 
 // MARK: Moya Implementation
 extension MoviesTarget {
-    var path: String {
-        requestEndpoint
-    }
-    
     var task: Task {
         switch self {
         case .latest(let page):
@@ -78,6 +85,24 @@ extension MoviesTarget {
             ]
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+            
+        case .rate(_, let rate, let session):
+            let queryParams: [String: Any] = [
+                "api_key": TMDBConfiguration.apiKey,
+                "session_id": session?.sessionId ?? ""
+            ]
+            
+            let bodyParams: [String: Any] = JSONEncoder().encodeAsDictionary(rate) ?? [:]
+            
+            return .requestCompositeParameters(bodyParameters: bodyParams, bodyEncoding: JSONEncoding.default, urlParameters: queryParams)
+            
+        case .deleteRate(_, let session):
+            let queryParams: [String: Any] = [
+                "api_key": TMDBConfiguration.apiKey,
+                "session_id": session?.sessionId ?? ""
+            ]
+            
+            return .requestParameters(parameters: queryParams, encoding: URLEncoding.queryString)
         }
     }
 }
