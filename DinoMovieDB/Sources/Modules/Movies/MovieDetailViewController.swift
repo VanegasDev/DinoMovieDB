@@ -17,6 +17,7 @@ class MovieDetailViewController: UIViewController {
     private lazy var rateItButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: R.string.localization.movie_detail_rate_button_title(), style: .plain, target: self, action: #selector(rateMovie))
         button.tintColor = .systemBlue
+        button.isEnabled = false
         
         return button
     }()
@@ -51,7 +52,7 @@ class MovieDetailViewController: UIViewController {
     
     // MARK: OBJC Actions
     @objc private func rateMovie() {
-        let viewController = UINavigationController(rootViewController: MovieRateViewController())
+        let viewController = UINavigationController(rootViewController: MovieRateViewController(movieId: movieId, movieName: movieDetail?.title ?? "No Title"))
         present(viewController, animated: true)
     }
     
@@ -115,6 +116,7 @@ class MovieDetailViewController: UIViewController {
         viewModel.duration = TMDBTimeFormatter.default.formatMinutesToHourMinutes(from: movieDetail?.runtime ?? 0)
         viewModel.overview = movieDetail?.overview ?? "No Description"
         viewModel.cast = movieDetail?.credits?.cast ?? []
+        rateItButton.isEnabled = true
     }
     
     private func addToWatchlist(_ isOnWatchlist: Bool) {

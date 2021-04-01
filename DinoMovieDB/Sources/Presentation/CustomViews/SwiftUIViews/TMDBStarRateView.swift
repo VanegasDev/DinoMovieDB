@@ -10,8 +10,7 @@ import Combine
 
 struct TMDBStarRateView: View {
     // MARK: Output
-    @State var numberOfChosenStars: Int = 0
-    let resetRatingPublisherOutput = PassthroughSubject<Void, Never>()
+    @Binding var numberOfChosenStars: Int
     
     var body: some View {
         HStack(alignment: .center, spacing: 5) {
@@ -38,12 +37,11 @@ struct TMDBStarRateView: View {
     
     private func resetRating() {
         numberOfChosenStars = 0
-        resetRatingPublisherOutput.send(())
     }
 }
 
 struct TMDBStarRateView_Previews: PreviewProvider {
     static var previews: some View {
-        TMDBStarRateView()
+        TMDBStarRateView(numberOfChosenStars: .constant(2))
     }
 }

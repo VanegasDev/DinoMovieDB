@@ -5,6 +5,7 @@
 //  Created by Mario Vanegas on 3/9/21.
 //
 
+import Foundation
 import Moya
 
 enum MoviesTarget {
@@ -12,7 +13,7 @@ enum MoviesTarget {
     case search(movie: String, page: Int)
     case fetchMovieState(movieId: Int, session: SessionToken?)
     case fetchMovieDetail(movieId: Int, appendToResponse: String?)
-    case rate(movieId: Int, rating: Int, session: SessionToken?)
+    case rate(movieId: Int, rate: Rate, session: SessionToken?)
     case deleteRate(movieId: Int, session: SessionToken?)
 }
 
@@ -85,13 +86,13 @@ extension MoviesTarget {
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
             
-        case .rate(_, let rating, let session):
+        case .rate(_, let rate, let session):
             let queryParams: [String: Any] = [
                 "api_key": TMDBConfiguration.apiKey,
                 "session_id": session?.sessionId ?? ""
             ]
             
-            let bodyParams: [String: Any] = ["value": rating]
+            let bodyParams: [String: Any] = JSONEncoder().encodeAsDictionary(rate) ?? [:]
             
             return .requestCompositeParameters(bodyParameters: bodyParams, bodyEncoding: JSONEncoding.default, urlParameters: queryParams)
             
