@@ -22,7 +22,7 @@ struct TVShowDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                TMDBBannerView(viewModel: bannerMock)
+                TMDBBannerView(viewModel: viewModel.bannerViewModel)
                 VStack(alignment: .leading, spacing: 8) {
                     tvShowsDetails
                     overview
@@ -72,7 +72,7 @@ struct TVShowDetailView: View {
         ScrollView(.horizontal) {
             LazyHStack(alignment: .top, spacing: 6) {
                 ForEach(viewModel.cast) { actor in
-                    TMDBCastView(url: URL(string: actor.profilePath ?? ""), name: actor.name, description: actor.character)
+                    TMDBCastView(url: URL(string: "\(TMDBConfiguration.imageBasePath)\(actor.profilePath ?? "")"), name: actor.name, description: actor.character)
                 }
             }
         }
@@ -82,7 +82,7 @@ struct TVShowDetailView: View {
         ScrollView(.horizontal) {
             LazyHStack(alignment: .top, spacing: 6) {
                 ForEach(viewModel.seasons) { season in
-                    TMDBSeasonView(url: URL(string: season.posterPath ?? ""),
+                    TMDBSeasonView(url: URL(string: "\(TMDBConfiguration.imageBasePath)\(season.posterPath ?? "")"),
                                    title: R.string.localization.show_detail_season_number("\(season.seasonNumber)"),
                                    description: R.string.localization.show_detail_season_episodes("\(season.numberOfEpisodes)"))
                 }

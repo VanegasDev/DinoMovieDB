@@ -26,15 +26,16 @@ struct TVShowsListView: View {
                         .frame(height: 250)
                         .onAppear {
                             if viewModel.showsViewModel.shouldPaginate(on: show) {
-                                viewModel.fetchPopularShowsTrigger.send()
+                                viewModel.fetchPopularShowsInput.send()
                             }
                         }
+                        .onTapGesture { self.viewModel.selectShowInput.send(show.itemId) }
                 }
             }
             .padding()
             .background(Color(R.color.backgroundColor.name))
         }
-        .onAppear(perform: viewModel.fetchPopularShowsTrigger.send)
+        .onAppear(perform: viewModel.fetchPopularShowsInput.send)
     }
 }
 

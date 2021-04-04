@@ -15,8 +15,13 @@ class TVShowsListViewModel: ObservableObject {
     // MARK: Properties
     private var cancellables = Set<AnyCancellable>()
     
-    let fetchPopularShowsTrigger = PassthroughSubject<Void, Never>()
-    let fetchPopularShowsPublisher = PassthroughSubject<Void, Never>()
+    // MARK: Inputs
+    let fetchPopularShowsInput = PassthroughSubject<Void, Never>()
+    let selectShowInput = PassthroughSubject<Int, Never>()
+    
+    // MARK: Outputs
+    let fetchPopularShowsOutput = PassthroughSubject<Void, Never>()
+    let selectShowOutput = PassthroughSubject<Int, Never>()
     
     init() {
         setupBindings()
@@ -25,10 +30,14 @@ class TVShowsListViewModel: ObservableObject {
     // MARK: Setup
     func setupBindings() {
         // Sets Publishers
-        let fetchPopularShowsTriggerPublisher = fetchPopularShowsTrigger.receive(on: DispatchQueue.main)
+        let fetchPopularShowsTriggerPublisher = fetchPopularShowsInput.receive(on: DispatchQueue.main)
+        let selectShowPublisher = selectShowInput.receive(on: DispatchQueue.main)
         
         fetchPopularShowsTriggerPublisher
-            .sink(receiveValue: fetchPopularShowsPublisher.send)
+            .sink(receiveValue: fetchPopularShowsOutput.send)
+            .store(in: &cancellables)
+        selectShowPublisher
+            .sink(onReceived: selectShowOutput.send)
             .store(in: &cancellables)
     }
 }
