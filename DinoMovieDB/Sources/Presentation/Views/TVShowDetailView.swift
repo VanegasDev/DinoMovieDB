@@ -7,13 +7,17 @@
 
 import SwiftUI
 
-let bannerMock = TMDBBannerViewModel(url: nil, title: "NO Title", releaseDate: "-", genderName: "terror", voteAverage: "2", onWatchlist: {_ in}, onFavorites: {_ in})
-
 struct TVShowDetailView: View {
     private let rows = [
         GridItem(.flexible(minimum: 16)),
         GridItem(.flexible(minimum: 16)),
     ]
+    
+    @ObservedObject private var viewModel: TVShowDetailViewModel
+    
+    init(viewModel: TVShowDetailViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         ScrollView {
@@ -30,25 +34,25 @@ struct TVShowDetailView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
         .background(Color(R.color.backgroundColor.name))
-//        .tmdbActivityIndicator(isAnimating: viewModel.isLoading)
-//        .onAppear(perform: viewModel.fetchDetailsTrigger.send)
+        .tmdbActivityIndicator(isAnimating: viewModel.isLoading)
+        .onAppear(perform: viewModel.fetchDetailsInput.send)
     }
     
     private var tvShowsDetails: some View {
         HStack {
             VStack(alignment: .leading, spacing: 0) {
-                Text("Director:")
+                Text(R.string.localization.show_detail_director_title())
                     .font(.system(size: 17))
                     .fontWeight(.bold)
-                Text("Director")
+                Text(viewModel.creator)
                     .font(.system(size: 15))
             }
             Spacer()
             VStack(alignment: .leading, spacing: 0) {
-                Text("Duration:")
+                Text(R.string.localization.show_detail_duration_title())
                     .font(.system(size: 17))
                     .fontWeight(.bold)
-                Text("1h 15m")
+                Text(viewModel.duration)
                     .font(.system(size: 15))
             }
         }
@@ -56,10 +60,10 @@ struct TVShowDetailView: View {
     
     private var overview: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Detail:")
+            Text(R.string.localization.show_detail_overview_title())
                 .font(.system(size: 22))
                 .fontWeight(.bold)
-            Text("Lorem Ipsum")
+            Text(viewModel.overview)
                 .font(.system(size: 17))
         }
     }
@@ -67,8 +71,8 @@ struct TVShowDetailView: View {
     private var castingList: some View {
         ScrollView(.horizontal) {
             LazyHStack(alignment: .top, spacing: 6) {
-                ForEach(0 ..< 3) { _ in
-                    TMDBCastView(url: URL(string: ""), name: "Nombre", description: "Personaje")
+                ForEach(viewModel.cast) { actor in
+                    TMDBCastView(url: URL(string: actor.profilePath ?? ""), name: actor.name, description: actor.character)
                 }
             }
         }
@@ -77,8 +81,10 @@ struct TVShowDetailView: View {
     private var seasonsList: some View {
         ScrollView(.horizontal) {
             LazyHStack(alignment: .top, spacing: 6) {
-                ForEach(0 ..< 3) { _ in
-                    TMDBSeasonView(url: URL(string: ""), title: "Nombre", description: "Personaje")
+                ForEach(viewModel.seasons) { season in
+                    TMDBSeasonView(url: URL(string: season.posterPath ?? ""),
+                                   title: R.string.localization.show_detail_season_number("\(season.seasonNumber)"),
+                                   description: R.string.localization.show_detail_season_episodes("\(season.numberOfEpisodes)"))
                 }
             }
         }
@@ -87,6 +93,6 @@ struct TVShowDetailView: View {
 
 struct TVShowDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TVShowDetailView()
+        TVShowDetailView(viewModel: TVShowDetailViewModel())
     }
 }

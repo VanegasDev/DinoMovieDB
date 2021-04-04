@@ -35,11 +35,11 @@ struct ShowDetail: Decodable {
     }
 }
 
-struct Season: Decodable {
+struct Season: Decodable, Identifiable {
     let id: Int
     let seasonNumber: Int
     let numberOfEpisodes: Int
-    let posterPath: String
+    let posterPath: String?
     
     enum CodingKeys: String, CodingKey {
         case id

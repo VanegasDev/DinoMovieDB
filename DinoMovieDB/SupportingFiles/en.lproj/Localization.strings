@@ -40,6 +40,16 @@
 "movie_detail_cast_title" = "Cast";
 "movie_detail_rate_button_title" = "Rate it!";
 
+/* TVShow Detail */
+"show_detail_director_title" = "Creator:";
+"show_detail_duration_title" = "Duration:";
+"show_detail_overview_title" = "Overview";
+"show_detail_cast_title" = "Cast";
+"show_detail_seasons_title" = "Seasons";
+"show_detail_season_number" = "Season %@";
+"show_detail_season_episodes" = "%@ Episodes";
+"show_detail_rate_button_title" = "Rate it!";
+
 /* Item Rate */
 "movie_rate_title" = "Rate Movie";
 "tv_show_rate_title" = "Rate TVShow";
