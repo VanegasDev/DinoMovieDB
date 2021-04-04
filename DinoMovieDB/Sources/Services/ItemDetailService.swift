@@ -11,6 +11,7 @@ import Combine
 // MARK: ItemDetailServiceType protocol
 protocol ItemDetailServiceType {
     func fetchDetailOfMovie(id: Int, appendToRequest: String?) -> AnyPublisher<MovieDetail, Error>
+    func fetchDetailOfTVShow(id: Int, appendToRequest: String?) -> AnyPublisher<ShowDetail, Error>
 }
 
 // MARK: ItemDetailServiceType Implementation
@@ -24,5 +25,9 @@ struct ItemDetailService: ItemDetailServiceType {
     
     func fetchDetailOfMovie(id: Int, appendToRequest: String?) -> AnyPublisher<MovieDetail, Error> {
         apiRequester.request(MoviesTarget.fetchMovieDetail(movieId: id, appendToResponse: appendToRequest))
+    }
+    
+    func fetchDetailOfTVShow(id: Int, appendToRequest: String?) -> AnyPublisher<ShowDetail, Error> {
+        apiRequester.request(TVShowsTarget.fetchShowDetail(showId: id, appendToResponse: appendToRequest))
     }
 }
