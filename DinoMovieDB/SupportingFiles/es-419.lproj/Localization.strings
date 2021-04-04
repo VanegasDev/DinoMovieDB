@@ -40,6 +40,16 @@
 "movie_detail_cast_title" = "Cast";
 "movie_detail_rate_button_title" = "Calificar!";
 
+/* TVShow Detail */
+"show_detail_director_title" = "Creador:";
+"show_detail_duration_title" = "Duración:";
+"show_detail_overview_title" = "Sinopsis";
+"show_detail_cast_title" = "Cast";
+"show_detail_seasons_title" = "Temporadas";
+"show_detail_season_number" = "Temporada %@";
+"show_detail_season_episodes" = "%@ Episodios";
+"show_detail_rate_button_title" = "Calificar!";
+
 /* Item Rate */
 "movie_rate_title" = "Calificar Película";
 "tv_show_rate_title" = "Calificar TVShow";

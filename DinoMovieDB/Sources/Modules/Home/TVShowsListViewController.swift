@@ -49,8 +49,11 @@ class TVShowsListViewController: UIViewController {
     }
     
     private func setupBindings() {
-        let fetchMoviesPublisher = viewModel.fetchPopularShowsPublisher.receive(on: DispatchQueue.main)
+        let fetchMoviesPublisher = viewModel.fetchPopularShowsOutput.receive(on: DispatchQueue.main)
+        let openShowPublisher = viewModel.selectShowOutput.receive(on: DispatchQueue.main)
+        
         fetchMoviesPublisher.sink(receiveValue: fetchShows).store(in: &cancellables)
+        openShowPublisher.sink(onReceived: openShowDetails).store(in: &cancellables)
     }
     
     // MARK: Functionality
@@ -72,6 +75,10 @@ class TVShowsListViewController: UIViewController {
                 self?.updateReceivedTVShows(receivedMovies)
             }
             .store(in: &cancellables)
+    }
+    
+    private func openShowDetails(using id: Int) {
+        navigationController?.pushViewController(TVShowDetailViewController(with: id), animated: true)
     }
     
     private func requestTVShows(on page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {

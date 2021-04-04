@@ -33,7 +33,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init?(coder: NSCoder)")
+        fatalError("init?(coder: NSCoder) hasn't been implemented")
     }
     
     // MARK: ViewController Lifecyle
