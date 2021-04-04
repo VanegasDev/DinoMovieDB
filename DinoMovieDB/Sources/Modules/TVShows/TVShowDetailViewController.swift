@@ -46,7 +46,8 @@ class TVShowDetailViewController: UIViewController {
     
     // MARK: OBJC Functions
     @objc private func rateShow() {
-        
+        let viewController = ShowRateViewController(showId: showId, showTitle: showDetail?.title ?? "No Title")
+        present(UINavigationController(rootViewController: viewController), animated: true)
     }
     
     // MARK: Setup

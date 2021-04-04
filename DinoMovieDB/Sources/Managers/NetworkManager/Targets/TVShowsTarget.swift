@@ -5,6 +5,7 @@
 //  Created by Mario Vanegas on 3/11/21.
 //
 
+import Foundation
 import Moya
 
 enum TVShowsTarget {
@@ -12,6 +13,8 @@ enum TVShowsTarget {
     case search(show: String, page: Int)
     case fetchShowState(showId: Int, session: SessionToken?)
     case fetchShowDetail(showId: Int, appendToResponse: String?)
+    case rate(showId: Int, rate: Rate, session: SessionToken?)
+    case deleteRate(showId: Int, session: SessionToken?)
 }
 
 // MARK: TMDBTargetType Implementation
@@ -26,6 +29,10 @@ extension TVShowsTarget: TMDBTargetType {
             return "/tv/\(showId)/account_states"
         case .fetchShowDetail(let showId, _):
             return "/tv/\(showId)"
+        case .rate(let showId, _, _):
+            return "/tv/\(showId)/rating"
+        case .deleteRate(let showId, _):
+            return "/tv/\(showId)/rating"
         }
     }
     
@@ -33,6 +40,10 @@ extension TVShowsTarget: TMDBTargetType {
         switch self {
         case .popular, .search, .fetchShowState, .fetchShowDetail:
             return .get
+        case .rate:
+            return .post
+        case .deleteRate:
+            return .delete
         }
     }
 }
@@ -74,6 +85,21 @@ extension TVShowsTarget {
             ]
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+        case .rate(_, let rate, let session):
+            let bodyParams = JSONEncoder().encodeAsDictionary(rate) ?? [:]
+            let queryParams: [String: Any] = [
+                "api_key": TMDBConfiguration.apiKey,
+                "session_id": session?.sessionId ?? ""
+            ]
+            
+            return .requestCompositeParameters(bodyParameters: bodyParams, bodyEncoding: JSONEncoding.default, urlParameters: queryParams)
+        case .deleteRate(_, let session):
+            let queryParams: [String: Any] = [
+                "api_key": TMDBConfiguration.apiKey,
+                "session_id": session?.sessionId ?? ""
+            ]
+            
+            return .requestParameters(parameters: queryParams, encoding: URLEncoding.queryString)
         }
     }
 }

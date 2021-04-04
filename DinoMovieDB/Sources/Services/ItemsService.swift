@@ -16,7 +16,9 @@ protocol ItemsServiceType {
     func fetchMoviesState(movieId: Int) -> AnyPublisher<ItemState, Error>
     func fetchTvShowsState(showId: Int) -> AnyPublisher<ItemState, Error>
     func rate(movieId: Int, rating value: Int) -> AnyPublisher<NetworkResponse, Error>
+    func rate(showId: Int, rating value: Int) -> AnyPublisher<NetworkResponse, Error>
     func deleteRateOn(movieId: Int) -> AnyPublisher<NetworkResponse, Error>
+    func deleteRateOn(showId: Int) -> AnyPublisher<NetworkResponse, Error>
 }
 
 // MARK: ItemServiceType Implementation
@@ -59,6 +61,19 @@ struct ItemsService: ItemsServiceType {
         let rate = Rate(value: Double(value * 2))
         
         return apiRequester.request(MoviesTarget.rate(movieId: movieId, rate: rate, session: sessionToken))
+    }
+    
+    func rate(showId: Int, rating value: Int) -> AnyPublisher<NetworkResponse, Error> {
+        let sessionToken = SessionToken.get(from: .keychainSwift)
+        let rate = Rate(value: Double(value * 2))
+        
+        return apiRequester.request(TVShowsTarget.rate(showId: showId, rate: rate, session: sessionToken))
+    }
+    
+    func deleteRateOn(showId: Int) -> AnyPublisher<NetworkResponse, Error> {
+        let sessionToken = SessionToken.get(from: .keychainSwift)
+        
+        return apiRequester.request(TVShowsTarget.deleteRate(showId: showId, session: sessionToken))
     }
     
     func deleteRateOn(movieId: Int) -> AnyPublisher<NetworkResponse, Error> {
