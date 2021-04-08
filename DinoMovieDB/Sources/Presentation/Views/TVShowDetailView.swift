@@ -26,8 +26,19 @@ struct TVShowDetailView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     tvShowsDetails
                     overview
-                    castingList
-                    seasonsList
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(R.string.localization.show_detail_cast_title())
+                            .font(.system(size: 22))
+                            .fontWeight(.bold)
+                        castingList
+                    }
+                    .fixedSize(horizontal: false, vertical: true)
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(R.string.localization.show_detail_seasons_title())
+                            .font(.system(size: 22))
+                            .fontWeight(.bold)
+                        seasonsList
+                    }
                 }
             }
         }
