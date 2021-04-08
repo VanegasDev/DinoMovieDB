@@ -44,6 +44,12 @@ class TVShowDetailViewController: UIViewController {
         setupBindings()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     // MARK: OBJC Functions
     @objc private func rateShow() {
         let viewController = ShowRateViewController(showId: showId, showTitle: showDetail?.title ?? "No Title")
