@@ -28,7 +28,7 @@ struct TMDBCastView: View {
                 .frame(height: 175)
                 .background(Color(R.color.primarySolid.name))
                 .clipShape(RoundedRectangle(cornerRadius: 15))
-                .shadow(color: Color(R.color.tmdbShadow.name), radius: 10, x: 0, y: 5)
+                .shadow(color: Color(R.color.tmdbShadow.name), radius: 10, x: 0, y: 15)
             VStack(alignment: .leading, spacing: 0) {
                 Text(name)
                     .font(.system(size: 15))
