@@ -39,6 +39,8 @@
 		C718186525F352C20039FCDF /* TMDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C718186425F352C20039FCDF /* TMDBError.swift */; };
 		C726CAC82605BE7600AC8E76 /* AnyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726CAC72605BE7600AC8E76 /* AnyStorage.swift */; };
 		C726CACD2605BF9000AC8E76 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726CACC2605BF9000AC8E76 /* Storable.swift */; };
+		C7317DD6261ED7240082D195 /* TMDBChevronModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7317DD5261ED7240082D195 /* TMDBChevronModifier.swift */; };
+		C7317DDB261ED7F70082D195 /* TMDBProfileOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7317DDA261ED7F70082D195 /* TMDBProfileOptionView.swift */; };
 		C73C814C26099C2900DB8887 /* AccountTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C814B26099C2900DB8887 /* AccountTarget.swift */; };
 		C73C81552609A0B800DB8887 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C81542609A0B800DB8887 /* Avatar.swift */; };
 		C73C815D2609A1F000DB8887 /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C815C2609A1F000DB8887 /* MyAccount.swift */; };
@@ -157,6 +159,8 @@
 		C718186425F352C20039FCDF /* TMDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBError.swift; sourceTree = "<group>"; };
 		C726CAC72605BE7600AC8E76 /* AnyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStorage.swift; sourceTree = "<group>"; };
 		C726CACC2605BF9000AC8E76 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
+		C7317DD5261ED7240082D195 /* TMDBChevronModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBChevronModifier.swift; sourceTree = "<group>"; };
+		C7317DDA261ED7F70082D195 /* TMDBProfileOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBProfileOptionView.swift; sourceTree = "<group>"; };
 		C73C814B26099C2900DB8887 /* AccountTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTarget.swift; sourceTree = "<group>"; };
 		C73C81542609A0B800DB8887 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		C73C815C2609A1F000DB8887 /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
@@ -475,6 +479,7 @@
 				C70D34832612ECCB007B4C05 /* TMDBStarRateView.swift */,
 				C70D34882612F1E6007B4C05 /* TMDBDoneAlertView.swift */,
 				C707A987261950FC009B063F /* TMDBSeasonView.swift */,
+				C7317DDA261ED7F70082D195 /* TMDBProfileOptionView.swift */,
 			);
 			path = SwiftUIViews;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 				C77C8B8025F0967600961122 /* TMDBPlaceholderModifier.swift */,
 				C718185B25F348840039FCDF /* TMDBActivityIndicatorModifier.swift */,
 				C7C199AA260FF5A0006FF567 /* TMDBItemRateModifier.swift */,
+				C7317DD5261ED7240082D195 /* TMDBChevronModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -876,6 +882,7 @@
 				C718186525F352C20039FCDF /* TMDBError.swift in Sources */,
 				C78DA81725F88DEA009DCE37 /* MoviesService.swift in Sources */,
 				C73C815D2609A1F000DB8887 /* MyAccount.swift in Sources */,
+				C7317DDB261ED7F70082D195 /* TMDBProfileOptionView.swift in Sources */,
 				C775ABC425F35ECB002D39D8 /* ItemDetail.swift in Sources */,
 				C7C199B0260FFCFE006FF567 /* TMDBBannerViewModel.swift in Sources */,
 				C77C8BE225F0ACBE00961122 /* TMDBConfiguration.swift in Sources */,
@@ -912,6 +919,7 @@
 				C778E86725F5ACDD00C97CB4 /* MovieListView.swift in Sources */,
 				C717A13A25F9D26B006915D5 /* Publisher+Extension.swift in Sources */,
 				C718185C25F348840039FCDF /* TMDBActivityIndicatorModifier.swift in Sources */,
+				C7317DD6261ED7240082D195 /* TMDBChevronModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

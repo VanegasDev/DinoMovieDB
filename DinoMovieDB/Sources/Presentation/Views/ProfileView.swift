@@ -8,7 +8,15 @@
 import SwiftUI
 import Kingfisher
 
-// TODO: Fix logout button since this is just a temporary one
+struct TMDBDivider: View {
+    var color: Color = Color(R.color.tmdbPlaceholder.name)
+    
+    var body: some View {
+        Divider()
+            .background(color)
+    }
+}
+
 struct ProfileView: View {
     @ObservedObject private var viewModel: ProfileViewModel
     
@@ -19,9 +27,21 @@ struct ProfileView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 38) {
             profile
-            Button("Logout") {
-                viewModel.logoutTap.send(())
+            VStack(alignment: .leading, spacing: 0) {
+                TMDBProfileOptionView(text: "My Favorites", systemImage: "heart")
+                TMDBDivider()
+                TMDBProfileOptionView(text: "My Watchlist", systemImage: "eye")
+                TMDBDivider()
+                TMDBProfileOptionView(text: "My Ratings", systemImage: "star")
+                TMDBDivider()
+                TMDBProfileOptionView(text: "Sign Out", systemImage: "arrow.down.left.circle", foregroundColor: .red)
             }
+            .font(.body)
+            .padding(.horizontal, 10)
+            .frame(maxWidth: .infinity)
+            .background(Color(R.color.tmdbBackgroundControls.name))
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            
             Spacer()
         }
         .frame(maxWidth: .infinity)
