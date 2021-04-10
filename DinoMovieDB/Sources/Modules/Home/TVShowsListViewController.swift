@@ -12,7 +12,7 @@ class TVShowsListViewController: UIViewController {
     // MARK: Properties
     private let tvShowsService: TVShowsServiceType = TVShowsService()
     private let pagination: PaginationManagerType = PaginationManager()
-    private let viewModel = TVShowsListViewModel()
+    private let viewModel = ItemListViewModel()
     
     private var cancellables = Set<AnyCancellable>()
     private var searchState: SearchState = .readyForSearch
@@ -45,12 +45,12 @@ class TVShowsListViewController: UIViewController {
         title = R.string.localization.tv_shows_list_title()
         navigationItem.searchController?.searchBar.delegate = self
         
-        addHosting(TVShowsListView(viewModel: viewModel))
+        addHosting(ItemListView(viewModel: viewModel))
     }
     
     private func setupBindings() {
-        let fetchMoviesPublisher = viewModel.fetchPopularShowsOutput.receive(on: DispatchQueue.main)
-        let openShowPublisher = viewModel.selectShowOutput.receive(on: DispatchQueue.main)
+        let fetchMoviesPublisher = viewModel.fetchItemsOutput.receive(on: DispatchQueue.main)
+        let openShowPublisher = viewModel.itemTapOutput.receive(on: DispatchQueue.main)
         
         fetchMoviesPublisher.sink(receiveValue: fetchShows).store(in: &cancellables)
         openShowPublisher.sink(onReceived: openShowDetails).store(in: &cancellables)
@@ -91,7 +91,7 @@ class TVShowsListViewController: UIViewController {
     
     private func updateReceivedTVShows(_ shows: [TVShowPreview] = []) {
         let shows = shows.compactMap(convertToDetailViewModel)
-        viewModel.showsViewModel += shows
+        viewModel.itemsViewModel += shows
     }
     
     private func convertToDetailViewModel(_ show: TVShowPreview) -> ItemDetailViewModel {
@@ -107,7 +107,7 @@ class TVShowsListViewController: UIViewController {
 extension TVShowsListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchState = searchText.isEmpty ? .readyForSearch : .searching
-        viewModel.showsViewModel = []
+        viewModel.itemsViewModel = []
         
         pagination.resetPagination()
         fetchShows()
@@ -115,7 +115,7 @@ extension TVShowsListViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchState = .readyForSearch
-        viewModel.showsViewModel = []
+        viewModel.itemsViewModel = []
         
         pagination.resetPagination()
         fetchShows()
