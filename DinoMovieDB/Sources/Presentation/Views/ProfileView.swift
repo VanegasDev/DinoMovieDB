@@ -28,13 +28,13 @@ struct ProfileView: View {
         VStack(alignment: .leading, spacing: 38) {
             profile
             VStack(alignment: .leading, spacing: 0) {
-                TMDBProfileOptionView(text: "My Favorites", systemImage: "heart")
+                TMDBProfileOptionView(text: R.string.localization.profile_favorites_button_title(), systemImage: "heart")
                 TMDBDivider()
-                TMDBProfileOptionView(text: "My Watchlist", systemImage: "eye")
+                TMDBProfileOptionView(text: R.string.localization.profile_watchlist_button_title(), systemImage: "eye")
                 TMDBDivider()
-                TMDBProfileOptionView(text: "My Ratings", systemImage: "star")
+                TMDBProfileOptionView(text: R.string.localization.profile_ratings_button_title(), systemImage: "star")
                 TMDBDivider()
-                TMDBProfileOptionView(text: "Sign Out", systemImage: "arrow.down.left.circle", foregroundColor: .red)
+                TMDBProfileOptionView(text: R.string.localization.profile_sign_out_button_title(), systemImage: "arrow.down.left.circle", foregroundColor: .red)
             }
             .font(.body)
             .padding(.horizontal, 10)
