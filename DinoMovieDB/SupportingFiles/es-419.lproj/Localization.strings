@@ -57,3 +57,9 @@
 
 /* Custom Views */
 "done_alert_title" = "Listo!";
+
+/* Profile View */
+"profile_favorites_button_title" = "Mis Favoritos";
+"profile_watchlist_button_title" = "Mis Watchlist";
+"profile_ratings_button_title" = "Mis Ratings";
+"profile_sign_out_button_title" = "Salir";
