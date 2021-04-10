@@ -17,7 +17,7 @@ class MovieListViewController: UIViewController {
     // MARK: Properties
     private let moviesService: MoviesServiceType = MoviesService()
     private let pagination: PaginationManagerType = PaginationManager()
-    private let viewModel = MovieListViewModel()
+    private let viewModel = ItemListViewModel()
     
     private var cancellables = Set<AnyCancellable>()
     private var searchState: SearchState = .readyForSearch
@@ -50,12 +50,12 @@ class MovieListViewController: UIViewController {
         title = R.string.localization.movie_list_title()
         navigationItem.searchController?.searchBar.delegate = self
         
-        addHosting(MovieListView(viewModel: viewModel))
+        addHosting(ItemListView(viewModel: viewModel))
     }
     
     private func setupBindings() {
-        let fetchMoviesPublisher = viewModel.fetchUpcomingMoviesPublisher.receive(on: DispatchQueue.main)
-        let moviesTapPublisher = viewModel.movieSelectedPublisher.receive(on: DispatchQueue.main)
+        let fetchMoviesPublisher = viewModel.fetchItemsOutput.receive(on: DispatchQueue.main)
+        let moviesTapPublisher = viewModel.itemTapOutput.receive(on: DispatchQueue.main)
         
         fetchMoviesPublisher.sink(receiveValue: fetchMovies).store(in: &cancellables)
         moviesTapPublisher.sink(receiveValue: openMovieDetails).store(in: &cancellables)
@@ -96,7 +96,7 @@ class MovieListViewController: UIViewController {
     
     private func updateReceivedMovies(_ movies: [MoviePreview] = []) {
         let movies = movies.compactMap(convertToDetailViewModel)
-        viewModel.moviesViewModel += movies
+        viewModel.itemsViewModel += movies
     }
     
     private func convertToDetailViewModel(_ movie: MoviePreview) -> ItemDetailViewModel {
@@ -112,7 +112,7 @@ class MovieListViewController: UIViewController {
 extension MovieListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchState = searchText.isEmpty ? .readyForSearch : .searching
-        viewModel.moviesViewModel = []
+        viewModel.itemsViewModel = []
         
         pagination.resetPagination()
         fetchMovies()
@@ -120,7 +120,7 @@ extension MovieListViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchState = .readyForSearch
-        viewModel.moviesViewModel = []
+        viewModel.itemsViewModel = []
 
         pagination.resetPagination()
         fetchMovies()
