@@ -21,14 +21,21 @@ struct ItemListView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(viewModel.itemsViewModel) { viewModel in
-                    ItemDetail(viewModel: viewModel)
+                ForEach(viewModel.itemsViewModel) { itemViewModel in
+                    ItemDetail(viewModel: itemViewModel)
+                        .frame(height: 250)
+                        .onAppear {
+                            if viewModel.itemsViewModel.shouldPaginate(on: itemViewModel) {
+                                viewModel.fetchItemsInput.send()
+                            }
+                        }
+                        .onTapGesture { self.viewModel.itemTapInput.send(itemViewModel.itemId) }
                 }
             }
             .padding()
             .background(Color(R.color.backgroundColor.name))
         }
-        .onAppear(perform: {})
+        .onAppear(perform: viewModel.fetchItemsInput.send)
     }
 }
 
