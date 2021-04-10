@@ -102,6 +102,8 @@
 		C7E9AD542611645F00DAF606 /* ItemDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E9AD532611645F00DAF606 /* ItemDetailService.swift */; };
 		C7E9AD5F2611653900DAF606 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E9AD5E2611653900DAF606 /* MovieDetail.swift */; };
 		C7E9AD66261165C100DAF606 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E9AD65261165C100DAF606 /* Genre.swift */; };
+		C7F1BA7D26216103007316E9 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F1BA7C26216103007316E9 /* ItemListView.swift */; };
+		C7F1BA8226216360007316E9 /* ItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F1BA8126216360007316E9 /* ItemListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +222,8 @@
 		C7E9AD532611645F00DAF606 /* ItemDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailService.swift; sourceTree = "<group>"; };
 		C7E9AD5E2611653900DAF606 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		C7E9AD65261165C100DAF606 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		C7F1BA7C26216103007316E9 /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
+		C7F1BA8126216360007316E9 /* ItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +457,7 @@
 				C7C199B926100470006FF567 /* MovieDetailView.swift */,
 				C70D348D2612F3E7007B4C05 /* RateItemView.swift */,
 				C707A98226194DC9009B063F /* TVShowDetailView.swift */,
+				C7F1BA7C26216103007316E9 /* ItemListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -610,6 +615,7 @@
 				C75FA4A22611692D005C238E /* MovieDetailViewModel.swift */,
 				C743C240261583C600B9B743 /* RateMovieViewModel.swift */,
 				C707A99D261960BD009B063F /* TVShowDetailViewModel.swift */,
+				C7F1BA8126216360007316E9 /* ItemListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -892,7 +898,9 @@
 				C7A7E3AB25F9EE6E0066A7D9 /* Collection+Extensions.swift in Sources */,
 				C7A9A231260C49CD0009438A /* ItemsService.swift in Sources */,
 				C77C8C1A25F0B6E200961122 /* LoginViewModel.swift in Sources */,
+				C7F1BA7D26216103007316E9 /* ItemListView.swift in Sources */,
 				C775ABC925F35F91002D39D8 /* ItemDetailViewModel.swift in Sources */,
+				C7F1BA8226216360007316E9 /* ItemListViewModel.swift in Sources */,
 				C78DA80425F8893A009DCE37 /* MoviesTarget.swift in Sources */,
 				C7A4D8A525F5B44000284AD8 /* MovieListViewModel.swift in Sources */,
 				C7A4D8B125F5B9EF00284AD8 /* TMDBWindow.swift in Sources */,
