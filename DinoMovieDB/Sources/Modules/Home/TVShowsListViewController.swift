@@ -17,14 +17,6 @@ class TVShowsListViewController: UIViewController {
     private var cancellables = Set<AnyCancellable>()
     private var searchState: SearchState = .readyForSearch
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init?(coder: NSCoder) hasn't been implemented")
-    }
-    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

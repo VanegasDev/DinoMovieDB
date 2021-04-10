@@ -15,6 +15,7 @@ enum MoviesTarget {
     case fetchMovieDetail(movieId: Int, appendToResponse: String?)
     case rate(movieId: Int, rate: Rate, session: SessionToken?)
     case deleteRate(movieId: Int, session: SessionToken?)
+    case fetchFavoriteMovies(accountId: Int, session: SessionToken?, page: Int)
 }
 
 // MARK: TMDBTargetType Implementation
@@ -33,12 +34,14 @@ extension MoviesTarget: TMDBTargetType {
             return "/movie/\(movieId)/rating"
         case .deleteRate(let movieId, _):
             return "/movie/\(movieId)/rating"
+        case .fetchFavoriteMovies(let accountId, _, _):
+            return "/account/\(accountId)/favorite/movies"
         }
     }
     
     var requestMethod: TMDBRequestMethodType {
         switch self {
-        case .latest, .search, .fetchMovieState, .fetchMovieDetail:
+        case .latest, .search, .fetchMovieState, .fetchMovieDetail, .fetchFavoriteMovies:
             return .get
         case .rate:
             return .post
@@ -100,6 +103,15 @@ extension MoviesTarget {
             let queryParams: [String: Any] = [
                 "api_key": TMDBConfiguration.apiKey,
                 "session_id": session?.sessionId ?? ""
+            ]
+            
+            return .requestParameters(parameters: queryParams, encoding: URLEncoding.queryString)
+        case .fetchFavoriteMovies(_, let session, let page):
+            let queryParams: [String: Any] = [
+                "api_key": TMDBConfiguration.apiKey,
+                "session_id": session?.sessionId ?? "",
+                "language": TMDBConfiguration.languageCode ?? "en",
+                "page": page
             ]
             
             return .requestParameters(parameters: queryParams, encoding: URLEncoding.queryString)
