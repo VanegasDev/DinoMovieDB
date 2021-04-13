@@ -34,4 +34,12 @@ extension UIAlertController {
         
         return controller
     }
+    
+    // Action Sheet Builder Function
+    static func customActionSheet(title: String, message: String? = nil, actions: [UIAlertAction]) -> UIAlertController {
+        let controller = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        actions.forEach { controller.addAction($0) }
+        
+        return controller
+    }
 }
