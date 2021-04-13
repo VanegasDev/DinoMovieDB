@@ -13,14 +13,12 @@ enum SearchState {
     case readyForSearch
 }
 
-class MovieListViewController: UIViewController {
+class MovieListViewController: TMDBSearchViewController {
     // MARK: Properties
     private let moviesService: MoviesServiceType = MoviesService()
-    private let pagination: PaginationManagerType = PaginationManager()
     private let viewModel = ItemListViewModel()
     
     private var cancellables = Set<AnyCancellable>()
-    private var searchState: SearchState = .readyForSearch
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -29,12 +27,20 @@ class MovieListViewController: UIViewController {
         setupSearchController()
         setupViews()
         setupBindings()
+        fetchInformation = fetchMovies
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    // MARK: Overrides
+    override func resetList() {
+        super.resetList()
+        
+        viewModel.itemsViewModel = []
     }
     
     // MARK: Setup
@@ -98,23 +104,5 @@ class MovieListViewController: UIViewController {
         let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(movie.imagePath ?? "")")
         
         return ItemDetailViewModel(itemType: .movies, itemId: movie.id, title: title ?? "Empty", releaseDate: release ?? "Empty", rate: rate, imageUrl: imageUrl)
-    }
-}
-
-extension MovieListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchState = searchText.isEmpty ? .readyForSearch : .searching
-        viewModel.itemsViewModel = []
-        
-        pagination.resetPagination()
-        fetchMovies()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchState = .readyForSearch
-        viewModel.itemsViewModel = []
-
-        pagination.resetPagination()
-        fetchMovies()
     }
 }
