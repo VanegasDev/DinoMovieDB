@@ -63,3 +63,6 @@
 "profile_watchlist_button_title" = "My Watchlist";
 "profile_ratings_button_title" = "My Ratings";
 "profile_sign_out_button_title" = "Sign Out";
+
+/* My Favorites */
+"favorites_title" = "My Favorites";

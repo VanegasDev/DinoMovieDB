@@ -37,14 +37,16 @@ class ProfileViewController: UIViewController {
     
     private func setupBindings() {
         // Subcribe to viewmodel publishers
-        let fetchInformationPublisher = viewModel.fetchInformationPublisher.receive(on: DispatchQueue.main)
-        let logoutPublisher = viewModel.logoutTapPublisher.receive(on: DispatchQueue.main)
+        let fetchInformationPublisher = viewModel.fetchInformationOutput.receive(on: DispatchQueue.main)
+        let logoutPublisher = viewModel.logoutOutput.receive(on: DispatchQueue.main)
+        let showFavoritesPublisher = viewModel.showFavoritesOutput.receive(on: DispatchQueue.main)
         
         // Publisher Handler
         fetchInformationPublisher.sink { [weak self] in self?.fetchInformation() }.store(in: &cancellables)
         logoutPublisher.sink { [weak self] in
             self?.accountService.logout()
         }.store(in: &cancellables)
+        showFavoritesPublisher.sink(onReceived: showFavoritesViewController).store(in: &cancellables)
     }
     
     // MARK: Service Request
@@ -61,5 +63,10 @@ class ProfileViewController: UIViewController {
             self?.viewModel.receivedUserInformation(information)
         }
         .store(in: &cancellables)
+    }
+    
+    // MARK: Functionality
+    private func showFavoritesViewController() {
+        navigationController?.pushViewController(MyFavoritesViewController(), animated: true)
     }
 }
