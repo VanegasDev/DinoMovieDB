@@ -87,7 +87,7 @@ class TVShowsListViewController: UIViewController {
     }
     
     private func convertToDetailViewModel(_ show: TVShowPreview) -> ItemDetailViewModel {
-        let title = show.name
+        let title = show.title
         let release = show.releaseDate
         let rate = "\(show.voteAverage ?? 0)"
         let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(show.imagePath ?? "")")

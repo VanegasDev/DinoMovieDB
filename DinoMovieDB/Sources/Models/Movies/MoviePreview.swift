@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MoviePreview: Codable {
+struct MoviePreview: Codable, ItemPreviewType {
     let id: Int
     let title: String?
     let releaseDate: String?

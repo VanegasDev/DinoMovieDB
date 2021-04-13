@@ -20,14 +20,18 @@ class MyFavoritesViewController: UIViewController {
     private let pagination: PaginationManagerType = PaginationManager()
     
     private lazy var selectItemButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .done, target: self, action: nil)
+        let button = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .done, target: self, action: #selector(askForContentType))
         button.tintColor = .systemBlue
         
         return button
     }()
     
-    private var itemType: FavoriteType = .movies
     private var cancellables = Set<AnyCancellable>()
+    private var itemType: FavoriteType = .movies {
+        didSet {
+            changeItemType()
+        }
+    }
     
     // MARK: Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +45,19 @@ class MyFavoritesViewController: UIViewController {
         
         setupSearchController()
         setupViews()
+        setupBindings()
+    }
+    
+    // MARK: OBJC Methods
+    @objc private func askForContentType() {
+        let chooseMoviesAction = UIAlertAction(title: itemType == .movies ? "Movies ✓" : "Movies", style: .default) { [weak self] _ in
+            self?.itemType = .movies
+        }
+        let chooseTVShowsAction = UIAlertAction(title: itemType == .shows ? "TVShows ✓" : "TVShows", style: .default) { [weak self] _ in
+            self?.itemType = .shows
+        }
+        
+        present(UIAlertController.customActionSheet(title: "Select Item Type:", actions: [chooseMoviesAction, chooseTVShowsAction]), animated: true)
     }
     
     // MARK: Setup
@@ -49,5 +66,59 @@ class MyFavoritesViewController: UIViewController {
         
         addHosting(ItemListView(viewModel: viewModel))
         navigationItem.rightBarButtonItem = selectItemButton
+    }
+    
+    private func setupBindings() {
+        let fetchItemsPublisher = viewModel.fetchItemsOutput.receive(on: DispatchQueue.main)
+        
+        fetchItemsPublisher.sink(onReceived: itemType == .movies ? fetchFavoriteMovies : fetchFavoriteTVShows).store(in: &cancellables)
+    }
+    
+    // MARK: Functionality
+    private func changeItemType() {
+        viewModel.itemsViewModel = []
+        
+        pagination.resetPagination()
+        itemType == .movies ? fetchFavoriteMovies() : fetchFavoriteTVShows()
+    }
+    
+    private func fetchFavoriteMovies() {
+        guard let nextPage = pagination.nextPage, pagination.state == .readyForPagination else { return }
+        
+        pagination.paginate(request: { fetchMovies(on: nextPage) })
+            .sink { [weak self] in
+                self?.pagination.state = .readyForPagination
+            } error: { [weak self] error in
+                let alert = UIAlertController.errorAlert(description: error.localizedDescription)
+
+                self?.present(alert, animated: true)
+            } onReceived: { [weak self] moviesResponse in
+                self?.viewModel.itemsViewModel += moviesResponse.mapIntoItemPreviewViewModel(mediaType: .movies)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func fetchFavoriteTVShows() {
+        guard let nextPage = pagination.nextPage, pagination.state == .readyForPagination else { return }
+        
+        pagination.paginate(request: { fetchShows(on: nextPage) })
+            .sink { [weak self] in
+                self?.pagination.state = .readyForPagination
+            } error: { [weak self] error in
+                let alert = UIAlertController.errorAlert(description: error.localizedDescription)
+                
+                self?.present(alert, animated: true)
+            } onReceived: { [weak self] tvShowsResponse in
+                self?.viewModel.itemsViewModel += tvShowsResponse.mapIntoItemPreviewViewModel(mediaType: .tvShows)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func fetchShows(on page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
+        showsService.fetchPopularShows(page: page)
+    }
+    
+    private func fetchMovies(on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
+        moviesService.fetchFavoriteMovies(on: page)
     }
 }
