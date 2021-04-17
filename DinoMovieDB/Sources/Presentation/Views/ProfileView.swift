@@ -29,12 +29,14 @@ struct ProfileView: View {
             profile
             VStack(alignment: .leading, spacing: 0) {
                 TMDBProfileOptionView(text: R.string.localization.profile_favorites_button_title(), systemImage: "heart")
+                    .onTapGesture(perform: viewModel.showFavoritesInput.send)
                 TMDBDivider()
                 TMDBProfileOptionView(text: R.string.localization.profile_watchlist_button_title(), systemImage: "eye")
                 TMDBDivider()
                 TMDBProfileOptionView(text: R.string.localization.profile_ratings_button_title(), systemImage: "star")
                 TMDBDivider()
                 TMDBProfileOptionView(text: R.string.localization.profile_sign_out_button_title(), systemImage: "arrow.down.left.circle", foregroundColor: .red)
+                    .onTapGesture(perform: viewModel.logoutInput.send)
             }
             .font(.body)
             .padding(.horizontal, 10)
@@ -49,7 +51,7 @@ struct ProfileView: View {
         .padding(.vertical, 18)
         .background(Color(R.color.backgroundColor.name))
         .tmdbActivityIndicator(isAnimating: viewModel.isLoading)
-        .onAppear(perform: viewModel.fetchInformationOnAppear.send)
+        .onAppear(perform: viewModel.fetchInformationInput.send)
     }
     
     private var profile: some View {

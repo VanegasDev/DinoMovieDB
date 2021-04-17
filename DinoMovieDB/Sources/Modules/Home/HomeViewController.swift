@@ -36,14 +36,6 @@ class HomeViewController: UITabBarController {
     private let service: AccountServiceType = AccountService()
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init?(coder: NSCoder) hasn't been implemented")
-    }
-    
     // MARK: ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

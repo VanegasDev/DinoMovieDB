@@ -8,22 +8,12 @@
 import UIKit
 import Combine
 
-class TVShowsListViewController: UIViewController {
+class TVShowsListViewController: TMDBSearchViewController {
     // MARK: Properties
     private let tvShowsService: TVShowsServiceType = TVShowsService()
-    private let pagination: PaginationManagerType = PaginationManager()
     private let viewModel = ItemListViewModel()
     
     private var cancellables = Set<AnyCancellable>()
-    private var searchState: SearchState = .readyForSearch
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init?(coder: NSCoder) hasn't been implemented")
-    }
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -32,12 +22,20 @@ class TVShowsListViewController: UIViewController {
         setupSearchController()
         setupViews()
         setupBindings()
+        fetchInformation = fetchShows
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    // MARK: Override
+    override func resetList() {
+        super.resetList()
+        
+        viewModel.itemsViewModel = []
     }
     
     // MARK: Setup
@@ -95,29 +93,11 @@ class TVShowsListViewController: UIViewController {
     }
     
     private func convertToDetailViewModel(_ show: TVShowPreview) -> ItemDetailViewModel {
-        let title = show.name
+        let title = show.title
         let release = show.releaseDate
         let rate = "\(show.voteAverage ?? 0)"
         let imageUrl = URL(string: "\(TMDBConfiguration.imageBasePath)\(show.imagePath ?? "")")
         
         return ItemDetailViewModel(itemType: .tvShows, itemId: show.id, title: title ?? "Empty", releaseDate: release ?? "Empty", rate: rate, imageUrl: imageUrl)
-    }
-}
-
-extension TVShowsListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchState = searchText.isEmpty ? .readyForSearch : .searching
-        viewModel.itemsViewModel = []
-        
-        pagination.resetPagination()
-        fetchShows()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchState = .readyForSearch
-        viewModel.itemsViewModel = []
-        
-        pagination.resetPagination()
-        fetchShows()
     }
 }

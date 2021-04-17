@@ -7,16 +7,24 @@
 
 import Foundation
 
-struct TVShowPreview: Codable {
+protocol ItemPreviewType {
+    var id: Int { get }
+    var title: String? { get }
+    var releaseDate: String? { get }
+    var imagePath: String? { get }
+    var voteAverage: Double? { get }
+}
+
+struct TVShowPreview: Codable, ItemPreviewType {
     let id: Int
-    let name: String?
+    let title: String?
     let releaseDate: String?
     let imagePath: String?
     let voteAverage: Double?
     
     enum CodingKeys: String, CodingKey {
         case id
-        case name
+        case title = "name"
         case releaseDate = "first_air_date"
         case imagePath = "poster_path"
         case voteAverage = "vote_average"

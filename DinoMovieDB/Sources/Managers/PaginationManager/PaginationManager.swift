@@ -55,5 +55,6 @@ class PaginationManager: PaginationManagerType {
     func resetPagination() {
         totalPages = 1
         currentPage = 0
+        state = .readyForPagination
     }
 }

@@ -18,12 +18,14 @@ class ProfileViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: Input
-    var fetchInformationOnAppear = PassthroughSubject<Void, Never>()
-    var logoutTap = PassthroughSubject<Void, Never>()
+    let fetchInformationInput = PassthroughSubject<Void, Never>()
+    let showFavoritesInput = PassthroughSubject<Void, Never>()
+    let logoutInput = PassthroughSubject<Void, Never>()
     
     // MARK: Output
-    var fetchInformationPublisher = PassthroughSubject<Void, Never>()
-    var logoutTapPublisher = PassthroughSubject<Void, Never>()
+    let fetchInformationOutput = PassthroughSubject<Void, Never>()
+    let showFavoritesOutput = PassthroughSubject<Void, Never>()
+    let logoutOutput = PassthroughSubject<Void, Never>()
     
     init() {
         setupBindings()
@@ -32,15 +34,19 @@ class ProfileViewModel: ObservableObject {
     // MARK: Setup
     private func setupBindings() {
         // Subscribe to publishers
-        let fetchInformation = fetchInformationOnAppear
+        let fetchInformation = fetchInformationInput
             .receive(on: DispatchQueue.main)
-        let logout = logoutTap.receive(on: DispatchQueue.main)
+        let logout = logoutInput.receive(on: DispatchQueue.main)
+        let showFavoritesPublisher = showFavoritesInput.receive(on: DispatchQueue.main)
         
         // Handle Events
         fetchInformation.handleEvents(receiveOutput: { [weak self] _ in self?.isLoading = true })
-            .sink(onReceived: fetchInformationPublisher.send)
+            .sink(onReceived: fetchInformationOutput.send)
             .store(in: &cancellables)
-        logout.sink(onReceived: logoutTapPublisher.send).store(in: &cancellables)
+        logout.sink(onReceived: logoutOutput.send).store(in: &cancellables)
+        showFavoritesPublisher
+            .sink(onReceived: showFavoritesOutput.send)
+            .store(in: &cancellables)
     }
     
     // MARK: Functionality

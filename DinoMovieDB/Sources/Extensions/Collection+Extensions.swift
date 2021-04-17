@@ -15,3 +15,11 @@ extension Array where Element: Identifiable {
         return itemsDistance < 4
     }
 }
+
+extension Array where Element: ItemPreviewType {
+    func mapIntoItemPreviewViewModel(mediaType: MediaType) -> [ItemDetailViewModel] {
+        compactMap { item in
+            ItemDetailViewModel(itemType: mediaType, itemId: item.id, title: item.title ?? "", releaseDate: item.releaseDate ?? "", rate: "\(item.voteAverage ?? 0)", imageUrl: URL(string: "\(TMDBConfiguration.imageBasePath)\(item.imagePath ?? "")"))
+        }
+    }
+}
