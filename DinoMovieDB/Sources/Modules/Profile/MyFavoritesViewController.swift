@@ -39,18 +39,18 @@ class MyFavoritesViewController: UIViewController {
     }
     
     // MARK: Lifecycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupSegmentedController()
         setupViews()
         setupBindings()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     // MARK: OBJC Methods
@@ -98,8 +98,10 @@ class MyFavoritesViewController: UIViewController {
     
     private func setupBindings() {
         let fetchItemsPublisher = viewModel.fetchItemsOutput.receive(on: DispatchQueue.main)
+        let itemTapPublisher = viewModel.itemTapOutput.receive(on: DispatchQueue.main)
         
         fetchItemsPublisher.sink(onReceived: itemType == .movies ? fetchFavoriteMovies : fetchFavoriteTVShows).store(in: &cancellables)
+        itemTapPublisher.sink(onReceived: itemType == .movies ? openMovieDetails : openShowDetails).store(in: &cancellables)
     }
     
     // MARK: Functionality
@@ -140,6 +142,14 @@ class MyFavoritesViewController: UIViewController {
                 self?.viewModel.itemsViewModel += tvShowsResponse.mapIntoItemPreviewViewModel(mediaType: .tvShows)
             }
             .store(in: &cancellables)
+    }
+    
+    private func openMovieDetails(using id: Int) {
+        navigationController?.pushViewController(MovieDetailViewController(with: id), animated: true)
+    }
+    
+    private func openShowDetails(using id: Int) {
+        navigationController?.pushViewController(TVShowDetailViewController(with: id), animated: true)
     }
     
     private func fetchShows(on page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
