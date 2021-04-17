@@ -9,6 +9,8 @@
 /* Alerts */
 "alert_error_title" = "Error";
 "alert_ok_button" = "Ok";
+"alert_yes_button" = "Yes";
+"alert_no_button" = "No";
 
 /* SearchController */
 "search_controller_placeholder" = "Search";
@@ -63,6 +65,8 @@
 "profile_watchlist_button_title" = "My Watchlist";
 "profile_ratings_button_title" = "My Ratings";
 "profile_sign_out_button_title" = "Sign Out";
+"profile_sign_out_alert_title" = "Sign Out";
+"profile_sign_out_alert_description" = "Do you really want to leave?";
 
 /* My Favorites */
 "favorites_title" = "My Favorites";

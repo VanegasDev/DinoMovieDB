@@ -36,6 +36,7 @@ struct ProfileView: View {
                 TMDBProfileOptionView(text: R.string.localization.profile_ratings_button_title(), systemImage: "star")
                 TMDBDivider()
                 TMDBProfileOptionView(text: R.string.localization.profile_sign_out_button_title(), systemImage: "arrow.down.left.circle", foregroundColor: .red)
+                    .onTapGesture(perform: viewModel.logoutInput.send)
             }
             .font(.body)
             .padding(.horizontal, 10)

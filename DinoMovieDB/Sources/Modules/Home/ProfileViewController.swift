@@ -43,9 +43,7 @@ class ProfileViewController: UIViewController {
         
         // Publisher Handler
         fetchInformationPublisher.sink { [weak self] in self?.fetchInformation() }.store(in: &cancellables)
-        logoutPublisher.sink { [weak self] in
-            self?.accountService.logout()
-        }.store(in: &cancellables)
+        logoutPublisher.sink(receiveValue: showLogoutAlert).store(in: &cancellables)
         showFavoritesPublisher.sink(onReceived: showFavoritesViewController).store(in: &cancellables)
     }
     
@@ -68,5 +66,19 @@ class ProfileViewController: UIViewController {
     // MARK: Functionality
     private func showFavoritesViewController() {
         navigationController?.pushViewController(MyFavoritesViewController(), animated: true)
+    }
+    
+    private func logout() {
+        accountService.logout()
+    }
+    
+    private func showLogoutAlert() {
+        let alert = UIAlertController.customAlert(title: R.string.localization.profile_sign_out_alert_title(),
+                                                  description: R.string.localization.profile_sign_out_alert_description(),
+                                                  yesTitle: R.string.localization.alert_yes_button(),
+                                                  noTitle: R.string.localization.alert_no_button(),
+                                                  yesAction: { [weak self] _ in self?.logout() })
+        
+        present(alert, animated: true)
     }
 }

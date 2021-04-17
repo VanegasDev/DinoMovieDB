@@ -9,6 +9,8 @@
 /* Alerts */
 "alert_error_title" = "Error";
 "alert_ok_button" = "Ok";
+"alert_yes_button" = "Si";
+"alert_no_button" = "No";
 
 /* SearchController */
 "search_controller_placeholder" = "Buscar";
@@ -62,7 +64,9 @@
 "profile_favorites_button_title" = "Mis Favoritos";
 "profile_watchlist_button_title" = "Mis Watchlist";
 "profile_ratings_button_title" = "Mis Ratings";
-"profile_sign_out_button_title" = "Salir";
+"profile_sign_out_button_title" = "Cerrar Sesión";
+"profile_sign_out_alert_title" = "Cerrar Sesión";
+"profile_sign_out_alert_description" = "Realmente quieres salir?";
 
 /* My Favorites */
 "favorites_title" = "Mis Favoritos";
