@@ -51,14 +51,14 @@ class AccountItemsViewController: UIViewController {
     
     @objc private func askForSortType() {
         let actionSheet: UIAlertController
-        let ascendantAction = UIAlertAction(title: R.string.localization.favorites_sort_by_asc(), style: .default) { [weak self] _ in
+        let ascendantAction = UIAlertAction(title: R.string.localization.account_items_sort_by_asc(), style: .default) { [weak self] _ in
             self?.sortedBy = .ascendant
         }
-        let descendantAction = UIAlertAction(title: R.string.localization.favorites_sort_by_desc(), style: .default) { [weak self] _ in
+        let descendantAction = UIAlertAction(title: R.string.localization.account_items_sort_by_desc(), style: .default) { [weak self] _ in
             self?.sortedBy = .descendat
         }
         
-        actionSheet = .customActionSheet(title: R.string.localization.favorites_sort_title(), actions: [ascendantAction, descendantAction])
+        actionSheet = .customActionSheet(title: R.string.localization.account_items_sort_title(), actions: [ascendantAction, descendantAction])
         
         present(actionSheet, animated: true)
     }
@@ -71,8 +71,8 @@ class AccountItemsViewController: UIViewController {
     private func setupSegmentedController() {
         let segmentedView: UISegmentedControl
         let segmentedControlTitles = [
-            R.string.localization.favorites_movies_title(),
-            R.string.localization.favorites_tv_shows_title()
+            R.string.localization.account_items_movies_title(),
+            R.string.localization.account_items_tv_shows_title()
         ]
         
         segmentedView = UISegmentedControl(items: segmentedControlTitles)

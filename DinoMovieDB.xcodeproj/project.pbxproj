@@ -44,6 +44,7 @@
 		C7317DD6261ED7240082D195 /* TMDBChevronModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7317DD5261ED7240082D195 /* TMDBChevronModifier.swift */; };
 		C7317DDB261ED7F70082D195 /* TMDBProfileOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7317DDA261ED7F70082D195 /* TMDBProfileOptionView.swift */; };
 		C7347A03262B520200C52B14 /* AccountItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7347A02262B520200C52B14 /* AccountItemsViewController.swift */; };
+		C7347A08262B5F0600C52B14 /* MyWatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7347A07262B5F0600C52B14 /* MyWatchlistViewController.swift */; };
 		C73C814C26099C2900DB8887 /* AccountTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C814B26099C2900DB8887 /* AccountTarget.swift */; };
 		C73C81552609A0B800DB8887 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C81542609A0B800DB8887 /* Avatar.swift */; };
 		C73C815D2609A1F000DB8887 /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C815C2609A1F000DB8887 /* MyAccount.swift */; };
@@ -166,6 +167,7 @@
 		C7317DD5261ED7240082D195 /* TMDBChevronModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBChevronModifier.swift; sourceTree = "<group>"; };
 		C7317DDA261ED7F70082D195 /* TMDBProfileOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBProfileOptionView.swift; sourceTree = "<group>"; };
 		C7347A02262B520200C52B14 /* AccountItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItemsViewController.swift; sourceTree = "<group>"; };
+		C7347A07262B5F0600C52B14 /* MyWatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWatchlistViewController.swift; sourceTree = "<group>"; };
 		C73C814B26099C2900DB8887 /* AccountTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTarget.swift; sourceTree = "<group>"; };
 		C73C81542609A0B800DB8887 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		C73C815C2609A1F000DB8887 /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 			isa = PBXGroup;
 			children = (
 				C7F1BA9626216D11007316E9 /* MyFavoritesViewController.swift */,
+				C7347A07262B5F0600C52B14 /* MyWatchlistViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -883,6 +886,7 @@
 				C717A14925F9D976006915D5 /* PaginationManager.swift in Sources */,
 				C7A7E3A625F9EB630066A7D9 /* TVShowsListViewController.swift in Sources */,
 				C73C81672609A59500DB8887 /* ProfileViewModel.swift in Sources */,
+				C7347A08262B5F0600C52B14 /* MyWatchlistViewController.swift in Sources */,
 				C775ABBA25F35CB2002D39D8 /* HomeViewController.swift in Sources */,
 				C77C8BD425F0AC0300961122 /* AuthenticationTarget.swift in Sources */,
 				C7A4D8C125F5BCAE00284AD8 /* NotificationCenter+Extensions.swift in Sources */,
