@@ -43,6 +43,7 @@
 		C72DF296262A9EF800C419B9 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72DF295262A9EF800C419B9 /* SortType.swift */; };
 		C7317DD6261ED7240082D195 /* TMDBChevronModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7317DD5261ED7240082D195 /* TMDBChevronModifier.swift */; };
 		C7317DDB261ED7F70082D195 /* TMDBProfileOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7317DDA261ED7F70082D195 /* TMDBProfileOptionView.swift */; };
+		C7347A03262B520200C52B14 /* AccountItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7347A02262B520200C52B14 /* AccountItemsViewController.swift */; };
 		C73C814C26099C2900DB8887 /* AccountTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C814B26099C2900DB8887 /* AccountTarget.swift */; };
 		C73C81552609A0B800DB8887 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C81542609A0B800DB8887 /* Avatar.swift */; };
 		C73C815D2609A1F000DB8887 /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C815C2609A1F000DB8887 /* MyAccount.swift */; };
@@ -164,6 +165,7 @@
 		C72DF295262A9EF800C419B9 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		C7317DD5261ED7240082D195 /* TMDBChevronModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBChevronModifier.swift; sourceTree = "<group>"; };
 		C7317DDA261ED7F70082D195 /* TMDBProfileOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBProfileOptionView.swift; sourceTree = "<group>"; };
+		C7347A02262B520200C52B14 /* AccountItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItemsViewController.swift; sourceTree = "<group>"; };
 		C73C814B26099C2900DB8887 /* AccountTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTarget.swift; sourceTree = "<group>"; };
 		C73C81542609A0B800DB8887 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		C73C815C2609A1F000DB8887 /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				C727D98A2625666C0074B7EC /* SearchViewControllerType.swift */,
+				C7347A02262B520200C52B14 /* AccountItemsViewController.swift */,
 			);
 			path = Subclasses;
 			sourceTree = "<group>";
@@ -873,6 +876,7 @@
 				C77C8BFD25F0B25600961122 /* LoginViewController.swift in Sources */,
 				C78DA81225F88CF5009DCE37 /* APIResponse.swift in Sources */,
 				C7C199B526100247006FF567 /* TMDBCastView.swift in Sources */,
+				C7347A03262B520200C52B14 /* AccountItemsViewController.swift in Sources */,
 				C77C8B9725F0999100961122 /* LoginView.swift in Sources */,
 				C7A7E38D25F9E8CE0066A7D9 /* TVShowPreview.swift in Sources */,
 				C70D34842612ECCB007B4C05 /* TMDBStarRateView.swift in Sources */,
