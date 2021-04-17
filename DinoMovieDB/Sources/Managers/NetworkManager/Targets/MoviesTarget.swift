@@ -16,6 +16,8 @@ enum MoviesTarget {
     case rate(movieId: Int, rate: Rate, session: SessionToken?)
     case deleteRate(movieId: Int, session: SessionToken?)
     case fetchFavoriteMovies(accountId: Int, session: SessionToken?, page: Int, sortedBy: String)
+    case fetchWatchlistMovies(accountId: Int, session: SessionToken?, page: Int, sortedBy: String)
+    case fetchRatedMovies(accountId: Int, session: SessionToken?, page: Int, sortedBy: String)
 }
 
 // MARK: TMDBTargetType Implementation
@@ -36,12 +38,16 @@ extension MoviesTarget: TMDBTargetType {
             return "/movie/\(movieId)/rating"
         case .fetchFavoriteMovies(let accountId, _, _, _):
             return "/account/\(accountId)/favorite/movies"
+        case .fetchWatchlistMovies(let accountId, _, _, _):
+            return "/account/\(accountId)/watchlist/movies"
+        case .fetchRatedMovies(let accountId, _, _, _):
+            return "/account/\(accountId)/rated/movies"
         }
     }
     
     var requestMethod: TMDBRequestMethodType {
         switch self {
-        case .latest, .search, .fetchMovieState, .fetchMovieDetail, .fetchFavoriteMovies:
+        case .latest, .search, .fetchMovieState, .fetchMovieDetail, .fetchFavoriteMovies, .fetchWatchlistMovies, .fetchRatedMovies:
             return .get
         case .rate:
             return .post
@@ -106,7 +112,9 @@ extension MoviesTarget {
             ]
             
             return .requestParameters(parameters: queryParams, encoding: URLEncoding.queryString)
-        case .fetchFavoriteMovies(_, let session, let page, let sortedBy):
+        case .fetchFavoriteMovies(_, let session, let page, let sortedBy),
+             .fetchWatchlistMovies(_, let session, let page, let sortedBy),
+             .fetchRatedMovies(_, let session, let page, let sortedBy):
             let queryParams: [String: Any] = [
                 "api_key": TMDBConfiguration.apiKey,
                 "session_id": session?.sessionId ?? "",

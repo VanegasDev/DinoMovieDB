@@ -13,9 +13,11 @@ enum TVShowsTarget {
     case search(show: String, page: Int)
     case fetchShowState(showId: Int, session: SessionToken?)
     case fetchShowDetail(showId: Int, appendToResponse: String?)
-    case fetchFavoriteShows(accountId: Int, session: SessionToken?, page: Int, sortedBy: String)
     case rate(showId: Int, rate: Rate, session: SessionToken?)
     case deleteRate(showId: Int, session: SessionToken?)
+    case fetchFavoriteShows(accountId: Int, session: SessionToken?, page: Int, sortedBy: String)
+    case fetchWatchlistShows(accountId: Int, session: SessionToken?, page: Int, sortedBy: String)
+    case fetchRatedShows(accountId: Int, session: SessionToken?, page: Int, sortedBy: String)
 }
 
 // MARK: TMDBTargetType Implementation
@@ -36,12 +38,16 @@ extension TVShowsTarget: TMDBTargetType {
             return "/tv/\(showId)/rating"
         case .fetchFavoriteShows(let accountId, _, _, _):
             return "/account/\(accountId)/favorite/tv"
+        case .fetchRatedShows(let accountId, _, _, _):
+            return "/account/\(accountId)/rated/tv"
+        case .fetchWatchlistShows(let accountId, _, _, _):
+            return "/account/\(accountId)/watchlist/tv"
         }
     }
     
     var requestMethod: TMDBRequestMethodType {
         switch self {
-        case .popular, .search, .fetchShowState, .fetchShowDetail, .fetchFavoriteShows:
+        case .popular, .search, .fetchShowState, .fetchShowDetail, .fetchFavoriteShows, .fetchRatedShows, .fetchWatchlistShows:
             return .get
         case .rate:
             return .post
@@ -103,7 +109,9 @@ extension TVShowsTarget {
             ]
             
             return .requestParameters(parameters: queryParams, encoding: URLEncoding.queryString)
-        case .fetchFavoriteShows(_, let session, let page, let sortedBy):
+        case .fetchFavoriteShows(_, let session, let page, let sortedBy),
+             .fetchWatchlistShows(_, let session, let page, let sortedBy),
+             .fetchRatedShows(_, let session, let page, let sortedBy):
             let queryParams: [String: Any] = [
                 "api_key": TMDBConfiguration.apiKey,
                 "session_id": session?.sessionId ?? "",
