@@ -391,12 +391,12 @@
 			path = Storable;
 			sourceTree = "<group>";
 		};
-		C727D9892625665B0074B7EC /* Protocols */ = {
+		C727D9892625665B0074B7EC /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
 				C727D98A2625666C0074B7EC /* SearchViewControllerType.swift */,
 			);
-			path = Protocols;
+			path = Subclasses;
 			sourceTree = "<group>";
 		};
 		C73C81532609A0A100DB8887 /* Account */ = {
@@ -591,7 +591,7 @@
 		C77C8BFA25F0B24500961122 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				C727D9892625665B0074B7EC /* Protocols */,
+				C727D9892625665B0074B7EC /* Subclasses */,
 				C7F1BA9526216CE7007316E9 /* Profile */,
 				C707A9A5261964FD009B063F /* TVShows */,
 				C7C199BE26100B13006FF567 /* Movies */,

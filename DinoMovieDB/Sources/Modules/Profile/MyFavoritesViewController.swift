@@ -9,11 +9,6 @@ import UIKit
 import Combine
 
 class MyFavoritesViewController: UIViewController {
-    enum FavoriteType: Int {
-        case movies
-        case shows
-    }
-    
     private let viewModel = ItemListViewModel()
     private let moviesService: MoviesServiceType = MoviesService()
     private let showsService: TVShowsServiceType = TVShowsService()
@@ -32,7 +27,7 @@ class MyFavoritesViewController: UIViewController {
             changeItemType()
         }
     }
-    private var itemType: FavoriteType = .movies {
+    private var itemType: MediaType = .movies {
         didSet {
             changeItemType()
         }
@@ -55,7 +50,7 @@ class MyFavoritesViewController: UIViewController {
     
     // MARK: OBJC Methods
     @objc private func changeContentType(_ sender: UISegmentedControl) {
-        guard let chosenType = FavoriteType(rawValue: sender.selectedSegmentIndex) else { return }
+        guard let chosenType = MediaType(rawValue: sender.selectedSegmentIndex) else { return }
         
         itemType = chosenType
     }

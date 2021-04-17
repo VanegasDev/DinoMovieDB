@@ -120,7 +120,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     private func addToWatchlist(_ isOnWatchlist: Bool) {
-        let parameters = WatchlistsState(mediaType: MediaType.movies.rawValue, itemId: movieId, isOnWatchList: !isOnWatchlist)
+        let parameters = WatchlistsState(mediaType: MediaType.movies.name, itemId: movieId, isOnWatchList: !isOnWatchlist)
         
         itemsStateService.addToWatchList(itemParams: parameters)
             .handleEvents(receiveOutput: { [weak self] _ in self?.viewModel.bannerViewModel.isWatchlistButtonEnabled = false })
@@ -133,7 +133,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     private func markAsFavorite(_ isFavorite: Bool) {
-        let parameters = FavoritesState(mediaType: MediaType.movies.rawValue, itemId: movieId, isFavorite: !isFavorite)
+        let parameters = FavoritesState(mediaType: MediaType.movies.name, itemId: movieId, isFavorite: !isFavorite)
         
         itemsStateService.markAsFavorite(itemParams: parameters)
             .handleEvents(receiveOutput: { [weak self] _ in self?.viewModel.bannerViewModel.isFavoriteButtonEnabled = false })
