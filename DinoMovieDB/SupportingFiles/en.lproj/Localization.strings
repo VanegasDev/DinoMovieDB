@@ -66,3 +66,8 @@
 
 /* My Favorites */
 "favorites_title" = "My Favorites";
+"favorites_sort_title" = "Sort Items by:";
+"favorites_sort_by_asc" = "Ascendant";
+"favorites_sort_by_desc" = "Descendant";
+"favorites_movies_title" = "Movies";
+"favorites_tv_shows_title" = "TV Shows";
