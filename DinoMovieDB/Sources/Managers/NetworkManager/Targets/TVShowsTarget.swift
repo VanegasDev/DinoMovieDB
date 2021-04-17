@@ -13,7 +13,7 @@ enum TVShowsTarget {
     case search(show: String, page: Int)
     case fetchShowState(showId: Int, session: SessionToken?)
     case fetchShowDetail(showId: Int, appendToResponse: String?)
-    case fetchFavoriteShows(accountId: Int, session: SessionToken?, page: Int)
+    case fetchFavoriteShows(accountId: Int, session: SessionToken?, page: Int, sortedBy: String)
     case rate(showId: Int, rate: Rate, session: SessionToken?)
     case deleteRate(showId: Int, session: SessionToken?)
 }
@@ -34,7 +34,7 @@ extension TVShowsTarget: TMDBTargetType {
             return "/tv/\(showId)/rating"
         case .deleteRate(let showId, _):
             return "/tv/\(showId)/rating"
-        case .fetchFavoriteShows(let accountId, _, _):
+        case .fetchFavoriteShows(let accountId, _, _, _):
             return "/account/\(accountId)/favorite/tv"
         }
     }
@@ -103,11 +103,12 @@ extension TVShowsTarget {
             ]
             
             return .requestParameters(parameters: queryParams, encoding: URLEncoding.queryString)
-        case .fetchFavoriteShows(_, let session, let page):
+        case .fetchFavoriteShows(_, let session, let page, let sortedBy):
             let queryParams: [String: Any] = [
                 "api_key": TMDBConfiguration.apiKey,
                 "session_id": session?.sessionId ?? "",
                 "language": TMDBConfiguration.languageCode ?? "en",
+                "sort_by": sortedBy,
                 "page": page
             ]
             

@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 class MyFavoritesViewController: UIViewController {
-    enum FavoriteType {
+    enum FavoriteType: Int {
         case movies
         case shows
     }
@@ -20,13 +20,18 @@ class MyFavoritesViewController: UIViewController {
     private let pagination: PaginationManagerType = PaginationManager()
     
     private lazy var selectItemButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .done, target: self, action: #selector(askForContentType))
+        let button = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .done, target: self, action: #selector(askForSortType))
         button.tintColor = .systemBlue
         
         return button
     }()
     
     private var cancellables = Set<AnyCancellable>()
+    private var sortedBy: SortType = .ascendant {
+        didSet {
+            changeItemType()
+        }
+    }
     private var itemType: FavoriteType = .movies {
         didSet {
             changeItemType()
@@ -43,24 +48,47 @@ class MyFavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSearchController()
+        setupSegmentedController()
         setupViews()
         setupBindings()
     }
     
     // MARK: OBJC Methods
-    @objc private func askForContentType() {
-        let chooseMoviesAction = UIAlertAction(title: itemType == .movies ? "Movies ✓" : "Movies", style: .default) { [weak self] _ in
-            self?.itemType = .movies
+    @objc private func changeContentType(_ sender: UISegmentedControl) {
+        guard let chosenType = FavoriteType(rawValue: sender.selectedSegmentIndex) else { return }
+        
+        itemType = chosenType
+    }
+    
+    @objc private func askForSortType() {
+        let actionSheet: UIAlertController
+        let ascendantAction = UIAlertAction(title: R.string.localization.favorites_sort_by_asc(), style: .default) { [weak self] _ in
+            self?.sortedBy = .ascendant
         }
-        let chooseTVShowsAction = UIAlertAction(title: itemType == .shows ? "TVShows ✓" : "TVShows", style: .default) { [weak self] _ in
-            self?.itemType = .shows
+        let descendantAction = UIAlertAction(title: R.string.localization.favorites_sort_by_desc(), style: .default) { [weak self] _ in
+            self?.sortedBy = .descendat
         }
         
-        present(UIAlertController.customActionSheet(title: "Select Item Type:", actions: [chooseMoviesAction, chooseTVShowsAction]), animated: true)
+        actionSheet = .customActionSheet(title: R.string.localization.favorites_sort_title(), actions: [ascendantAction, descendantAction])
+        
+        present(actionSheet, animated: true)
     }
     
     // MARK: Setup
+    private func setupSegmentedController() {
+        let segmentedView: UISegmentedControl
+        let segmentedControlTitles = [
+            R.string.localization.favorites_movies_title(),
+            R.string.localization.favorites_tv_shows_title()
+        ]
+        
+        segmentedView = UISegmentedControl(items: segmentedControlTitles)
+        segmentedView.selectedSegmentIndex = 0
+        segmentedView.addTarget(self, action: #selector(changeContentType), for: .valueChanged)
+        
+        navigationItem.titleView = segmentedView
+    }
+    
     private func setupViews() {
         title = R.string.localization.favorites_title()
         
@@ -115,10 +143,10 @@ class MyFavoritesViewController: UIViewController {
     }
     
     private func fetchShows(on page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
-        showsService.fetchPopularShows(page: page)
+        showsService.fetchFavoriteShows(on: page, sortedBy: sortedBy)
     }
     
     private func fetchMovies(on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
-        moviesService.fetchFavoriteMovies(on: page)
+        moviesService.fetchFavoriteMovies(on: page, sortedBy: sortedBy)
     }
 }
