@@ -14,6 +14,8 @@ protocol MoviesServiceType {
     func fetchUpcomingMovies(page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error>
     func search(movie: String, on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error>
     func fetchFavoriteMovies(on page: Int, sortedBy: SortType) -> AnyPublisher<APIResponse<[MoviePreview]>, Error>
+    func fetchWatchlistMovies(on page: Int, sortedBy: SortType) -> AnyPublisher<APIResponse<[MoviePreview]>, Error>
+    func fetchRatedMovies(on page: Int, sortedBy: SortType) -> AnyPublisher<APIResponse<[MoviePreview]>, Error>
 }
 
 // Defines a default behavior for fetchUpcomingMovies function
@@ -48,5 +50,21 @@ struct MoviesService: MoviesServiceType {
         let userInformation = MyAccount.get(from: .keychainSwift)
         
         return apiRequester.request(MoviesTarget.fetchFavoriteMovies(accountId: userInformation?.id ?? 0, session: session, page: page, sortedBy: sortedBy.queryParam))
+    }
+    
+    // Fetches watchlist movies
+    func fetchWatchlistMovies(on page: Int, sortedBy: SortType) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
+        let session = SessionToken.get(from: .keychainSwift)
+        let userInformation = MyAccount.get(from: .keychainSwift)
+        
+        return apiRequester.request(MoviesTarget.fetchWatchlistMovies(accountId: userInformation?.id ?? 0, session: session, page: page, sortedBy: sortedBy.queryParam))
+    }
+    
+    // Fetches rated movies
+    func fetchRatedMovies(on page: Int, sortedBy: SortType) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
+        let session = SessionToken.get(from: .keychainSwift)
+        let userInformation = MyAccount.get(from: .keychainSwift)
+        
+        return apiRequester.request(MoviesTarget.fetchRatedMovies(accountId: userInformation?.id ?? 0, session: session, page: page, sortedBy: sortedBy.queryParam))
     }
 }

@@ -21,11 +21,15 @@ class ProfileViewModel: ObservableObject {
     let fetchInformationInput = PassthroughSubject<Void, Never>()
     let showFavoritesInput = PassthroughSubject<Void, Never>()
     let logoutInput = PassthroughSubject<Void, Never>()
+    let showWatchlistInput = PassthroughSubject<Void, Never>()
+    let showRatingsInput = PassthroughSubject<Void, Never>()
     
     // MARK: Output
     let fetchInformationOutput = PassthroughSubject<Void, Never>()
     let showFavoritesOutput = PassthroughSubject<Void, Never>()
     let logoutOutput = PassthroughSubject<Void, Never>()
+    let showWatchlistOutput = PassthroughSubject<Void, Never>()
+    let showRatingsOutput = PassthroughSubject<Void, Never>()
     
     init() {
         setupBindings()
@@ -38,6 +42,8 @@ class ProfileViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
         let logout = logoutInput.receive(on: DispatchQueue.main)
         let showFavoritesPublisher = showFavoritesInput.receive(on: DispatchQueue.main)
+        let showWatchlistPublisher = showWatchlistInput.receive(on: DispatchQueue.main)
+        let showRatingsPublisher = showRatingsInput.receive(on: DispatchQueue.main)
         
         // Handle Events
         fetchInformation.handleEvents(receiveOutput: { [weak self] _ in self?.isLoading = true })
@@ -46,6 +52,12 @@ class ProfileViewModel: ObservableObject {
         logout.sink(onReceived: logoutOutput.send).store(in: &cancellables)
         showFavoritesPublisher
             .sink(onReceived: showFavoritesOutput.send)
+            .store(in: &cancellables)
+        showWatchlistPublisher
+            .sink(onReceived: showWatchlistOutput.send)
+            .store(in: &cancellables)
+        showRatingsPublisher
+            .sink(onReceived: showRatingsOutput.send)
             .store(in: &cancellables)
     }
     

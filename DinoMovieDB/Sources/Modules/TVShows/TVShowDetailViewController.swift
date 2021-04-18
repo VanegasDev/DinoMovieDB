@@ -121,7 +121,7 @@ class TVShowDetailViewController: UIViewController {
     }
     
     private func addToWatchlist(_ isOnWatchlist: Bool) {
-        let parameters = WatchlistsState(mediaType: MediaType.tvShows.rawValue, itemId: showId, isOnWatchList: !isOnWatchlist)
+        let parameters = WatchlistsState(mediaType: MediaType.tvShows.name, itemId: showId, isOnWatchList: !isOnWatchlist)
         
         itemStateService.addToWatchList(itemParams: parameters)
             .handleEvents(receiveOutput: { [weak self] _ in self?.viewModel.bannerViewModel.isWatchlistButtonEnabled = false })
@@ -134,7 +134,7 @@ class TVShowDetailViewController: UIViewController {
     }
     
     private func markAsFavorite(_ isFavorite: Bool) {
-        let parameters = FavoritesState(mediaType: MediaType.tvShows.rawValue, itemId: showId, isFavorite: !isFavorite)
+        let parameters = FavoritesState(mediaType: MediaType.tvShows.name, itemId: showId, isFavorite: !isFavorite)
         
         itemStateService.markAsFavorite(itemParams: parameters)
             .handleEvents(receiveOutput: { [weak self] _ in self?.viewModel.bannerViewModel.isFavoriteButtonEnabled = false })

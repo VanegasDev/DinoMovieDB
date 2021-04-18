@@ -68,10 +68,18 @@
 "profile_sign_out_alert_title" = "Cerrar Sesión";
 "profile_sign_out_alert_description" = "Realmente quieres salir?";
 
+/* Account Items */
+"account_items_sort_title" = "Filtrar Items por:";
+"account_items_sort_by_asc" = "Ascendente";
+"account_items_sort_by_desc" = "Descendente";
+"account_items_movies_title" = "Películas";
+"account_items_tv_shows_title" = "TV Shows";
+
 /* My Favorites */
 "favorites_title" = "Mis Favoritos";
-"favorites_sort_title" = "Filtrar Items por:";
-"favorites_sort_by_asc" = "Ascendente";
-"favorites_sort_by_desc" = "Descendente";
-"favorites_movies_title" = "Películas";
-"favorites_tv_shows_title" = "TV Shows";
+
+/* My Watchlists */
+"watchlist_title" = "Mis Listas";
+
+/* My Rated Items */
+"ratings_title" = "Mis Ratings";

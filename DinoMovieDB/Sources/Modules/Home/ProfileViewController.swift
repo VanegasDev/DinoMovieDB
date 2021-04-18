@@ -40,11 +40,15 @@ class ProfileViewController: UIViewController {
         let fetchInformationPublisher = viewModel.fetchInformationOutput.receive(on: DispatchQueue.main)
         let logoutPublisher = viewModel.logoutOutput.receive(on: DispatchQueue.main)
         let showFavoritesPublisher = viewModel.showFavoritesOutput.receive(on: DispatchQueue.main)
+        let showWatchlistPublisher = viewModel.showWatchlistOutput.receive(on: DispatchQueue.main)
+        let showRatingsPublisher = viewModel.showRatingsOutput.receive(on: DispatchQueue.main)
         
         // Publisher Handler
         fetchInformationPublisher.sink { [weak self] in self?.fetchInformation() }.store(in: &cancellables)
         logoutPublisher.sink(receiveValue: showLogoutAlert).store(in: &cancellables)
         showFavoritesPublisher.sink(onReceived: showFavoritesViewController).store(in: &cancellables)
+        showWatchlistPublisher.sink(onReceived: showWatchlistViewController).store(in: &cancellables)
+        showRatingsPublisher.sink(onReceived: showRatingsViewController).store(in: &cancellables)
     }
     
     // MARK: Service Request
@@ -66,6 +70,14 @@ class ProfileViewController: UIViewController {
     // MARK: Functionality
     private func showFavoritesViewController() {
         navigationController?.pushViewController(MyFavoritesViewController(), animated: true)
+    }
+    
+    private func showWatchlistViewController() {
+        navigationController?.pushViewController(MyWatchlistViewController(), animated: true)
+    }
+    
+    private func showRatingsViewController() {
+        navigationController?.pushViewController(MyRatingsViewController(), animated: true)
     }
     
     private func logout() {

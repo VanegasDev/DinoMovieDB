@@ -1,14 +1,14 @@
 //
-//  MyFavoritesViewController.swift
+//  MyRatingsViewController.swift
 //  DinoMovieDB
 //
-//  Created by Mario Vanegas on 4/9/21.
+//  Created by Mario Vanegas on 4/17/21.
 //
 
-import UIKit
+import Foundation
 import Combine
 
-class MyFavoritesViewController: AccountItemsViewController {
+class MyRatingsViewController: AccountItemsViewController {
     // MARK: Properties
     private let viewModel = ItemListViewModel()
     
@@ -30,7 +30,7 @@ class MyFavoritesViewController: AccountItemsViewController {
     
     // MARK: Setup
     private func setupViews() {
-        title = R.string.localization.favorites_title()
+        title = R.string.localization.ratings_title()
         
         addHosting(ItemListView(viewModel: viewModel))
     }
@@ -39,7 +39,7 @@ class MyFavoritesViewController: AccountItemsViewController {
         let fetchItemsPublisher = viewModel.fetchItemsOutput.receive(on: DispatchQueue.main)
         let itemTapPublisher = viewModel.itemTapOutput.receive(on: DispatchQueue.main)
         
-        fetchItemsPublisher.sink(onReceived: itemType == .movies ? fetchFavoriteMovies : fetchFavoriteTVShows).store(in: &cancellables)
+        fetchItemsPublisher.sink(onReceived: itemType == .movies ? fetchRatingsMovies : fetchRatingsTVShows).store(in: &cancellables)
         itemTapPublisher.sink(onReceived: itemType == .movies ? openMovieDetails : openShowDetails).store(in: &cancellables)
     }
     
@@ -48,10 +48,10 @@ class MyFavoritesViewController: AccountItemsViewController {
         viewModel.itemsViewModel = []
         
         pagination.resetPagination()
-        itemType == .movies ? fetchFavoriteMovies() : fetchFavoriteTVShows()
+        itemType == .movies ? fetchRatingsMovies() : fetchRatingsTVShows()
     }
     
-    private func fetchFavoriteMovies() {
+    private func fetchRatingsMovies() {
         guard let nextPage = pagination.nextPage, pagination.state == .readyForPagination else { return }
         
         pagination.paginate(request: { fetchMovies(on: nextPage) })
@@ -65,7 +65,7 @@ class MyFavoritesViewController: AccountItemsViewController {
             .store(in: &cancellables)
     }
     
-    private func fetchFavoriteTVShows() {
+    private func fetchRatingsTVShows() {
         guard let nextPage = pagination.nextPage, pagination.state == .readyForPagination else { return }
         
         pagination.paginate(request: { fetchShows(on: nextPage) })
@@ -80,10 +80,10 @@ class MyFavoritesViewController: AccountItemsViewController {
     }
     
     private func fetchShows(on page: Int) -> AnyPublisher<APIResponse<[TVShowPreview]>, Error> {
-        showsService.fetchFavoriteShows(on: page, sortedBy: sortedBy)
+        showsService.fetchRatedShows(on: page, sortedBy: sortedBy)
     }
     
     private func fetchMovies(on page: Int) -> AnyPublisher<APIResponse<[MoviePreview]>, Error> {
-        moviesService.fetchFavoriteMovies(on: page, sortedBy: sortedBy)
+        moviesService.fetchRatedMovies(on: page, sortedBy: sortedBy)
     }
 }

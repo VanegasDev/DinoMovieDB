@@ -43,6 +43,8 @@
 		C72DF296262A9EF800C419B9 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72DF295262A9EF800C419B9 /* SortType.swift */; };
 		C7317DD6261ED7240082D195 /* TMDBChevronModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7317DD5261ED7240082D195 /* TMDBChevronModifier.swift */; };
 		C7317DDB261ED7F70082D195 /* TMDBProfileOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7317DDA261ED7F70082D195 /* TMDBProfileOptionView.swift */; };
+		C7347A03262B520200C52B14 /* AccountItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7347A02262B520200C52B14 /* AccountItemsViewController.swift */; };
+		C7347A08262B5F0600C52B14 /* MyWatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7347A07262B5F0600C52B14 /* MyWatchlistViewController.swift */; };
 		C73C814C26099C2900DB8887 /* AccountTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C814B26099C2900DB8887 /* AccountTarget.swift */; };
 		C73C81552609A0B800DB8887 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C81542609A0B800DB8887 /* Avatar.swift */; };
 		C73C815D2609A1F000DB8887 /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C815C2609A1F000DB8887 /* MyAccount.swift */; };
@@ -97,6 +99,7 @@
 		C7C199B526100247006FF567 /* TMDBCastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199B426100247006FF567 /* TMDBCastView.swift */; };
 		C7C199BA26100470006FF567 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199B926100470006FF567 /* MovieDetailView.swift */; };
 		C7C199C026100B23006FF567 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C199BF26100B23006FF567 /* MovieDetailViewController.swift */; };
+		C7D11CBE262BA07C00B27371 /* MyRatingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D11CBD262BA07C00B27371 /* MyRatingsViewController.swift */; };
 		C7E9AD542611645F00DAF606 /* ItemDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E9AD532611645F00DAF606 /* ItemDetailService.swift */; };
 		C7E9AD5F2611653900DAF606 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E9AD5E2611653900DAF606 /* MovieDetail.swift */; };
 		C7E9AD66261165C100DAF606 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E9AD65261165C100DAF606 /* Genre.swift */; };
@@ -164,6 +167,8 @@
 		C72DF295262A9EF800C419B9 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		C7317DD5261ED7240082D195 /* TMDBChevronModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBChevronModifier.swift; sourceTree = "<group>"; };
 		C7317DDA261ED7F70082D195 /* TMDBProfileOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBProfileOptionView.swift; sourceTree = "<group>"; };
+		C7347A02262B520200C52B14 /* AccountItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItemsViewController.swift; sourceTree = "<group>"; };
+		C7347A07262B5F0600C52B14 /* MyWatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWatchlistViewController.swift; sourceTree = "<group>"; };
 		C73C814B26099C2900DB8887 /* AccountTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTarget.swift; sourceTree = "<group>"; };
 		C73C81542609A0B800DB8887 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		C73C815C2609A1F000DB8887 /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
@@ -216,6 +221,7 @@
 		C7C199B426100247006FF567 /* TMDBCastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBCastView.swift; sourceTree = "<group>"; };
 		C7C199B926100470006FF567 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		C7C199BF26100B23006FF567 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		C7D11CBD262BA07C00B27371 /* MyRatingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRatingsViewController.swift; sourceTree = "<group>"; };
 		C7E9AD532611645F00DAF606 /* ItemDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailService.swift; sourceTree = "<group>"; };
 		C7E9AD5E2611653900DAF606 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		C7E9AD65261165C100DAF606 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
@@ -391,12 +397,13 @@
 			path = Storable;
 			sourceTree = "<group>";
 		};
-		C727D9892625665B0074B7EC /* Protocols */ = {
+		C727D9892625665B0074B7EC /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
 				C727D98A2625666C0074B7EC /* SearchViewControllerType.swift */,
+				C7347A02262B520200C52B14 /* AccountItemsViewController.swift */,
 			);
-			path = Protocols;
+			path = Subclasses;
 			sourceTree = "<group>";
 		};
 		C73C81532609A0A100DB8887 /* Account */ = {
@@ -591,7 +598,7 @@
 		C77C8BFA25F0B24500961122 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				C727D9892625665B0074B7EC /* Protocols */,
+				C727D9892625665B0074B7EC /* Subclasses */,
 				C7F1BA9526216CE7007316E9 /* Profile */,
 				C707A9A5261964FD009B063F /* TVShows */,
 				C7C199BE26100B13006FF567 /* Movies */,
@@ -681,6 +688,8 @@
 			isa = PBXGroup;
 			children = (
 				C7F1BA9626216D11007316E9 /* MyFavoritesViewController.swift */,
+				C7347A07262B5F0600C52B14 /* MyWatchlistViewController.swift */,
+				C7D11CBD262BA07C00B27371 /* MyRatingsViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -873,12 +882,14 @@
 				C77C8BFD25F0B25600961122 /* LoginViewController.swift in Sources */,
 				C78DA81225F88CF5009DCE37 /* APIResponse.swift in Sources */,
 				C7C199B526100247006FF567 /* TMDBCastView.swift in Sources */,
+				C7347A03262B520200C52B14 /* AccountItemsViewController.swift in Sources */,
 				C77C8B9725F0999100961122 /* LoginView.swift in Sources */,
 				C7A7E38D25F9E8CE0066A7D9 /* TVShowPreview.swift in Sources */,
 				C70D34842612ECCB007B4C05 /* TMDBStarRateView.swift in Sources */,
 				C717A14925F9D976006915D5 /* PaginationManager.swift in Sources */,
 				C7A7E3A625F9EB630066A7D9 /* TVShowsListViewController.swift in Sources */,
 				C73C81672609A59500DB8887 /* ProfileViewModel.swift in Sources */,
+				C7347A08262B5F0600C52B14 /* MyWatchlistViewController.swift in Sources */,
 				C775ABBA25F35CB2002D39D8 /* HomeViewController.swift in Sources */,
 				C77C8BD425F0AC0300961122 /* AuthenticationTarget.swift in Sources */,
 				C7A4D8C125F5BCAE00284AD8 /* NotificationCenter+Extensions.swift in Sources */,
@@ -918,6 +929,7 @@
 				C7A4D8B125F5B9EF00284AD8 /* TMDBWindow.swift in Sources */,
 				C77C8B7B25F093E800961122 /* TMDBTextField.swift in Sources */,
 				C70D34892612F1E6007B4C05 /* TMDBDoneAlertView.swift in Sources */,
+				C7D11CBE262BA07C00B27371 /* MyRatingsViewController.swift in Sources */,
 				C75FA4A32611692D005C238E /* MovieDetailViewModel.swift in Sources */,
 				C704137A25EDF8FB000FFC87 /* SceneDelegate.swift in Sources */,
 				C7E9AD5F2611653900DAF606 /* MovieDetail.swift in Sources */,

@@ -38,7 +38,7 @@ class ItemDetailViewModel: ObservableObject, Identifiable {
     }
     
     func markAsFavorite() {
-        let params = FavoritesState(mediaType: mediaType.rawValue, itemId: itemId, isFavorite: !isMarkedAsFavorite)
+        let params = FavoritesState(mediaType: mediaType.name, itemId: itemId, isFavorite: !isMarkedAsFavorite)
         
         service.markAsFavorite(itemParams: params)
             .handleEvents(receiveOutput: { [weak self] _ in
@@ -53,7 +53,7 @@ class ItemDetailViewModel: ObservableObject, Identifiable {
     }
     
     func addToWatchlist() {
-        let param = WatchlistsState(mediaType: mediaType.rawValue, itemId: itemId, isOnWatchList: !isOnWatchlist)
+        let param = WatchlistsState(mediaType: mediaType.name, itemId: itemId, isOnWatchList: !isOnWatchlist)
         
         service.addToWatchList(itemParams: param)
             .handleEvents(receiveOutput: { [weak self] _ in
