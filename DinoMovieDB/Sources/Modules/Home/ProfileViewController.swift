@@ -40,8 +40,8 @@ class ProfileViewController: UIViewController {
         let fetchInformationPublisher = viewModel.fetchInformationOutput.receive(on: DispatchQueue.main)
         let logoutPublisher = viewModel.logoutOutput.receive(on: DispatchQueue.main)
         let showFavoritesPublisher = viewModel.showFavoritesOutput.receive(on: DispatchQueue.main)
-        let showWatchlistPublisher = viewModel.showFavoritesOutput.receive(on: DispatchQueue.main)
-        let showRatingsPublisher = viewModel.showFavoritesOutput.receive(on: DispatchQueue.main)
+        let showWatchlistPublisher = viewModel.showWatchlistOutput.receive(on: DispatchQueue.main)
+        let showRatingsPublisher = viewModel.showRatingsOutput.receive(on: DispatchQueue.main)
         
         // Publisher Handler
         fetchInformationPublisher.sink { [weak self] in self?.fetchInformation() }.store(in: &cancellables)
@@ -77,7 +77,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func showRatingsViewController() {
-        navigationController?.pushViewController(MyFavoritesViewController(), animated: true)
+        navigationController?.pushViewController(MyRatingsViewController(), animated: true)
     }
     
     private func logout() {
